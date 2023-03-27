@@ -1,0 +1,19 @@
+
+.btn-envio-solicitud {
+    background-color: #e61a23;
+    border: none;
+}
+.letraBuzonSugere{
+     color: #e61a23;
+     text-align: start;
+     font-family: 'Montserrat', sans-serif;
+
+     position: relative;
+     font-weight: bolder;
+     font-size: 28px;
+     margin-top: 15px;
+     margin-bottom: 15px;
+
+}
+
+

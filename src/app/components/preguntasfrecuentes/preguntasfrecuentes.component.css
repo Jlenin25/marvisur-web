@@ -1,0 +1,39 @@
+.titulo {
+    background-color: #e61a23;
+    color: white;
+    padding-left: 20px;
+    border-top-left-radius: 25px;
+   
+}
+.cuerpo {
+    background-color: white;
+    border-color: #e61a23 !important;
+    border-width: 4px !important;
+    padding-left: 10px;
+    margin-right: 20px;
+    width: 100%;
+    
+    border-bottom-right-radius: 25px;
+}
+.info-sucu {
+    text-align: left;
+    margin-bottom: 10   px;
+}
+.fa-check-circle{
+    color: #e61a23;
+    margin-right: 10px;
+}
+.pf-subtitulos{
+    font-weight: bold;
+}
+.letratitupregufre{
+    color: #e61a23;
+     text-align: start;
+     font-family: 'Montserrat', sans-serif;
+
+     position: relative;
+     font-weight: bolder;
+     font-size: 28px;
+     margin-top: 15px;
+     margin-bottom: 15px;
+}

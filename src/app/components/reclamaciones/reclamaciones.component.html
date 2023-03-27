@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="letraBuzonSugere"> BUZÓN DE SUGERENCIAS </div>
+  <form (ngSubmit)="ngOnInit()" #CurriculumForm="ngForm">
+    <div class="form-group">
+        <label for="nombresyape">Apellidos y Nombres</label>
+        <input type="text"  name="serie" #nombresyape="ngModel" [(ngModel)]="reclamacionModel.nom_pers_rec" class="form-control" required>
+    </div>
+  </form>
+
+
+</div>

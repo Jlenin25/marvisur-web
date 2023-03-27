@@ -1,0 +1,481 @@
+
+
+<div class="portadaAll ">
+
+    <img class="img" src="assets/images/portadacotizacionnuevo.png" height="100%" width="100%">
+
+
+</div>
+<!--- asdasdsa-->
+<div class="title-peque text-center">
+    COTIZACIÓN
+</div>
+<br><br><br>
+<div class="container">
+<div class="animated fadeIn fast">
+    <!-- primera imagen-->
+</div>
+  
+    <!-- tres imagenes-->
+    <!--tabla cotizacion  tipo servicio - origen - destino-->
+
+    <div class="fondoCotizaciones d-block">
+
+
+        <!-- tipos de servicio-->
+        <div class="row fila-servicio">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 form-group">
+                <div class="col-12 col-lg-3 ">
+                    <img class="ringcotizacion" src="assets/images/ico-tipo-serv.jpg" height="160px">
+                </div>
+                <div class="sucup col-12">
+                    TIPO DE SERVICIO
+                </div>
+                <div>
+                    <select class="col-12 browser-default custom-select" name="tipo1" #tipo1="ngModel" [(ngModel)]="cotizaUserModel.tipo" >
+                        <option   value="Seleccione2" disabled="true">Seleccione el tipo</option>
+                        <option value="TRANSPORTE DE CARGA">TRANSPORTE DE CARGA</option>
+                        <!-- <option value="SERVICIO EXPRESO">SERVICIO EXPRESO</option> este servicio es cuando no haya un destino-->
+                        <option value="SERVICIO DE MUDANZA">SERVICIO DE MUDANZA</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3">
+                <div class="col-12 col-lg-3 form-group">
+                    <img class="ringcotizacion" src="assets/images/ico-tipo-ori.jpg" height="160px">
+                </div>
+                <div class="sucup col-12">
+                    ORIGEN
+                </div>
+
+                <div>
+                    <select class="col-12 browser-default custom-select" name="origen" #origen="ngModel" (change)="cambioSelect()" [(ngModel)]="cotizaUserModel.origen">
+                        <option  value="Seleccione" disabled="true">Seleccione el Origen</option>
+                        <option id="origencotiza" *ngFor ="let sucursal of sucursales" value="{{sucursal.titulo}}">{{sucursal.titulo}} </option>
+                      
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="col-12 col-lg-3">
+                    <img class="ringcotizacion" src="assets/images/ico-tipo-des.jpg" height="160px">
+                </div>
+                <div class="sucup col-12">
+                    DESTINO
+                </div>
+                <div>
+                    <select class="col-12 browser-default custom-select" name="destino" #destino="ngModel" (change)="cambioSelect()" [(ngModel)]="cotizaUserModel.destino">
+                        <option   value="Seleccione1" disabled="true">Seleccione el Destino</option>
+                        <option id="destinocotiza" *ngFor ="let sucursa of sucursalesDes" value="{{sucursa.des_tar}}">{{sucursa.des_tar}} </option>
+                      
+                    </select>
+                </div>
+            </div>
+        </div>
+      <br><br>  
+
+        <div [ngSwitch]="cotizaUserModel.tipo" >
+           
+            <div *ngSwitchCase="'TRANSPORTE DE CARGA'" >
+                
+                <div class="tablita"  *ngIf="flagCotiza==true && tarifarioBuscado.length>0 && flagBusquedaTarifario" >
+                    <br>
+                
+                    <div class="row rw1">
+                        
+                        <div class="letra-cabe letra-ana col-2 col-lg-2">SOBRE</div>
+                        <div class="letra-cabe letra-ana col-2 col-lg-2">MINI PAQUETE</div>
+                        <div class="letra-cabe letra-ana col-2 col-lg-2">PAQUETE</div>
+                        <div class="letra-cabe letra-ana col-2 col-lg-2">MAXI PAQUETE</div>
+                        
+                        <div class="letra-cabe letra-ana col-2 col-lg-2">PESO</div>
+                        <div class="letra-cabe letra-ana col-2 col-lg-2">VOLUMEN</div>
+
+                    </div>
+                    <div  class="row rw1">
+                        <div class="border-right letra-cabe letra-ana col-2 col-lg-2" >                   
+                            <ng-template #tooltipsobre>
+                                <div id="tool-tip1"><div>*Precio solo por documentos enviados en sobre </div></div>
+                            </ng-template>
+                                <div  class=""
+                                      [tooltip]="tooltipsobre"
+                                      placement="right"
+                                      triggers="hover">
+                                     <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
+                                     <img  class="img-cotizacion-tablita" src="assets/images/sobre.png" height="50px">
+                                </div>  
+                        </div>
+                           
+                        <div class="border-right letra-cabe letra-ana col-2 col-lg-2" >
+                            <ng-template #toltipminipaque>
+                                <div id="tool-tip1" ><div>*TARIFA MINIMA por medida máxima hasta 0.25 x 0.25 x 0.25
+                                Tarifa de 1 a 5 paquetes máximo.</div></div>
+                            </ng-template>
+                                <div  class=""
+                                      [tooltip]="toltipminipaque"
+                                      placement="right"
+                                      triggers="hover">
+                                     <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
+                                     <img class="img-cotizacion-tablita" src="assets/images/mini_paquete.png" height="50px">
+                                </div>  
+                        </div>    
+                        <div class="border-right letra-cabe letra-ana col-2 col-lg-2">
+                         <ng-template #tooltippaquete>
+                            <div id="tool-tip1" ><div>*TARIFA MINIMA por medida máxima hasta 0.35 x 0.35 x 0.35
+                                Tarifa de 1 a 5 paquetes máximo </div></div>
+                        </ng-template>
+                            <div  class=""
+                                  [tooltip]="tooltippaquete"
+                                  placement="right"
+                                  triggers="hover">
+                                 <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
+                                 <img class="img-cotizacion-tablita" src="assets/images/paquete.png" height="50px">
+                            </div>  
+                        </div>
+                        <div class="border-right letra-cabe letra-ana col-2 col-lg-2">  
+                            <ng-template #tooltipmaxi>
+                            <div id="tool-tip1" ><div>*TARIFA MINIMA por medida máxima hasta 0.50 x 0.50 x 0.50
+                                Tarifa de 1 a 5 paquetes máximo. </div></div>
+                            </ng-template>
+                            <div  class=""
+                                  [tooltip]="tooltipmaxi"
+                                  placement="right"
+                                  triggers="hover">
+                                 <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
+                                 <img class="img-cotizacion-tablita" src="assets/images/maxi_paquete.png" height="50px">
+                            </div> 
+                            
+                        </div>
+                        
+                        <div class="border-right letra-cabe letra-ana col-2 col-lg-2">
+                            <ng-template #tooltippeso>
+                                <div id="tool-tip1" ><div>*Peso por kilo a partir 50 KG </div></div>
+                            </ng-template>
+                                <div  class=""
+                                      [tooltip]="tooltippeso"
+                                      placement="right"
+                                      triggers="hover">
+                                     <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
+                                     <img class="img-cotizacion-tablita" src="assets/images/peso.png" height="50px">
+                                </div> 
+                        </div>
+                        <div class="border-right letra-cabe letra-ana col-2 col-lg-2">
+                         <ng-template #tooltipvolumen>
+                            <div id="tool-tip1" ><div>*Volumen x m3 
+                                a partir de un metro. </div></div>
+                        </ng-template>
+                            <div  class=""
+                                  [tooltip]="tooltipvolumen"
+                                  color=red
+                                  placement="right"
+                                  triggers="hover">
+                                 <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
+                                 <img class="img-cotizacion-tablita" src="assets/images/volumen.png" height="50px">
+                            </div> 
+                        </div>
+                    </div>
+                    <div  class="row rw1" >
+                        <div class="border-right letra-ana col-2 col-lg-2">{{tarifarioBuscado[0].sob_tar}}</div>
+                        <div class="border-right letra-ana col-2 col-lg-2">{{tarifarioBuscado[0].minpaq_tar}}</div>
+                        <div class="border-right letra-ana col-2 col-lg-2">{{tarifarioBuscado[0].paq_tar}}</div>
+                        <div class="border-right letra-ana col-2 col-lg-2">{{tarifarioBuscado[0].maxpaq_tar}}</div>
+                        <div class="border-right letra-ana col-2 col-lg-2">{{tarifarioBuscado[0].pes_tar}}</div>
+                        <div class="border-right letra-ana col-2 col-lg-2">{{tarifarioBuscado[0].vol_tar}}</div>                    
+                    </div>
+                    <br>
+                </div>
+                <div *ngIf="flagCotiza==true && tarifarioBuscado.length==0 && flagBusquedaTarifario">
+                <div class="enviar-paquete">
+                    <form (ngSubmit)="onSubmitNoImg(cotizaUserForm)" #cotizaUserForm="ngForm">
+                        <div class="form-group">
+
+                            <div class="row">
+                                <div class="col-lg-4 letra-form">NOMBRE O RAZÓN SOCIAL:</div>
+                                <input type="text" class="form-control col-11 col-lg-6"  required [(ngModel)]="cotizaUserModel.nombre" name="nombre" #nombre1="ngModel"  placeholder="NOMBRE O RAZÓN SOCIAL">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 letra-form">DNI/RUC:</div>
+                                <input type="text" class="form-control col-11 col-lg-6" id="dni" required [(ngModel)]="cotizaUserModel.dni" name="nombre" #nombre1="ngModel"  placeholder="DNI/RUC">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">TELÉFONO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="telefono17" required [(ngModel)]="cotizaUserModel.telefono" name="telefono" #telefono="ngModel" placeholder="TELÉFONO">
+                                <div class="col-lg-2 letra-form">CORREO ELECTRÓNICO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="correo" required [(ngModel)]="cotizaUserModel.correo" name="correo" #correo="ngModel" placeholder="CORREO ELECTRÓNICO">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">CANTIDAD:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="cantidad" required [(ngModel)]="cotizaUserModel.cantidad" name="cantidad" #cantidad="ngModel" placeholder="CANTIDAD">
+                                <div class="col-lg-2 letra-form">UNIDAD:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="unidad" required [(ngModel)]="cotizaUserModel.unidad" name="unidad" #unidad="ngModel" placeholder="UNIDAD">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">PESO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="peso" required [(ngModel)]="cotizaUserModel.peso" name="peso" #peso="ngModel" placeholder="PESO">
+                                <div class="col-lg-2 letra-form">ANCHO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="ancho" required [(ngModel)]="cotizaUserModel.ancho" name="ancho" #ancho="ngModel" placeholder="ANCHO">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">LARGO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="largo" required [(ngModel)]="cotizaUserModel.largo" name="largo" #largo="ngModel" placeholder="LARGO">
+                                <div class="col-lg-2 letra-form">ALTO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="alto" required [(ngModel)]="cotizaUserModel.alto" name="alto" #alto="ngModel" placeholder="ALTO">
+                            </div>
+                            <div class="row ">
+                                <div class=" letra-form col-lg-10 ">DESCRIPCIÓN:</div>
+                                <textarea class="form-control col-lg-10"  required [(ngModel)]="cotizaUserModel.descripcion" name="detalle" #detalle="ngModel" placeholder="Descripcion..." rows="4"></textarea>
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                        
+                            </div>
+                            <br>
+                            <div class="row">
+                                <button type="submit" data-toggle="modal" data-target="#exampleModal"  class="btn-solicitud btn btn-danger col-11 col-lg-5">ENVIAR SOLICITUD</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+        </div>
+        <div *ngSwitchCase="'SERVICIO DE MUDANZA'">
+                <div class="enviar-paquete">
+                    <form (ngSubmit)="onSubmit(cotizaUserForm)" #cotizaUserForm="ngForm">
+                        <div class="form-group">
+
+                            <div class="row">
+                                <div class="col-lg-4 letra-form">NOMBRE O RAZÓN SOCIAL:</div>
+                                <input type="text" class="form-control col-11 col-lg-6"  required [(ngModel)]="cotizaUserModel.nombre" name="nombre" #nombre1="ngModel"  placeholder="NOMBRE O RAZÓN SOCIAL">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 letra-form">DNI/RUC:</div>
+                                <input type="text" class="form-control col-11 col-lg-6" id="dni" required [(ngModel)]="cotizaUserModel.dni" name="nombre" #nombre1="ngModel"  placeholder="DNI/RUC">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">TELÉFONO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="telefono" required [(ngModel)]="cotizaUserModel.telefono" name="telefono" #telefono="ngModel" placeholder="TELÉFONO">
+                                <div class="col-lg-2 letra-form">CORREO ELECTRÓNICO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="correo" required [(ngModel)]="cotizaUserModel.correo" name="correo" #correo="ngModel" placeholder="CORREO ELECTRÓNICO">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">CANTIDAD:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="cantidad" required [(ngModel)]="cotizaUserModel.cantidad" name="cantidad" #cantidad="ngModel" placeholder="CANTIDAD">
+                                <div class="col-lg-2 letra-form">UNIDAD:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="unidad" required [(ngModel)]="cotizaUserModel.unidad" name="unidad" #unidad="ngModel" placeholder="UNIDAD">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">PESO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="peso" required [(ngModel)]="cotizaUserModel.peso" name="peso" #peso="ngModel" placeholder="PESO">
+                                <div class="col-lg-2 letra-form">ANCHO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="ancho" required [(ngModel)]="cotizaUserModel.ancho" name="ancho" #ancho="ngModel" placeholder="ANCHO">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 letra-form">LARGO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="largo" required [(ngModel)]="cotizaUserModel.largo" name="largo" #largo="ngModel" placeholder="LARGO">
+                                <div class="col-lg-2 letra-form">ALTO:</div>
+                                <input type="text" class="form-control col-11 col-lg-3" id="alto" required [(ngModel)]="cotizaUserModel.alto" name="alto" #alto="ngModel" placeholder="ALTO">
+                            </div>
+                            <div class="row ">
+                                <div class=" letra-form col-lg-10 ">DESCRIPCIÓN:</div>
+                                <textarea class="form-control col-lg-10"  required [(ngModel)]="cotizaUserModel.descripcion" name="detalle" #detalle="ngModel" placeholder="Descripcion..." rows="4"></textarea>
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                        
+                            </div>
+                            <div class="row">
+                                <label class="form-label  cargacv letra-form col-lg-3" for="file" >ADJUNTAR: MÁXIMO 2 MB  </label>
+                                                                                               
+                                    <angular-file-uploader 
+                                      [config]="afuConfig" 
+                                     (ApiResponse)="adjuntoUpload($event)">
+                                    </angular-file-uploader>
+
+                            </div>
+                            <br>
+                            <div class="row">
+                                <button type="submit" data-toggle="modal" data-target="#exampleModal"  class="btn-solicitud btn btn-danger col-11 col-lg-5">ENVIAR SOLICITUD</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+
+        </div>
+        <div class="row condiciones">              
+            <div class="pf-subtitulos">  Condiciones: *</div>
+            tarifas referenciales de agencia Marvisur origen hasta agencia Marvisur destino *tarifas incluyen IGV 
+            </div>
+    </div>
+    <br><br>
+    
+    
+    <div class="row col-lg-4 col-12 button-cv-directo"  type="submit" data-toggle="modal" data-id="" data-target="#modalcotizacionescorporativas">
+        <span class="fa fa-folder-open fa-2x"></span><button  class="btn-envio-directo-cv"> &nbsp; &nbsp;COTIZACIONES CORPORATIVAS</button>
+    </div>
+    <br>
+
+
+</div>
+
+
+<div>
+    
+<!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm modal-cotiza" role="document">
+      <div class="modal-content">
+        <div class="modal-header title-modal-corpo ">
+          <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+          <button type="button" class="close" (click)="close()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="flagPaquete==0">
+                Ingresando Solicitud...
+            </div>
+            <div *ngIf="flagPaquete==1">
+                Se ingresó correctamente, Gracias en breve nos comunicaremos contigo  
+            </div>
+            <div *ngIf="flagPaquete==2">
+                No se ingresó, verifique los datos.
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-danger" (click)="close()" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal cotizaciones corporativas-->
+
+
+<div class="modal fade" id="modalcotizacionescorporativas" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"   >
+  
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header title-modal-corpo">
+            <div class="modal-title ">COTIZACIONES CORPORATIVAS</div>
+            <button type="button" class="close"  data-dismiss="modal"aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+        <div class="modal-body">
+                <div class="container">    
+                        <form (ngSubmit)="onSubmit($event)" #CurriculumForm="ngForm">
+  
+                            <div class="form-group was-validated">
+                                <label for="nombresyape">RAZÓN SOCIAL:</label>
+                                <input type="text"  name="nombresyape" #nombresyape="ngModel" [(ngModel)]="cotizaUserModel.nombre" class="form-control" required >
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+
+                            </div>
+                            
+                            <div class="form-group was-validated">
+                                <label for="ruc">RUC:</label>
+                                <input type="text"  name="ruccorpo" #nombresyape="ngModel" [(ngModel)]="cotizaUserModel.dni" class="form-control" required>
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+
+                            </div>
+
+                            <div class="row r1">
+                              <div class="form-group col-lg-5 was-validated">
+                                  <label for="edad">TELEFONO:</label>
+                                  <input type="text" class="form-control " id="telefonocorpo" required [(ngModel)]="cotizaUserModel.telefono" name="edad" #edad="ngModel" >
+                                  <div class="invalid-feedback">*Campo Obligatorio</div>
+
+                              </div>
+                              <div class="col-1"></div>
+                              <div class="form-group col-lg-6 was-validated">
+                                  <label for="numero">CORREO ELECTRÓNICO:</label>
+                                  <input type="tel" class="form-control " required [(ngModel)]="cotizaUserModel.correo" name="numero" #numero="ngModel" >
+                                  <div class="invalid-feedback">*Campo Obligatorio</div>
+                              </div>
+                          </div>
+  
+                        <div class="row r1">
+                            <div class="form-group col-lg-5 was-validated">
+                                <label for="cantidad">CANTIDAD:</label>
+                                <input type="text" class="form-control " required [(ngModel)]="cotizaUserModel.cantidad" name="origen" #origen="ngModel" >
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="form-group col-lg-6 was-validated">
+                                <label for="destino">UNIDAD:</label>
+                                <input type="tel" class="form-control " required [(ngModel)]="cotizaUserModel.unidad" name="destino" #destino="ngModel">
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                            </div>
+                        </div>
+                        <div class="row r1">
+                            <div class="form-group col-lg-5 was-validated">
+                                <label for="peso">PESO:</label>
+                                <input type="text" class="form-control "  required [(ngModel)]="cotizaUserModel.peso" name="origen" #origen="ngModel" >
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                            </div>    
+                            <div class="col-1"></div>
+                            <div class="form-group col-lg-6 was-validated">
+                                <label for="destino">ANCHO:</label>
+                                <input type="tel" class="form-control " required [(ngModel)]="cotizaUserModel.ancho" name="destino" #destino="ngModel">
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                            </div>
+                        </div>
+                        <div class="row r1">
+                            <div class="form-group col-lg-5 was-validated">
+                                <label for="origen">LARGO:</label>
+                                <input type="text" class="form-control " required [(ngModel)]="cotizaUserModel.largo" name="origen" #origen="ngModel" >
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="form-group col-lg-6 was-validated">
+                                <label for="destino">ALTO:</label>
+                                <input type="tel" class="form-control " required [(ngModel)]="cotizaUserModel.alto" name="destino" #destino="ngModel" >
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                            </div>
+                        </div>  
+                        <div class="row r1">
+                            <div class="form-group col-lg-12 was-validated">
+                                <label for="origen">DESCRIPCION:</label>
+                                <textarea class="form-control col-lg-12 "  required [(ngModel)]="cotizaUserModel.descripcion" name="detalle" #detalle="ngModel" placeholder="Descripcion..." rows="4"></textarea>
+                                <div class="invalid-feedback">*Campo Obligatorio</div>
+                            </div>
+                            
+                        </div>  
+                      
+                        
+                            
+                            <div class="form-group">
+                                  
+                              <label class="form-label" for="file">Adjuntar Archivo (Máximo 2 MB):</label>
+                          
+                              <angular-file-uploader 
+                              [config]="afuConfig" 
+                              
+                             (ApiResponse)="adjuntoUpload($event)">
+                            </angular-file-uploader>
+                            </div>
+        
+  
+                            <button type="button" (click)="onSubmitcorpo($event)" data-toggle="modal" data-dismiss="modal" data-target="#exampleModal" class="btn btn-solicitud  btn-success col-lg-12" >Enviar Solicitud</button>
+                            <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
+                       
+                       </form> 
+                    </div>             
+  
+            </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

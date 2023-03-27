@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    text-decoration: none;
+    list-style: none;
+    outline: 0;
+}
+.title-peque {
+    font-weight: bolder;
+    width: 100%;
+    z-index: 9;
+    bottom: 60px;
+    font-size: 35px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 80px;
+    color: white;
+    background: #e61a23;
+    -webkit-box-shadow:0px 5px 5px #B2ACAC;
+    -moz-box-shadow:0px 5px 5px #B2ACAC;
+    box-shadow:0px 5px 5px #B2ACAC;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/**animaciones**/
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .title-peque {
+        font-size:25px;
+    }
+}
+
+
+/*------- animaciones */
+
+
+/* animar imagen*/
+.fade-in-image {
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.img-modal-format{
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  font-style: italic;
+  /*margin: 20px 0;*/
+  background-color: #e61a23;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  width: 110px;
+  text-align: center;
+  position: fixed;
+  font-size: 13px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  z-index: 100;
+}
+.img-modal-format:hover{
+  text-decoration: none;
+  color: white;
+  transform: scale(1.15);
+  cursor: pointer;
+}

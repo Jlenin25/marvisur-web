@@ -1,0 +1,65 @@
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Images */
+$url-img: "../../../assets/images/";
+$url-img-slide: "../../../assets/slide/";
+
+/* Colors */
+$blanco: hsl(0, 0%, 100%);
+$negro: hsl(0, 0%, 0%);
+$gris: hsl(0, 0%, 80%);
+$gris-c: hsl(0, 100%, 97%);
+$color-global-claro: hsl(1, 100%, 55%);
+$color-global-claro-2: hsl(0, 100%, 71%);
+$color-global-claro-2-transparente: hsla(0, 100%, 80%, 0.548);
+$gris-transparente: hsla(0, 0%, 80%, 0.635);
+$gris-intenso: hsl(0, 0%, 59%);
+
+* {
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+button {
+  cursor: pointer;
+}
+/*.rastrea {
+  right: 0;
+  bottom: 100px;
+  position: fixed;
+}*/
+.whatsapp {
+  bottom: 210px;
+}
+.califica {
+  bottom: 210px;
+}
+.md-body {
+  color: white;
+  background-color: #e61a23;
+}
+main {
+  position: relative;
+  top: 10vh;
+  margin-bottom: 200px;
+  .relevant,
+  .why-choose-us,
+  .fondonegroinicio,
+  .services,
+  .news,
+  .modal {
+    margin: 130px 0;
+    h3 {
+      font-size: 2em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 50px;
+      &:hover {
+        color: $color-global-claro;
+      }
+    }
+  }
+}

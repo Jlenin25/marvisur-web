@@ -1,0 +1,34 @@
+.custom-window-class > .modal-dialog,
+.custom-window-class > .modal-dialog > .modal-content {
+   width: 45vw;
+   max-width: 65vw;
+}
+.modal-body{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.img__directory{
+    max-width: 100%;
+    max-height: 100%;
+}
+.tittle__mvsr{
+    color: red;
+    font-weight: 500;
+}
+.red-color {
+    color:red;
+}
+.red-color:hover{
+    color:rgb(207, 19, 19);
+}
+@media only screen and (max-width: 600px) {
+    .custom-window-class > .modal-dialog,
+.custom-window-class > .modal-dialog > .modal-content {
+   width: 96vw;
+   max-width: 96vw;
+}
+.modal-title{
+    font-size: large;
+}
+}

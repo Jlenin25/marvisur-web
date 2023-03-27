@@ -1,0 +1,121 @@
+<head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;1,300;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+
+<app-header> </app-header>
+
+<!--        <a class ="encuesta__link" data-toggle="modal" data-target="#encuestaSa" target="_blank">-->
+<!--            <img src="assets/images/vector-encuesta.png" height="100px" class="img-modal-encuesta">-->
+<!--        </a>-->
+
+<!-- 
+<a class="img-modal-format califica" href="./inicio#rastreadoenvio" data-toggle="modal" data-target="#encuestaSa" target="_blank">
+  <i class="fa fa-check-square fa-2x" style="margin-bottom: 5px" aria-hidden="true"></i>
+  CALIFICA EL SERVICIO
+</a>
+-->
+
+<!-- ####################################################################################################################### -->
+<a
+  class="img-modal-format whatsapp"
+  (click)="getRandomPhone()"
+  href="https://api.whatsapp.com/send?phone=+51{{
+    phone
+  }}&text=%20%C2%A1Hola%20Marvisur!,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Cotizaciones"
+  target="_blank">
+  <i
+    class="fa fa-whatsapp fa-3x"
+    style="margin-bottom: 5px"
+    aria-hidden="true"
+  ></i>
+  COTIZA TU ENVÍO
+</a>
+
+<a
+  class="img-modal-format whatsapp"
+  (click)="getRandomPhone()"
+  href="https://api.whatsapp.com/send?phone=+51{{
+    phone
+  }}&text=%20%C2%A1Hola%20Marvisur!,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Cotizaciones"
+  target="_blank">
+  <i
+    class="fa fa-whatsapp fa-3x"
+    style="margin-bottom: 5px"
+    aria-hidden="true"
+  ></i>
+  COTIZA TU ENVÍO
+</a>
+
+<!-- ####################################################################################################################### -->
+
+<a class="img-modal-format rastrea" href="./inicio#rastreadoenvio">
+  <i
+    class="fa fa-search fa-2x"
+    style="margin-bottom: 5px"
+    aria-hidden="true"></i>
+  RASTREA TU ENVÍO
+</a>
+
+<a class="img-modal-format rastrea" href="./inicio#rastreadoenvio">
+  <i
+    class="fa fa-search fa-2x"
+    style="margin-bottom: 5px"
+    aria-hidden="true"></i>
+  RASTREA TU ENVÍO
+</a>
+
+<!-- ####################################################################################################################### -->
+
+
+
+<div
+  class="modal fade"
+  id="encuestaSa"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myLargeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header md-body">
+        <h5 class="modal-title" id="exampleModalLongTitle">CUESTIONARIO</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfwVtT5D4SH585yggRgHAPhnGktySzs13n5ZhDUnfnHsEtfwQ/viewform?embedded=true"
+          width="97%"
+          height="3417"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          >Cargando…</iframe
+        >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Messenger plugin de chat Code -->
+<!-- <app-footer></app-footer> -->

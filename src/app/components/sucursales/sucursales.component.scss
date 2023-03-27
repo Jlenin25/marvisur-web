@@ -1,0 +1,103 @@
+@import "../../app.component.scss";
+
+.branch-office {
+    section {
+        margin: 70px 15px 50px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 50px;
+        .place {
+            max-width: 380px;
+            width: 100%;
+            text-decoration: none;
+            input {
+                border: solid 1px $gris-intenso;
+                border-radius: 20px;
+                width: 100%;
+                height: 38px;
+                padding: 0 15px;
+                &:focus {
+                    border: 1px solid $color-global-claro-2;
+                    box-shadow: 0 0 8px $color-global-claro-2;
+                    color: $color-global-claro;
+                }
+            }
+            mat-autocomplete {
+                background-color: $negro;
+                position: absolute;
+                top: 0;
+                margin-top: -200px;
+            }
+            &:active {
+                .ctn-ac {
+                    display: block;
+                }
+            }
+        }
+    }
+    .ctn-info-map {
+        max-width: 1300px;
+        width: 100%;
+        display: block;
+        margin: auto;
+        .info-map {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            agm-map {
+                max-width: 600px;
+                width: 100%;
+                height: 440px;
+                margin: auto;
+            }
+            .info {
+                max-width: 600px;
+                width: 100%;
+                margin: auto;
+                h3 {
+                    margin-left: 25px;
+                    margin: auto 25px;
+                    margin-bottom: 40px;
+                    color: $color-global-claro;
+                    border-bottom: 1px solid $color-global-claro;
+                }
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+                    li {
+                        span {
+                            color: $color-global-claro;
+                        }
+                        .fa-clock-o {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// Celular
+@media only screen and (max-width: 1300px) {
+    .branch-office {
+        section {
+            gap: 50px 90px;
+        }
+        .ctn-info-map {
+            .info-map {
+                agm-map {
+                    max-width: 800px;
+                }
+                .info {
+                    max-width: 800px;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,161 @@
+<!-- titulo e imagen-->
+<head>
+    <meta name="title" content="Arequipa Expreso Marvisur">
+    <meta name="description" content="Contamos con más de 130 sucursales en todos los departamentos de nuestro país.">
+    <meta name="keywords" content="CERRO JULI, GARCI CARBAJAL, CHALA, ATICO, CAMANA, ABANCAY, ANDAHUAYLAS, AYACUCHO, BARRANCA, CAJAMARCA, CAÑETE, CHALHUANCA, CHALLHUAHUACHO, CHICLAYO, CHICLAYO ALMACEN, CHIMBOTE, CHINCHA, CIUDAD DE DIOS, CUSCO, DESAGUADERO, ESPINAR, HUACHO, HUANCAVELICA, HUANCAYO, HUANUCO, HUARAZ, ICA, ILAVE, ILO, IQUITOS, JAEN, JUANJUI, JULIACA, LA JOYA, LA MERCED, LA OROYA, MARCONA, MAZUKO, MOLLENDO, MOQUEGUA, MOYOBAMBA, NAZCA, PUERTO MALDONADO, PAITA, PEDREGAL, PICHANAQUI, PISCO, PIURA, PUCALLPA, PUNO, PUQUIO, QUILLABAMBA, SICUANI, SULLANA, TACNA, TALARA, TARAPOTO, TINGO MARIA, TOCACHE, TRUJILLO, TUMBES, YAUCA, YURIMAGUAS, LIMA SUR, LIMA SUR CHICO, LIMA NORTE, LIMA JULIACA, LIMA CUSCO, LIMA TACNA, LIMA ORIENTE, SELVA CENTRAL, GAMARRA, FIORI, VILLA EL SALVADOR, RAYMONDI, LIMA ALMACEN, LIMA CENTRO -NORTE CHICO, MANCORA, URUBAMBA, BAGUA GRANDE, SAN JUAN DE LURIGANCHO, LOS OLIVOS, CHACHAPOYAS, NUEVA CAJAMARCA, OLMOS, CHEPEN, GUADALUPE, LAMBAYEQUE, SULLANA II, SANTA ANITA, HUAYCAN, CASMA, CHORRILLOS, LA MOLINA, SAN JUAN DE LURIGANCHO II, CALLAO, PUENTE PIEDRA, TARMA, CARABAYLLO, CERRO DE PASCO, SATIPO, MANCHAY, SAN JUAN DE MIRAFLORES, SURQUILLO, VENTANILLA, CANTA CALLAO, COMAS, CONO NORTE, PEDRO RUIZ GALLO, CUSCO II, CURAHUASI, RIOJA, BAGUA CHICA, HUARAL, JAUJA, PUEBLO LIBRE, TACNA II, LIMA COBRANZAS, JULIACA II, LOS OLIVOS II, SAN JUAN DE LURIGANCHO III, ATE, LIMA NORTE II, VILLA MARIA, LURIN, HUANTA, LINCE, VILLA MARIA II, SAN MARTIN DE PORRES, CHOSICA, INDEPENDENCIA, EL AGUSTINO, LAS MALVINAS, PUENTE PIEDRA II, CHORRILLOS II, PUENTE PIEDRA III, HUAYCAN II, SAN JUAN DE LURIGANCHO IV, CALLAO II, VILLA EL SALVADOR II">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta property="og:title" content="Arequipa Expreso Marvisur: Toda carga a nivel nacional | Marvisur Página principal">
+    <meta property="og:site_name" content="Expreso Marvisur">
+    <meta property="og:url" content="https://www.expresomarvisur.com/sucursales">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es" />
+    <meta property="og:description" content="Contamos con más de 130 sucursales en todos los departamentos de nuestro país.">
+    <meta property="og:image" content="https://www.expresomarvisur.com/assets/images/LOGO_MARVISUR.png" />
+</head>
+<main class="open-close-container branch-office">
+
+    <div class="portadaAll ">
+        <img class="img" src="assets/images/portadasucursalesnuevo.png" height="100%" width="100%">
+    </div>
+
+    <div class="title-peque ">SUCURSALES</div>
+    <section>
+        <!-- Departamentos -->
+        <div class="place department">
+            <!-- <input
+                type="text"
+                placeholder="Departamento..."
+                [formControl]="myControl"
+                [matAutocomplete]="auto"
+                class="i-d"
+            >
+            <mat-autocomplete #auto="matAutocomplete" class="ctn-automcomplete">
+                <mat-option *ngFor="let item of filteredOptions | async" [value]="item" class="ctn-ac">
+                    {{item.name}}
+                </mat-option>
+            </mat-autocomplete> -->
+
+            <input
+                type="text"
+                placeholder="Departamento..."
+                (change)='onOptionsSelected($event)'
+                class="i-d"
+            >
+        </div>
+        <!-- Provincias -->
+        <div class="place province">
+            <input type="text" matInput [formControl]="myControl" placeholder="Provincia..." [matAutocomplete]="auto" class="i-p">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <!-- Sucursales -->
+        <div class="place branch">
+            <input type="text" matInput [formControl]="myControl" placeholder="Sucursal..." [matAutocomplete]="auto" class="i-s">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+    </section>
+    <div class="ctn-info-map">
+        <div class="info-map">
+            <agm-map [zoom]="5" [latitude]="lat" [longitude]="lng"  [usePanning]="true">
+                <agm-marker *ngFor="let sucursal of sucursalesGPS" [latitude]="sucursal.latitud" [longitude]="sucursal.longitud" [iconUrl]="ico" [agmFitBounds]="true" >
+                    <agm-info-window>
+                        {{sucursal.titulo}}
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+            <div class="info">
+                <h3>INFORMACIÓN:</h3>
+                <ul>
+                    <li>
+                        <span class="fa fa-map-marker fa-1x"></span>
+                        &nbsp; CALLE FRANCISCO PIZARRO NRO 351 BAGUA GRANDE - UTCUBAMBA - AMAZONAS (Costado Caja Trujillo)
+                    </li>
+                    <li>
+                        <span class="fa fa fa-map fa-1x"> </span>
+                        &nbsp; AL FRENTE DE ENSEU
+                    </li>
+                    <li>
+                        <span class="fa fa-phone-square fa-1x"> </span>
+                        &nbsp; 944261903
+                    </li>
+                    <li>
+                        <span class="fa fa-envelope-square fa-1x"> </span>
+                        &nbsp; baguagrande@expresomarvisur.com
+                    </li>
+                    <li>
+                        <span class="fa fa-clock-o fa-1x"> </span>
+                        &nbsp; LUN - SAB: 8:00 AM - 6:00 PM
+                    </li>
+                    <li>
+                        <span class="fa fa-paper-plane fa-1x"> </span>
+                        &nbsp; NIVEL NACIONAL
+                    </li>
+                </ul>
+                <!-- <div class="cuerpo border-left" *ngIf="sucursales && flaginformacion">
+                    <div class="info-sucu" *ngIf="sucursales[0].direccion"><span class="fa fa-map-marker fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].direccion}}  </div>
+                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-phone-square fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].telefono_primario}}</div>
+                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-envelope-square fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].correo}} </div>
+                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-clock-o fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].horario}}</div>
+                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-paper-plane fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].detalles}}</div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="animated fadeIn fast">
+            <!-- espacio para los filtros de sucursales-->
+            <div>
+                <!-- Departamentos -->
+                <!-- <div class="conjunto">
+                    <div class="rojo col-5 col-lg-3">
+                        DEPARTAMENTO
+                    </div>
+                    <div class="col-6 col-lg-3 opciones-select">
+                        <select (change)='onOptionsSelected($event)' class="browser-default custom-select combs">
+                                <option   selected  disabled="true">Seleccione Departamento</option>
+        
+                                <option  *ngFor="let departamento of departamentos" value="{{departamento.id}}">{{departamento.nombre}}</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- Provincias -->
+                <!-- <div class="conjunto">
+                    <div class="rojo col-5 col-lg-3">
+                        PROVINCIA
+                    </div>
+                    <div class="col-6 col-lg-3 opciones-select">
+                        <select (change)='provinciaSelect($event)' class="browser-default custom-select combs">
+                                <option    id="seleccioneprovincia" selected disabled="true">Seleccione Provincia</option>
+        
+                            <option  *ngFor="let provincia of provincias" value="{{provincia.ciudad}}">{{provincia.ciudad}}</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- Sucursales -->
+                <!-- <div class="conjunto">
+                    <div class="rojo col-5 col-lg-3">
+                        SUCURSALES
+                    </div>
+                    <div class="col-6 col-lg-3 opciones-select">
+                        <form> 
+                        <select (change)='suscursalSelect($event)' class="browser-default custom-select combs">
+                            <option  id="seleccionesucursal" value="seleccione"  selected  disabled="true">Seleccione Sucursal</option>
+                            <option  *ngFor="let sucursal of sucursales" value="{{sucursal.id}}">{{sucursal.titulo}}</option>
+                        </select>
+                    </form>
+                    </div>
+                </div> -->
+            </div>
+            
+        </div>
+    </div>
+</main>
