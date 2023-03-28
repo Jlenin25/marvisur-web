@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Solucion } from 'src/app/models/solucion';
 import { SolucionesService } from 'src/app/services/footer.service';
-import {global} from '../../services/global';
+import {global} from '../../../services/global';
 
 @Component({
   selector: 'app-solucionesenlinea',

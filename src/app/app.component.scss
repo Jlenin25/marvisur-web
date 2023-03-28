@@ -5,6 +5,7 @@
 
 /* Images */
 $url-img: "../../../assets/images/";
+$url-img-news: "../../../assets/images/news/";
 $url-img-slide: "../../../assets/slide/";
 
 /* Colors */
@@ -15,6 +16,7 @@ $gris-c: hsl(0, 100%, 97%);
 $color-global-claro: hsl(1, 100%, 55%);
 $color-global-claro-2: hsl(0, 100%, 71%);
 $color-global-claro-2-transparente: hsla(0, 100%, 80%, 0.548);
+$color-global-oscuro: hsl(1, 100%, 32%);
 $gris-transparente: hsla(0, 0%, 80%, 0.635);
 $gris-intenso: hsl(0, 0%, 59%);
 
@@ -61,5 +63,22 @@ main {
         color: $color-global-claro;
       }
     }
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $color-global-claro-2;
+  border-radius: 10px;
+  &:hover {
+    background: $color-global-oscuro;
   }
 }

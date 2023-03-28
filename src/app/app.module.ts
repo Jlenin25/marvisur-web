@@ -19,10 +19,10 @@ import { ConocenosComponent } from './components/conocenos/conocenos.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { CotizacionComponent } from './components/cotizacion/cotizacion.component';
 import { OportunidadComponent } from './components/oportunidad/oportunidad.component';
-import { SugerenciasComponent } from './components/sugerencias/sugerencias.component';
-import { PreguntasfrecuentesComponent } from './components/preguntasfrecuentes/preguntasfrecuentes.component';
-import { SolucionesenlineaComponent } from './components/solucionesenlinea/solucionesenlinea.component';
-import { TerminosycondicionesComponent } from './components/terminosycondiciones/terminosycondiciones.component';
+import { SugerenciasComponent } from './components/secciones/sugerencias/sugerencias.component';
+import { PreguntasfrecuentesComponent } from './components/secciones/preguntasfrecuentes/preguntasfrecuentes.component';
+import { SolucionesenlineaComponent } from './components/secciones/solucionesenlinea/solucionesenlinea.component';
+import { TerminosycondicionesComponent } from './components/secciones/terminosycondiciones/terminosycondiciones.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -42,11 +42,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import { SeccionComponent } from './components/secciones/seccion.component';
+import { secRouting } from './components/secciones/sec.routing';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
+    SeccionComponent,
     ConocenosComponent,
     SucursalesComponent,
     CotizacionComponent,

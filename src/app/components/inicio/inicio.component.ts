@@ -23,7 +23,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { HeaderComponent } from '../layouts/header/header.component';
 import { Infotracking } from '../../models/infotracking';
-import { TerminosycondicionesComponent } from '../terminosycondiciones/terminosycondiciones.component';
+import { TerminosycondicionesComponent } from '../secciones/terminosycondiciones/terminosycondiciones.component';
 
 SwiperCore.use([Navigation]);
 @Component({

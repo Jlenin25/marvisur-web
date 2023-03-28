@@ -1,57 +1,58 @@
 <header>
     <div class="ctn-header">
         <div class="ctn-logo">
-            <a routerLink="/">
+            <a routerLink="">
                 <img class="header__logo" src="assets/images/logo_pb.png">
             </a>
         </div>
         <nav [class.is-open]="isMenuOpen">
             <ul class="card-general">
                 <li>
-                    <a routerLink="/" class="home">
+                    <a routerLink="" class="home">
                         Inicio
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/conocenos" routerLinkActive="active">
-                        Conócenos
+                    <a routerLink="seccion/" routerLinkActive="active">
+                        Secciones
                         <i class="fa-solid fa-chevron-down"></i>
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a routerLink="/preguntasfrecuentes">
+                            <a routerLink="seccion/preguntas-frecuentes">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Preguntas Frecuentes
                             </a>
                         </li>
                         <li>
-                            <a routerLink="/solucionesenlinea">
+                            <a routerLink="seccion/soluciones-en-linea">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Soluciones en Linea
                             </a>
                         </li>
                         <li>
-                            <a routerLink="/terminosycondiciones">
+                            <a routerLink="seccion/terminos&condiciones">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Términos y Condiciones
                             </a>
                         </li>
                         <li>
-                            <a routerLink="/sugerencias">
+                            <a routerLink="seccion/buzon-de-sugerencias">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Buzón de Sugerencias
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li><a routerLink="/sucursales" routerLinkActive="active">Sucursales</a></li>
-                <li><a routerLink="/cotizacion" routerLinkActive="active">Cotización</a></li>
-                <li><a routerLink="/oportunidad" routerLinkActive="active">Oportunidad Laboral</a></li>
+                <li><a routerLink="sucursales" routerLinkActive="active">Sucursales</a></li>
+                <li><a routerLink="cotizacion" routerLinkActive="active">Cotización</a></li>
+                <li><a routerLink="oportunidad" routerLinkActive="active">Oportunidad Laboral</a></li>
+                <li><a routerLink="conocenos" routerLinkActive="active">Conócenos</a></li>
             </ul>
         </nav>
         <div class="right next-center">
-            <a href="https://www.facebook.com/MARVISUROFICIAL" class="facebook" target="_blank">
-                <img src="assets/images/fb-icon.png" class="fb-header" width="40px">
+            <a href="https://www.facebook.com/MARVISUROFICIAL" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
             </a>
             <a href="https://www.instagram.com/expreso_marvisur" target="_blank">
                 <i class="fa-brands fa-instagram"></i>

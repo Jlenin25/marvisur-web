@@ -118,21 +118,6 @@ header {
             display: flex;
             a {
                 margin-right: 10px;
-                img {
-                    width: 32px;
-                    height: 32px;
-                    transition: .6s ease;
-                    -moz-transition: .6 ease; 
-                    -webkit-transition: .6 ease;
-                    -o-transition: .6 ease;
-                    &:hover {
-                        transform : scale(1.2);
-                        -moz-transform : scale(1.2); 
-                        -webkit-transform : scale(1.2);
-                        -o-transform : scale(1.2);
-                        -ms-transform : scale(1.2);
-                    }
-                }
                 i {
                     font-size: 1.2em;
                     background-color: $color-global-claro;
@@ -150,6 +135,9 @@ header {
                         -o-transform : scale(1.2);
                         -ms-transform : scale(1.2);
                     }
+                }
+                .fa-instagram {
+                    font-weight: bold;
                 }
             }
             .final {

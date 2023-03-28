@@ -1,68 +1,81 @@
-<div class="contenedor-footer col-12">
-
-  <div class="row">
-    <div class="col-lg-2"></div>
-      <div class="col-6 col-lg-2 logo__mrvsr"><img src="assets/images/logo_pb.png" width="75%"></div>
-      <a class="columna col-6 col-lg-2" [routerLink]="[ '/oportunidad']"> OPORTUNIDAD LABORAL </a>
-      <div class="columna col-6 col-lg-2" data-toggle="modal" data-target="#modalReclamaciones"> TÉRMINOS Y CONDICIONES</div>
-      <!-- <div class="columna col-6 col-lg-2" data-toggle="modal" data-target="#modalPreguntasFrecuentes"> PREGUNTAS FRECUENTES</div> -->
-      <a class="columna col-6 col-lg-2" [routerLink]="[ '/preguntasfrecuentes']">PREGUNTAS FRECUENTES</a>
-      <div class="col-lg-2"></div>
-  </div>
-  <div class="row">
-    <div class="col-lg-2"></div>
-      <a class="columna col-6 col-lg-2"  [routerLink]="[ '/conocenos'] ">CONÓCENOS</a>
-      <!--<div class="columna col-6 col-lg-2" data-toggle="modal" data-target="#modalBuzonSugerencia">BUZON DE SUGERENCIAS </div> -->
-      <a class="columna col-6 col-lg-2" [routerLink]="[ '/sugerencias']">BUZÓN DE SUGERENCIAS</a>
-      <a class="columna col-6 col-lg-2" [routerLink]="[ '/cotizacion'] ">COTIZA TU ENVÍO</a>
-      <!--<div class="columna col-6 col-lg-2" ><a class="reclamaciones" href="http://www.expresomarvisur.com/reclamaciones/" target="_blank" >LIBRO DE RECLAMACIONES</a></div>-->
-      <div class="columna col-6 col-lg-2" ><a class="reclamaciones" href="http://www.expresomarvisur.online/reclamaciones/" target="_blank" >LIBRO DE RECLAMACIONES</a></div>
-      <div class="col-lg-2"></div>
-    </div>
-  <div class="row">
-
-    <div class="col-lg-2"></div>
-      <a class="columna col-6 col-lg-2" [routerLink]="[ '/sucursales'] "> SUCURSALES</a>
-      <a class="columna col-6 col-lg-2" href="./inicio#nuestrosservicios"> SERVICIOS</a> 
-      <!-- <a class="columna col-6 col-lg-2" [routerLink]="[ '/inicio#nuestrosservicios'] "> SERVICIOS</a>-->
-      <!-- <div class="columna col-6 col-lg-2" data-toggle="modal" data-target="#modalSolucionesLinea"> SOLUCIONES EN LINEA</div> -->
-      <a class="columna col-6 col-lg-2" [routerLink]="[ '/solucionesenlinea']"> SOLUCIONES EN LÍNEA</a>
-      <div class="col-6 col-lg-2 librito"> <a class="reclamaciones" href="http://www.expresomarvisur.online/reclamaciones/" target="_blank" ><img src="assets/images/libro-footer.png" width="45%"></a></div>
-      <div class="col-lg-2"></div>
-    </div>
-  <!--
-  <div class="row row-sigue">
-      Siguenos en: &nbsp; <span class="fa fa-facebook-square fa-2x" href="www.google.com">&nbsp; </span><span class="fa fa-instagram fa-2x">&nbsp;</span><span class="fa fa-linkedin-square fa-2x"></span>
-  </div> -->
-  <br>
-
-  <div class="row">
-    <div class="col-lg-2"></div>
-    
-    <div class="footer-siguenos col-lg-2 col-12">
-      
-      Síguenos en: &nbsp; <a href="https://www.facebook.com/MARVISUROFICIAL/" target="_blank"><span class="fa fa-facebook-square fa-2x">&nbsp;</span></a>
-      <a href="https://www.instagram.com/expreso_marvisur/?hl=es-la" target="_blank"> <span class="fa fa-instagram fa-2x">&nbsp;</span></a><a href="https://www.linkedin.com/company/73177632/admin/" target="_blank"> <span class="fa fa-linkedin-square fa-2x"></span></a>
-    </div>
-    <div class="col-lg-2"></div>
-    <div class="col-lg-2"></div>
-     <div class="footer-contactanos col-lg-2 col-12">
-       <div>Contáctanos:</div> 
-       <div class="letra-num-contac"> &nbsp;
-        <a class="letra-num" href="tel:054206733">(054)-206733</a>
-         <a class="letra-num" href="tel:013311914">(01)-3311914</a>
-         <a class="letra-num" href="tel:013320082">(01)-3320082</a>
-         <a class="letra-num" href="tel:013311909">(01)-3311909</a>
+<footer>
+  <div class="ctn-footer">
+    <div class="top">
+      <div class="left">
+        <a routerLink="/">
+          <img src="assets/images/logo_pb.png" alt="">
+        </a>
+        <div class="ctn-social-networks">
+          <a href="https://www.facebook.com/MARVISUROFICIAL" class="facebook" target="_blank">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/expreso_marvisur" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@marvisur.oficial" target="_blank">
+              <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <a class="final" href="https://www.linkedin.com/company/expreso-marvisur-e-i-r-l" target="_blank">
+              <i class="fa-brands fa-linkedin-in"></i>
+          </a>
         </div>
-     </div>
-  </div> 
-  
-
-<footer class='footer col-lg-12'>
-<div>
-    &copy; AREQUIPA EXPRESO MARVISUR E.I.R.L 
-</div>
-
+      </div>
+      <div class="center">
+        <ul>
+          <h6>Secciones</h6>
+          <li>
+            <a routerLink="seccion/preguntas-frecuentes">
+              <i class="fa-solid fa-angle-right"></i>
+              Preguntas frecuentes
+            </a>
+          </li>
+          <li>
+            <a routerLink="seccion/soluciones-en-linea">
+              <i class="fa-solid fa-angle-right"></i>
+              Soluciones en línea
+            </a>
+          </li>
+          <li>
+            <a routerLink="seccion/terminos&condiciones">
+              <i class="fa-solid fa-angle-right"></i>
+              Términos y condiciones
+            </a>
+          </li>
+          <li>
+            <a routerLink="seccion/buzon-de-sugerencias">
+              <i class="fa-solid fa-angle-right"></i>
+              Buzón de sugerencias
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="right">
+        <ul>
+          <li>
+            <a href="https://www.expresomarvisur.online/reclamaciones/" target="_blank" class="reclamaciones">
+              Libro de reclamaciones
+            </a>
+          </li>
+          <li>
+            <a href="https://www.expresomarvisur.online/reclamaciones/" target="_blank">
+              <img src="assets/images/libro-footer.png">
+            </a>
+          </li>
+          <li>
+            <a class="link-phone" href="tel:013311909">
+              <i class="fa-solid fa-phone"></i>
+              <span>980 660 690</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>
+        &copy; AREQUIPA EXPRESO MARVISUR E.I.R.L
+      </span>
+    </div>
+  </div>
 </footer>
 <!-- MODALS-->
 <div class="modal fade" id="modalReclamaciones" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -92,7 +105,7 @@
       <div class="col">
         <div class="titulo">2. CUÁL ES SU COBERTURA</div>
         <div class="cuerpo border-left">
-           
+          
             <div class="info-sucu"><span class="fa fa-check-circle fa-1x"></span>
               Estamos ubicados en todos los departamentos del Perú, contando con 120 sucursales y más de 140 destinos, distribuidos estratégicamente a nivel nacional.
             </div>
@@ -102,7 +115,7 @@
       <div class="col">
         <div class="titulo">3. ¿QUÉ SERVICIO OFRECEMOS?</div>
         <div class="cuerpo border-left">
-           
+          
             <div class="info-sucu"><span class="fa fa-check-circle fa-1x"></span>
               Realizamos servicio de transporte de todo tipo de carga, mudanzas y servicio expreso de puerta a puerta.
             </div>
@@ -218,7 +231,7 @@
             <div class="info-sucu"><span class="fa fa-check-circle fa-1x"></span>Documento que identifica, puede ser:  DNI físico o Pasaporte o Carné de extranjería (más copia simple del documento de identidad)
             </div>
             <div><b>CASO 2:&nbsp;</b> El envío es realizado por una <b>EMPRESA,</b> los requerimientos varían según sea quien solicite el cambio:</div>
-           
+          
             <div><b>Representante Legal:</b></div>
             <div class="info-sucu"><span class="fa fa-check-circle fa-1x"></span>DNI Original o Pasaporte o Carné de extranjería (más copia simple)
             </div>
@@ -260,7 +273,7 @@
             </div>
             <div class="info-sucu"><span class="fa fa-check-circle fa-1x"></span>Bienes culturales, muebles, obras contemporáneas de patrimonio cultural.
             </div>
-           
+          
         </div>
       </div>   
       <br>
@@ -363,8 +376,8 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
     </div>
+    </div>
   </div>
-</div>
 </div>
 
 <div class="modal fade" id="modalSolucionesLinea" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"   >
@@ -458,7 +471,7 @@
 
                         <button type="button" (click)="onSubmitSoluciones()" data-toggle="modal" data-dismiss="modal" data-target="#modalRespuesta" class="btn btn-envio-solicitud btn-success col-lg-12" >Enviar Solicitud</button>
                         <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
-                   
+                  
           </form> 
       </div>             
     </div>
@@ -533,8 +546,8 @@
                             
                         <button type="button" (click)="onSubmitSugerencia()" data-toggle="modal" data-dismiss="modal" data-target="#modalRespuesta2" class="btn btn-envio-solicitud btn-success col-lg-12" >Enviar Sugerencia</button>
                         <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
-                   
-                   </form> 
+                  
+                  </form> 
                 </div>             
 
         </div>
