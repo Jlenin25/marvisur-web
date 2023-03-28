@@ -1,0 +1,369 @@
+<?php 
+
+include('conexion.php');
+
+$sucursal = $_POST['sucursal'];
+
+?>
+
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+
+  <title>ExpresoMarvisur</title>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    
+  </head>
+
+<br>  
+    </div>
+      
+      <center>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                    <h2 class="panel-title"><br><b>NUEVO REGISTRO LIBRO DE RECLAMACIONES</b></h2>
+                    <br>
+         	</div>
+
+         	<form accept-charset="UTF-8" role="form" method="POST" action="fin_reclamo.php">
+
+                <div class="container" style="margin-top:50px;">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="panel panel-default">
+                          
+                          <div class="panel-body">
+
+
+                          <tr>
+                              <td width="540" height="20"><B><h4><u><font color="red">1. Identificacion del Reclamante:</font></u></h4></b></td>
+                             
+                          </tr>
+                                <table>      
+              
+                                      <tr>
+                                          <td width="520" height="10"><B>ID RECLAMO&nbsp;&nbsp;</td>
+                                         
+                                      </tr>
+
+                            </table>        
+                  
+                            
+                              <div class="form-group">
+                                <input class="form-control"  name="num" type="text" value="<?php  $resultado = mysql_query("SELECT * FROM hojas order by idreclamo DESC limit 1 ");
+
+                      if (!$resultado) {
+                          echo 'No se pudo ejecutar la consulta: ' . mysql_error();
+                          exit;
+                      }
+                      $v1 = mysql_fetch_row($resultado);
+
+                      echo $v1[0] + 1; ?>"  readonly="readonly" required>
+                              </div>
+                              
+                            <table>      
+              
+                                      <tr>
+                                          <td width="520" height="10"><B>FECHA&nbsp;&nbsp;</td>
+                                         
+                                      </tr>
+
+                            </table>        
+                  
+                            
+                              <div class="form-group">
+                                <input class="form-control"  name="fecha" type="text" value="<?php date_default_timezone_set('America/lima');?><?=date('d/m/Y g:ia');?>" readonly="readonly" required>
+                              </div>
+
+                              <table>      
+                
+                                        <tr>
+                                            <td width="520" height="10"><B>SUCURSAL&nbsp;&nbsp;</td>
+                                           
+                                        </tr>
+
+                              </table>
+
+                              <div class="form-group">
+                                <input class="form-control"  name="sucursal" type="text" value="<?php
+
+
+
+                            //ejecutamos la consulta
+                            $sql = "SELECT * FROM sucursal WHERE titulo='".$sucursal."'";
+                            $result = mysql_query ($sql);
+                            // verificamos que no haya error 
+                            if (! $result){
+                               echo "La consulta SQL contiene errores.".mysql_error();
+                               exit();
+                            }else {
+                                //obtenemos los datos resultado de la consulta 
+                                while ($row = mysql_fetch_row($result)){
+                              echo $row[1];
+                                }
+                                
+                             }
+
+                            ?>" readonly="readonly" >
+                            </div>
+                             <table>      
+                
+                                        <tr>
+                                            <td width="520" height="10"><B>DIRECCION&nbsp;&nbsp;</td>
+                                           
+                                        </tr>
+
+                              </table>
+
+                            <div class="form-group">
+                              <input class="form-control" name="direccion" type="text" value="<?php
+
+
+
+                            //ejecutamos la consulta
+                            $sql = "SELECT * FROM sucursal WHERE titulo='".$sucursal."'";
+                            $result = mysql_query ($sql);
+                            // verificamos que no haya error 
+                            if (! $result){
+                               echo "La consulta SQL contiene errores.".mysql_error();
+                               exit();
+                            }else {
+                                //obtenemos los datos resultado de la consulta 
+                                while ($row = mysql_fetch_row($result)){
+                              echo $row[5];
+                                }
+                                
+                             }
+
+                            ?> "readonly="readonly">
+                            </div>
+                            
+                            <table>      
+                
+                                        <tr>
+                                            <td width="520" height="10"><B>CORREO&nbsp;&nbsp;</td>
+                                           
+                                        </tr>
+
+                              </table>
+
+                              <div class="form-group">
+                                <input class="form-control"  name="correo" type="text" value="<?php
+
+
+
+                            //ejecutamos la consulta
+                            $sql = "SELECT * FROM sucursal WHERE titulo='".$sucursal."'";
+                            $result = mysql_query ($sql);
+                            // verificamos que no haya error 
+                            if (! $result){
+                               echo "La consulta SQL contiene errores.".mysql_error();
+                               exit();
+                            }else {
+                                //obtenemos los datos resultado de la consulta 
+                                while ($row = mysql_fetch_row($result)){
+                              echo $row[20];
+                                }
+                                
+                             }
+
+                            ?>" readonly="readonly" >
+                            </div>
+
+                            <table>      
+              
+                                      <tr>
+                                          <td width="520" height="10"><B>NOMBRE / R. SOCIAL&nbsp;&nbsp;</td>
+                                         
+                                      </tr>
+
+                            </table>        
+                  
+                            
+                              <div class="form-group">
+                                <input class="form-control"  name="nombre" type="text" placeholder="Juan Perez Perez" required>
+                              </div>
+                             
+
+                             <table>      
+              
+                                      <tr>
+                                          <td width="520" height="10"><B>DIRECCION&nbsp;&nbsp;</td>
+                                         
+                                      </tr>
+
+                            </table>        
+
+                              <div class="form-group">
+                                <input class="form-control"  name="direccion" type="text" placeholder="Calle Peru 201" required>
+                              </div>
+                            
+                            <table>      
+                                      <tr>
+                                          <td width="520" height="10"><B>DNI / RUC&nbsp;&nbsp;</td>      
+                                      </tr>
+                            </table>                                    
+                              <div class="form-group">
+                                <input class="form-control"  name="dni" type="number" placeholder="47854848" required>
+                              </div>
+
+                              <table>      
+                                      <tr>
+                                          <td width="520" height="10"><B>TELEFONO&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <input class="form-control"  name="telefono" type="number" placeholder="958804798" required>
+                                </div>
+
+                              <table>      
+                                      <tr>
+                                          <td width="520" height="10"><B>EMAIL&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <input class="form-control"  name="email" type="email" placeholder="tucorreo@gmail.com" required>
+                                </div>
+                                <table>      
+                                      <tr>
+                                          <td width="520" height="10"><B>PADRE / MADRE (para menores de edad)&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <input class="form-control"  name="padre" type="text" placeholder="Opcional" >
+                                </div>
+
+                          </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="panel panel-default">
+                          
+                          <div class="panel-body">
+
+                            <tr>
+                                  <td width="540" height="20"><B><h4><u><font color="red">2. Identificacion del Bien Contratado:</font></u></h4></b></td>
+                              </tr>
+                              <table>      
+                                      <tr>
+                                          <td width="520" height="20"><B>SELECCIONE TIPO&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <tr>
+
+                                  <td>
+
+                                    <select name="tipo" id="tipo" class="form-control">
+                                    <option value="Producto">PRODUCTO</option>
+                                    <option value="Servicio">SERVICIO</option>                               
+                                    </select>
+                                  </td>
+                                 </tr>
+                                </div>
+
+                                <table>      
+                                      <tr>
+                                          <td width="520" height="20"><B>COMENTARIOS&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table> 
+                                <tr>                               
+                                  <td>
+                                       <textarea class="form-control" name="comentarios" id="comentarios" cols="35" rows="4" required onchange="testLength(this)" onkeyup="testLength(this)" onpaste="testLength(this)"></textarea><H6>(MAX 500 CARACTERES)</H6>
+                                  </td>
+<script>
+var maxLength = 500;
+function testLength(campo) {
+if(campo.value.length > maxLength) {
+campo.value = campo.value.substring(0, maxLength);
+alert("Por Favor, el comentario no debe exceder de 500 caracteres");
+}
+}
+</script>
+                                </tr>
+                            <tr>
+                              <td width="50" height="50"><B><h4><u><font color="RED">3. Detalle del Reclamo:</font></u></h4></b></td>
+                             
+                            </tr>
+                              <table>      
+                                      <tr>
+                                          <td width="520" height="40"><B>INGRESE N. DE GUIA&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <input class="form-control"  name="guia" type="text" placeholder="002-004525" required>
+                                </div>
+
+                                <table>      
+                                      <tr>
+                                          <td width="520" height="20"><B>SELECCIONE TIPO&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <td>
+                                    <select name="tipo1" id="tipo1" class="form-control" required>
+                                        <option value="Queja">QUEJA</option>
+                                        <option value="Reclamo">RECLAMO</option>                               
+                                    </select>
+                                  </td>
+                                </div>
+
+                                 <table>      
+                                      <tr>
+                                          <td width="520" height="20"><B>DETALLE DE RECLAMO&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <td>
+                                    <textarea  class="form-control" required  name="detalle" id="detalle" cols="35" rows="4"></textarea><H6>(MAX 8000 CARACTERES)</H6>
+                                </td>
+                                </div>
+
+                                <table>      
+                                      <tr>
+                                          <td width="520" height="20"><B>ACCIONES ADOPTADAS POR EL PROVEEDOR&nbsp;&nbsp;</td>      
+                                      </tr>
+                              </table>                                    
+                                <div class="form-group">
+                                  <td>
+                                    <textarea  class="form-control" placeholder="DATOS INGRESADOS POR LA EMPRESA..." name="acciones" id="acciones" placeholder="" cols="35" rows="4"></textarea>
+                                </td>
+                                </div>
+                                <input class="btn btn-lg btn-danger btn-block" type="submit" value="Cancelar">
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Registrar">
+
+                          </div>
+                          </div>
+                      </div>
+
+
+
+
+                      </div>
+                      </div>
+
+
+
+
+
+
+            </form>          
+                      </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="boots/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

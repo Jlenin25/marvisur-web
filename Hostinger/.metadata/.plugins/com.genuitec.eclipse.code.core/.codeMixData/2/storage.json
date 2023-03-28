@@ -1,0 +1,14 @@
+{
+    "telemetry.machineId": "c03e72f0ee6e4a3f4c87e82de458d314a5acd9f9772a0d0be176bdecb1be5816",
+    "openedPathsList": {
+        "workspaces3": [
+            {
+                "id": "96ab84dcf00d58713b4f48d00becfa97",
+                "configURIPath": "file:///d%3A/DesarrolloSoftware/public_html/.metadata/codemix.code-workspace"
+            }
+        ],
+        "files2": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#221a0f"
+}

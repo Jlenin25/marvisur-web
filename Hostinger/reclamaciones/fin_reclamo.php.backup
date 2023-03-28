@@ -1,0 +1,333 @@
+<?php
+
+// Importamos la clase para la conexión a la BD
+include("conexion.php");
+
+//Recibir datos 
+
+$datin = $_POST['num'];
+/////sucursal
+$datin1 = $_POST['correo'];
+$claimer_mail = $_POST['email'];
+
+
+
+// Verificamos si se ha ingresado algo en el recuadro de email del reclamante
+if(isset($_POST['email'])) {
+    
+    // Datos para el correo
+    $destinatario = "$datin1,apd.marvisur@gmail.com,jefatura.control1@gmail.com";
+    $asunto = "RECLAMO - ". $_POST['nombre'] ."";
+
+    //Seteamos el cuerpo del mensaje
+
+    $carta =  "DATOS DEL RECLAMO:\n";
+    $carta .= "**************************************************************\n";
+    $carta .= "Fecha     : " . $_POST['fecha'] . "\n";
+    $carta .= "Sucursal  : " . $_POST['sucursal'] . "\n";
+    $carta .= "Nombre    : " . $_POST['nombre'] . "\n";
+    $carta .= "Telefono  : " . $_POST['telefono'] . "\n";
+    $carta .= "Email     : " . $_POST['email'] . "\n";
+    $carta .= "Detalle   : " . $_POST['detalle'] . "\n";
+    $carta .= "Detalles  : http://reclamaciones.expresomarvisur.com/print.php?numero=$datin\n";
+    $carta .= "**************************************************************\n";
+    
+    // Enviando Mensaje
+    mail($destinatario, $asunto, $carta);
+    
+    // Seteamos los correos de los destinatarios:
+    // APD
+    //$mail->AddAddress('mgl.suarez1@gmail.com');
+    //$mail->AddAddress('ewin.9393@gmail.com');
+    // Control interno
+    //// ok $mail->AddAddress('jefatura.control1@gmail.com');
+    // Legal cancelado por ricolas 12 diciembre 2018
+    // $mail->AddAddress('asesoria.legal.marvisur@gmail.com');
+    // Reclamante
+    /// ok $mail->AddAddress("$claimer_mail");
+    // Correo de sucursal
+    /// ok $mail->AddAddress("$datin1");
+    
+    
+    // Verificamos si el correo ha sido enviado
+    //if($mail->Send()){
+        
+        // ENVÍO EXITOSO, lo que nos da luz verde para la inserción del reclamo en la base de datos
+        $rst=mysql_query("INSERT INTO hojas (
+          rec_fecha,sucu,rec_sucursal,
+          rec_nombre,rec_direccion,rec_dni,rec_telefono,rec_email,rec_apoderado,
+          rec_tipo,rec_comentarios,rec_guia,rec_tipo1,rec_detalle,rec_adoptadas)
+         
+        values (
+           '". $_POST["fecha"]."'
+           ,'". $_POST["sucursal"]."'
+          ,'". $_POST["direccion"]."'
+          ,'". $_POST["nombre"]."'
+          ,'". $_POST["direccion"]."'
+          ,'". $_POST["dni"]."'
+          ,'". $_POST["telefono"]."'
+          ,'". $_POST["email"]."'
+          ,'". $_POST["padre"]."'
+          ,'". $_POST["tipo"]."'
+          ,'". $_POST["comentarios"]."'
+          ,'". $_POST["guia"]."'
+          ,'". $_POST["tipo1"]."'
+          ,'". $_POST["detalle"]."'
+          ,'". $_POST["acciones"]."'
+          );");
+?>
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ExpresoMarvisur</title>
+
+<link href="../css/estilo.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+
+</body>
+</html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link href="boots/css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Custom styles for this template -->
+    <link href="../boots/css/sticky-footer-navbar.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../boots/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../boots/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+
+     <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+
+  <br>
+
+    <div class="container" >
+
+
+
+<DIV ALIGN=right>
+ 
+ 
+        
+    </div>    
+   
+     
+      <center>
+
+      <div class="panel panel-default">
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+          <div class="panel-heading">
+
+                  <h3 class="panel-title">REGISTRO DE HOJA DE RECLAMO</h3>
+          </div>      
+<center>
+
+
+<form name="consulta1" method="get" action="print.php">
+
+
+
+<table border="0">
+
+
+                 <p align="ri"> </p>             
+  
+                
+
+                  </div>
+                   
+                     <input type="text" name="numero" value="<?php  $resultado = mysql_query("SELECT * FROM hojas order by idreclamo DESC limit 1 ");
+
+                      if (!$resultado) {
+                          echo 'No se pudo ejecutar la consulta: ' . mysql_error();
+                          exit;
+                      }
+                      $v1 = mysql_fetch_row($resultado);
+
+                      echo $v1[0]; ?>" style="visibility:hidden">
+
+
+                          <tr>
+                            <p align="left">
+                               <td width="540" height="40">
+                                  <CENTER><div class="alert alert-success" role="alert">OPERACION EXITOSA</div></CENTER>
+                              </td> 
+                          </tr>
+
+                          <tr>
+                          <td>
+                            <br>
+
+                            <CENTER>
+                            <button type="submit" value="Guardar Registro" class="btn btn-success" >IMPRIMIR</button>
+                            </CENTER>
+                            <BR>
+                            <BR>                          
+                          </td>
+                          </tr>
+
+<center>
+           
+                                  
+</center>
+
+<br>
+<br>
+
+</form>
+
+
+
+      </div>
+    </center>
+
+      
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="boots/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../boots/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+  </body>
+</html>
+
+
+<?php 
+          
+          
+    
+}
+
+
+
+
+
+/********************** CÓDIGO ORIGINAL***************************
+
+
+$datin = $_POST['num'];
+$datin1 = $_POST['correo'];
+
+
+if(isset($_POST['email'])) {
+
+// Debes editar las próximas dos líneas de código de acuerdo con tus preferencias
+
+$email_to = "sistemas@expresomarvisur.com,recursos.humanos@marvisur.pe,sr.daniel.aqp@gmail.com,apd.marvisur@gmail.com,controlinterno3@marvisur.pe,$datin1";
+
+$email_subject = "RECLAMO - ". $_POST['nombre'] ."";
+
+
+// Aquí se deberían validar los datos ingresados por el usuario
+if(!isset($_POST['fecha'])||
+!isset($_POST['sucu']) ||
+!isset($_POST['sucursal']) ||
+!isset($_POST['nombre']) ||
+!isset($_POST['telefono']) ||
+!isset($_POST['email']) ||
+!isset($_POST['detalle'])
+
+)
+
+$email_message = "DATOS DEL RECLAMO:\n";
+$email_message .= "**************************************************************\n";
+$email_message .= "Fecha     : " . $_POST['fecha'] . "\n";
+$email_message .= "Sucursal  : " . $_POST['sucursal'] . "\n";
+$email_message .= "Nombre    : " . $_POST['nombre'] . "\n";
+$email_message .= "Telefono  : " . $_POST['telefono'] . "\n";
+$email_message .= "Email     : " . $_POST['email'] . "\n";
+$email_message .= "Detalle   : " . $_POST['detalle'] . "\n";
+$email_message .= "Detalles  : http://reclamaciones.expresomarvisur.com/print.php?numero=$datin\n";
+$email_message .= "**************************************************************\n";
+
+// Ahora se envía el e-mail usando la función mail() de PHP
+$headers = 'From: '. $_POST['email'] ."\r\n".
+'Reply-To: '. $_POST['email'] ."\r\n" .
+'X-Mailer: PHP/' . phpversion();
+@mail($email_to, $email_subject, $email_message, $headers)
+
+}
+
+/*
+// Inserción en la base de datos
+
+$rst=mysql_query("INSERT INTO hojas (
+  rec_fecha,sucu,rec_sucursal,
+  rec_nombre,rec_direccion,rec_dni,rec_telefono,rec_email,rec_apoderado,
+  rec_tipo,rec_comentarios,rec_guia,rec_tipo1,rec_detalle,rec_adoptadas)
+ 
+values (
+   '". $_POST["fecha"]."'
+   ,'". $_POST["sucursal"]."'
+  ,'". $_POST["direccion"]."'
+  ,'". $_POST["nombre"]."'
+  ,'". $_POST["direccion"]."'
+  ,'". $_POST["dni"]."'
+  ,'". $_POST["telefono"]."'
+  ,'". $_POST["email"]."'
+  ,'". $_POST["padre"]."'
+  ,'". $_POST["tipo"]."'
+  ,'". $_POST["comentarios"]."'
+  ,'". $_POST["guia"]."'
+  ,'". $_POST["tipo1"]."'
+  ,'". $_POST["detalle"]."'
+  ,'". $_POST["acciones"]."'
+
+  );");
+
+*/
+
+ 
+
+?>
+
+

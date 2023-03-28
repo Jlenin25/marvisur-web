@@ -1,0 +1,8 @@
+[26-Aug-2021 05:15:15 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/marvisurexpreso/public_html/marvisur2.0/marvisurweb/app/Http/Controllers/RastreoController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/marvisurexpreso/public_html/marvisur2.0/marvisurweb/app/Http/Controllers/RastreoController.php on line 8
+[15-Sep-2021 04:27:00 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/marvisurexpreso/public_html/marvisur2.0/marvisurweb/app/Http/Controllers/RastreoController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/marvisurexpreso/public_html/marvisur2.0/marvisurweb/app/Http/Controllers/RastreoController.php on line 8

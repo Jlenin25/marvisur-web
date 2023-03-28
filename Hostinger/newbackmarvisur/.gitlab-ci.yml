@@ -1,0 +1,109 @@
+stages:
+  - build
+  - deploy
+build-composer:
+  stage: build
+  image: lorisleiva/laravel-docker
+  artifacts:
+    name: ingeniumback
+    expire_in: 3 months
+    paths:
+      - /vendor
+  script:
+    - export ENVFILE="$(eval echo "$(echo "\$ENVFILE_"$CI_COMMIT_REF_NAME)")"
+    - cd ingeniumback
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - composer update
+    - cp $ENVFILE .env
+  cache:
+    paths:
+      - /vendor
+  only:
+    changes:
+      - composer.json
+      - routes/api.php
+
+deploy-composer:
+  stage: deploy
+  dependencies:
+    - build-composer
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq sshpass
+  script:
+    - export USER="$(eval echo "$(echo "\$USER_"$CI_COMMIT_REF_NAME)")"
+    - export HOST="$(eval echo "$(echo "\$HOST_"$CI_COMMIT_REF_NAME)")"
+    - export BASE_PATH="$(eval echo "$(echo "\$BASE_PATH_"$CI_COMMIT_REF_NAME)")"
+    - IFSBAK=$IFS
+    - IFS=" "
+    - export SSH_PRIVATE_KEY="$(eval echo "$(echo "\$SSH_PRIVATE_KEY_"$CI_COMMIT_REF_NAME)")"
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - IFS=$IFSBAK
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ssh -p $PORT $USER@$HOST mkdir -p public_html$BASE_PATH
+    - ssh -p $PORT $USER@$HOST mkdir -p public_html$BASE_PATH/ingeniumback
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/ingeniumback/vendor || true
+    - scp -r -P $PORT ingeniumback/vendor $USER@$HOST:public_html$BASE_PATH/ingeniumback/vendor
+  variables:
+    PORT: "65002"
+  only:
+    changes:
+      - composer.json
+
+deploy-lumen:
+  stage: deploy
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq sshpass
+  script:
+    - export USER="$(eval echo "$(echo "\$USER_"$CI_COMMIT_REF_NAME)")"
+    - export HOST="$(eval echo "$(echo "\$HOST_"$CI_COMMIT_REF_NAME)")"
+    - export BASE_PATH="$(eval echo "$(echo "\$BASE_PATH_"$CI_COMMIT_REF_NAME)")"
+    - export ENVFILE="$(eval echo "$(echo "\$ENVFILE_"$CI_COMMIT_REF_NAME)")"
+    - IFSBAK=$IFS
+    - IFS=" "
+    - export SSH_PRIVATE_KEY="$(eval echo "$(echo "\$SSH_PRIVATE_KEY_"$CI_COMMIT_REF_NAME)")"
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - IFS=$IFSBAK
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ssh -p $PORT $USER@$HOST mkdir -p public_html$BASE_PATH
+    - ssh -p $PORT $USER@$HOST mkdir -p public_html$BASE_PATH/
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/app || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/bootstrap || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/config || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/database || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/public || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/resources || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/routes || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/storage || true
+    - ssh -p $PORT $USER@$HOST rm -R public_html$BASE_PATH/tests || true
+    - ssh -p $PORT $USER@$HOST rm -R "public_html$BASE_PATH/.env" || true
+    - ssh -p $PORT $USER@$HOST rm -R "public_html$BASE_PATH/artisan" || true
+    - scp -r -P $PORT ingeniumback/app $USER@$HOST:public_html$BASE_PATH/app
+    - scp -r -P $PORT ingeniumback/bootstrap $USER@$HOST:public_html$BASE_PATH/bootstrap
+    - scp -r -P $PORT ingeniumback/config $USER@$HOST:public_html$BASE_PATH/config
+    - scp -r -P $PORT ingeniumback/database $USER@$HOST:public_html$BASE_PATH/database
+    - scp -r -P $PORT ingeniumback/public $USER@$HOST:public_html$BASE_PATH/public
+    - scp -r -P $PORT ingeniumback/resources $USER@$HOST:public_html$BASE_PATH/resources
+    - scp -r -P $PORT ingeniumback/routes $USER@$HOST:public_html$BASE_PATH/routes
+    - scp -r -P $PORT ingeniumback/storage $USER@$HOST:public_html$BASE_PATH/storage
+    - scp -r -P $PORT ingeniumback/tests $USER@$HOST:public_html$BASE_PATH/tests
+    - scp -r -P $PORT "ingeniumback/$ENVFILE" $USER@$HOST:public_html$BASE_PATH/.env
+    - scp -r -P $PORT "ingeniumback/artisan" $USER@$HOST:public_html$BASE_PATH/artisan
+  variables:
+    PORT: "65002"
+  only:
+    changes:
+      - app/**/*
+      - bootstrap/**/*
+      - config/**/*
+      - database/**/*
+      - public/**/*
+      - routes/**/*
+      - storage/**/*
+      - tests/**/*
+      - .env.*

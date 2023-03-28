@@ -1,0 +1,163 @@
+<div
+  id="exampleModalLong"
+  role="dialog"
+  aria-labelledby="exampleModalLongTitle"
+  mat-dialog-content
+>
+  <div class="modal-dialog md-tracking" role="document">
+    <div class="modal-content">
+      <div class="modal-header md-header">
+        <h5 class="modal-title" id="exampleModalLabel">RASTREA TU ENVIO</h5>
+      </div>
+      <div class="modal-body">
+        <div class="cnt" *ngIf="infoRastreo.length != 0">
+          <div class="form-group tabla-info-tracking">
+            <div class="row row-modal">
+              <div class="letra-info col-lg-2">ORIGEN:</div>
+              <div class="letra-tracking col-11 col-lg-3">
+                {{ primeraInfo.DEPORIGEN }}
+              </div>
+              <!--primeraInfo.DEPORIGEN -->
+              <div class="letra-info col-lg-2">DESTINO:</div>
+              <div class="letra-tracking col-11 col-lg-3">
+                {{ primeraInfo.DEPDESTINO }}
+              </div>
+              <!--primeraInfo.DEPDESTINO -->
+            </div>
+
+            <div class="row row-modal">
+              <div class="letra-info col-lg-5">FECHA DE RECEPCIÓN:</div>
+              <div class="letra-tracking col-11 col-lg-5">
+                <!-- {{ primeraInfo.FECEVENTO | date : "dd-MM-yyyy hh:mm:ss a" }} -->
+              </div>
+            </div>
+
+            <div class="row row-modal">
+              <div class="letra-info col-lg-5">REMITENTE:</div>
+              <div class="letra-tracking col-11 col-lg-5">
+                {{ primeraInfo.REMITENTE }}
+              </div>
+            </div>
+            <!--
+                          <div class="row row-modal">
+                              <div class="letra-info col-lg-5">DESTINATARIO: </div>
+                              <div class="letra-tracking col-11 col-lg-5"> {{primeraInfo.DESTINATARIO}}   </div>
+                          </div>-->
+            <div class="row row-modal">
+              <div class="letra-info col-lg-5">ESTADO DE PAGO:</div>
+              <div class="letra-tracking col-11 col-lg-5">
+                {{ primeraInfo.PAGO }}
+              </div>
+            </div>
+          </div>
+          <div class="timeline">
+            <!-- Line component -->
+            <div class="line text-muted"></div>
+            <!-- Separator
+                          <div class="separator text-muted">
+                              <time>26. 3. 2015</time>
+                          </div>
+                          /Separator -->
+            <div class="tracking" *ngFor="let infotrack of infoRastreo">
+              <article class="panel panel-danger panel-outline">
+                <div class="panel-heading icon">
+                  <!-- <span class="fa fa-angle-double-right fa-4x"></span> -->
+                  <div class="fondo-rastre-img">
+                    <img
+                      *ngIf="infotrack.ID == 0"
+                      class="tracking-img"
+                      src="assets/images/tracking-casita.png"
+                      width="35px"
+                      height="35px"
+                    />
+                    <img
+                      *ngIf="infotrack.ID == 1"
+                      class="tracking-img"
+                      src="assets/images/tracking-camion.png"
+                      width="35px"
+                      height="35px"
+                    />
+                    <img
+                      *ngIf="infotrack.ID == 2"
+                      class="tracking-img"
+                      src="assets/images/tracking-montacarga.png"
+                      width="35px"
+                      height="35px"
+                    />
+                    <img
+                      *ngIf="infotrack.ID == 3"
+                      class="tracking-img"
+                      src="assets/images/tracking-cargador.png"
+                      width="35px"
+                      height="35px"
+                    />
+                    <img
+                      *ngIf="infotrack.ID == 4"
+                      class="tracking-img"
+                      src="assets/images/tracking-cargador.png"
+                      width="35px"
+                      height="35px"
+                    />
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="letra-infotrack" *ngIf="infotrack.ID == 1">
+                      &nbsp; EN RUTA &nbsp;
+                    </div>
+                    <div class="letra-infotrack" *ngIf="infotrack.ID == 2">
+                      EN ALMACEN
+                    </div>
+                    <div class="letra-infotrack" *ngIf="infotrack.ID == 3">
+                      ENTREGADO
+                    </div>
+                    <div class="letra-infotrack" *ngIf="infotrack.ID == 0">
+                      RECEPCION
+                    </div>
+                    <div class="letra-infotrack" *ngIf="infotrack.ID == 4">
+                      ATENDIDO
+                    </div>
+                    <div>
+                      &nbsp;&nbsp;
+                      <!-- {{
+                        infotrack.FECEVENTO | date : "dd-MM-yyyy hh:mm:ss a"
+                      }} -->
+                    </div>
+                  </div>
+                  <div class="info-evento">{{ infotrack.EVENTO }}</div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="infoRastreo.length == 0" class="loaderdiv col-lg-12">
+          <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="ctn-spinner" *ngIf="flagResponseTrack">
+              <div class="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              Cargando datos...
+            </div>
+            <div *ngIf="!flagResponseTrack">Guía no encontrada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Salir</button>
+</div>

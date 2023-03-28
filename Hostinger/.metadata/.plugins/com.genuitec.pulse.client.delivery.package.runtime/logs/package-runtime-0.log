@@ -1,0 +1,30 @@
+mar 10, 2023 11:19:55 AM com.genuitec.pulse.client.deliverypackage.runtime.internal.Activator initializeLoggers
+INFORMACIÓN: Package starting up at Fri Mar 10 11:19:55 COT 2023
+mar 10, 2023 11:20:06 AM org.glassfish.grizzly.nio.NIOTransport start
+INFORMACIÓN: Adjusting kernel thread pool to max size 9 to handle configured number of SelectorRunners
+mar 10, 2023 11:20:06 AM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [127.0.0.1:56666]
+mar 10, 2023 11:20:06 AM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer] Started.
+mar 10, 2023 11:20:06 AM org.glassfish.tyrus.server.Server start
+INFORMACIÓN: WebSocket Registered apps: URLs all start with ws://127.0.0.1:56666
+mar 10, 2023 11:20:06 AM org.glassfish.tyrus.server.Server start
+INFORMACIÓN: WebSocket server started.
+mar 10, 2023 11:20:29 AM com.genuitec.pulse.client.deliverypackage.runtime.UpdatesService checkForUpdates
+INFORMACIÓN: Latest version of package is installed; update check finished in 993ms
+mar 10, 2023 11:22:58 AM com.genuitec.pulse.client.deliverypackage.runtime.UpdatesService checkForUpdates
+INFORMACIÓN: Latest version of package is installed; update check finished in 569ms
+mar 10, 2023 1:50:59 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFORMACIÓN: Stopped listener bound to [127.0.0.1:56666]
+mar 10, 2023 1:50:59 PM org.glassfish.tyrus.server.Server stop
+INFORMACIÓN: Websocket Server stopped.
+mar 10, 2023 1:50:59 PM org.glassfish.grizzly.nio.NIOTransport start
+INFORMACIÓN: Adjusting kernel thread pool to max size 9 to handle configured number of SelectorRunners
+mar 10, 2023 1:50:59 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFORMACIÓN: Started listener bound to [127.0.0.1:61072]
+mar 10, 2023 1:50:59 PM org.glassfish.grizzly.http.server.HttpServer start
+INFORMACIÓN: [HttpServer-1] Started.
+mar 10, 2023 1:50:59 PM org.glassfish.tyrus.server.Server start
+INFORMACIÓN: WebSocket Registered apps: URLs all start with ws://127.0.0.1:61072
+mar 10, 2023 1:50:59 PM org.glassfish.tyrus.server.Server start
+INFORMACIÓN: WebSocket server started.

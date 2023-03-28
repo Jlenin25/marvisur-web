@@ -1,0 +1,88 @@
+<?php
+require('fpdf/fpdf.php');
+require('conexion.php');
+
+$dato1 = $_GET['numero'];
+
+
+$resultado = mysql_query("SELECT * FROM hojas where idreclamo = $dato1");
+
+if (!$resultado) {
+    echo 'No se pudo ejecutar la consulta: ' . mysql_error();
+    exit;
+}
+$v1 = mysql_fetch_row($resultado);
+
+
+$pdf = new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Courier', 'B', 10);
+$pdf->Image('loguin.gif' , 10 ,8, 45 , 13,'GIF');
+$pdf->Cell(45, 10, '', 0);
+$pdf->Cell(150, 17, 'Arequipa Expreso Marvisur EIRL', 0);
+$pdf->Ln(5);
+$pdf->Cell(150, 12, '__________________________________________________________________________________________', 0);
+$pdf->SetFont('Courier', 'B', 10);
+$pdf->Cell(150, 10, 'RUC : 20498189637', 0);
+$pdf->Ln(15);
+$pdf->SetFont('Courier', 'B', 11);
+$pdf->Cell(70, 8, '', 0);
+$pdf->Cell(10, 8, 'HOJA DE RECLAMO ', 0);
+$pdf->Ln(10);
+$pdf->SetFont('Courier', 'B', 9);
+$pdf->Cell(180, 5, 'Num. Reclamo     : '.$v1[0].'', 0);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Fecha            : '.$v1[1].'', 0);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Sucursal         : '.$v1[2].'', 0);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Direccion        : '.$v1[3].'', 0);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Nombre/R. Social : '.$v1[4].'', 0);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Direccion        : '.$v1[5].'', 0);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'DNI/RUC          : '.$v1[6].'', 100);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Telefono         : '.$v1[7].'', 100); 
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Email            : '.$v1[8].'', 100);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Apoderado        : '.$v1[9].'', 100);
+$pdf->Ln(6);
+$pdf->Cell(180, 5, 'Tipo             : '.$v1[10].'', 100);
+$pdf->Ln(8);
+$pdf->Cell(180, 5, 'Comentario       :', 100);
+$pdf->Ln(8);
+$pdf->MultiCell(180, 5,''.$v1[11].'', 100);
+$pdf->Ln(30);
+$pdf->Cell(180, 5, 'Numero de Guia  :'.$v1[12].'', 100);
+$pdf->Ln(10);
+$pdf->Cell(180, 5, 'Tipo            :'.$v1[13].'', 100);
+$pdf->Ln(8);
+$pdf->Cell(180, 5, 'Detalle Reclamo :', 100);
+$pdf->Ln(8);
+$pdf->MultiCell(180, 5,''.$v1[14].'', 100);
+$pdf->Ln(35);
+$pdf->Cell(180, 5, 'Acciones Adoptadas por el proveedor:', 100);
+$pdf->Ln(8);
+$pdf->MultiCell(180, 5,''.$v1[15].'', 100);
+$pdf->Ln(35);
+
+
+
+$pdf->SetFont('Courier','',15);
+$pdf->SetXY(10,260);
+$pdf->Cell(40,2,"________________________________________________________",0);
+
+$pdf->SetFont('Courier','',10);
+$pdf->SetXY(10,268);
+$pdf->Cell(100,2,"AREQUIPA: GARCI CARBAJAL 511 TELF. 054-206733,054-233225,054-232479",0);
+$pdf->SetFont('Courier','',10);
+$pdf->SetXY(10,272);
+$pdf->Cell(100,2,"LIMA: JIRON FCO. LUNA PIZARRO 499 - LA VICTORIA TELF. 014235537 - RPC: 997530760",0);
+
+
+
+$pdf->Output();
+?>

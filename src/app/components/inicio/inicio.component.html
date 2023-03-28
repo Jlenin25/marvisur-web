@@ -108,7 +108,7 @@
     <div class="ctn-tracking" id="rastreadoenvio">
       <h2>RASTREA TU ENVÍO</h2>
       <div class="ctn-form">
-        <form (ngSubmit)="onSubmit(cotizaUserForm)" #cotizaUserForm="ngForm">
+        <form (ngSubmit)="openInfoTrack(cotizaUserForm)" #cotizaUserForm="ngForm" mat-button>
           <input
             type="text"
             [(ngModel)]="rastreo.serie"
@@ -150,7 +150,7 @@
       <a class="a-img" routerLink="/sucursales">
         <img src="assets/images/sucursalnuevo.png" />
       </a>
-      <div class="a-img" mat-button (click)="openDialog()">
+      <div class="a-img" mat-button (click)="openTermsAndConditions()">
         <img
           src="assets/images/terminosnuevo.png"
           data-toggle="modal"
@@ -217,22 +217,22 @@
     <h3>NUESTROS SERVICIOS</h3>
     <div class="ctn-services">
       <div class="ctn-s-info">
-        <mat-stepper [orientation]="(stepperOrientation | async)!">
-          <mat-step [stepControl]="firstFormGroup" label="TRANSPORTE DE CARGA">
+        <mat-stepper [orientation]="'vertical'">
+          <mat-step [stepControl]="groupNumberServices" label="TRANSPORTE DE CARGA">
             <p>
               Brindamos un servicio de calidad en el transporte de toda variedad
               de carga, como paquetería, carga ligera y carga pesada, con
               excelentes tiempos de entrega.
             </p>
           </mat-step>
-          <mat-step [stepControl]="secondFormGroup" label="SERVICIO EXPRESO">
+          <mat-step [stepControl]="groupNumberServices" label="SERVICIO EXPRESO">
             <p>
               Brindamos a su empresa un servicio directo, para el traslado
               exclusivo de su mercadería, con furgón cerrado desde la puerta de
               su empresa de origen hasta su puerta de destino.
             </p>
           </mat-step>
-          <mat-step [stepControl]="thirdFormGroup" label="SERVICIO DE MUDANZA">
+          <mat-step [stepControl]="groupNumberServices" label="SERVICIO DE MUDANZA">
             <p>
               Brindamos un servicio seguro y de calidad en las mudanzas,
               realizando el recojo desde el domicilio con personal muy
@@ -250,368 +250,21 @@
 
   <section class="news">
     <h3>PUBLICACIONES:</h3>
+    <a routerLink="seccion/publicaciones" class="post-link">
+      <span>ver más</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
     <div class="card-inner-news">
-      <a href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1514112119116049/">
+      <a target="_blank" href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1500245460502715/">
         <img src="assets/images/news/CENTRO DE ACOPIO LOS OLIVOS 3.jpg" alt="">
       </a>
-      <a href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1514174475776480/">
+      <a target="_blank" href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1514174475776480/">
         <img src="assets/images/news/NOS MUDAMOS huacho.jpg" alt="">
       </a>
-      <a href="">
+      <a target="_blank" href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1509513512909243/">
         <img src="assets/images/news/puente piedra 3.jpg" alt="">
       </a>
-			<!-- <div class="card-face card-face-b">
-				<div class="card-content">
-					<div class="card-header">
-						<img src="assets/images/news/NOS MUDAMOS huacho.jpg" alt="" class="pp" />
-						<h2>Tyler Potts</h2>
-					</div>
-					<div class="card-body">
-						<h3>JavaScript Wizard</h3>
-						<p>Lorem ipsum <strong>dolor</strong> sit amet, consectetur <strong>adipiscing</strong> elit. Sed id erat a magna lobortis dictum. Nunc est arcu, <strong>lacinia</strong> quis sapien placerat, <strong>laoreet</strong> tincidunt nulla.</p>
-            <a href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1514174475776480/" target="_blank">link</a>
-					</div>
-				</div>
-			</div> -->
 		</div>
-    <!-- <div class="contenedor-noticia col-lg-12">
-      <swiper
-        [slidesPerView]="3"
-        [spaceBetween]="-20"
-        [slidesPerGroup]="1"
-        [loop]="true"
-        [loopFillGroupWithBlank]="true"
-        [navigation]="true"
-        [observeParents]="true"
-        class="mySwiper"
-      >
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/056_tacna.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Nueva Sucursal</div>
-              <div class="letra2">
-                TACNA II &nbsp;&nbsp;&nbsp;<span
-                  class="fa fa-chevron-down fa-1x"
-                ></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/post_estafa.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Estafa</div>
-              <div class="letra2">
-                &nbsp;&nbsp;&nbsp;<span class="fa fa-chevron-down fa-1x"></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/069_juliaca.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Nueva Sucursal</div>
-              <div class="letra2">
-                JULIACA &nbsp;&nbsp;&nbsp;<span
-                  class="fa fa-chevron-down fa-1x"
-                ></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/post_marvi.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Equipo Marvisur</div>
-              <div class="letra2">
-                &nbsp;&nbsp;&nbsp;<span class="fa fa-chevron-down fa-1x"></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/Mud_tumbes.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Nos mudamos</div>
-              <div class="letra2">
-                TUMBES &nbsp;&nbsp;&nbsp;<span
-                  class="fa fa-chevron-down fa-1x"
-                ></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </swiper>
-    </div> -->
-
-    <!-- <div class="contenedor-noticiacel col-lg-12">
-      <swiper
-        [slidesPerView]="1"
-        [spaceBetween]="20"
-        [slidesPerGroup]="1"
-        [loop]="true"
-        [loopFillGroupWithBlank]="true"
-        [navigation]="true"
-        [observeParents]="true"
-        class="mySwiper"
-      >
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/056_tacna.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Nueva Sucursal</div>
-              <div class="letra2">
-                TACNA &nbsp;&nbsp;&nbsp;<span
-                  class="fa fa-chevron-down fa-1x"
-                ></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/post_estafa.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Estafa</div>
-              <div class="letra2">
-                &nbsp;&nbsp;&nbsp;<span class="fa fa-chevron-down fa-1x"></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/Mud_tumbes.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Nos mudamos</div>
-              <div class="letra2">
-                TUMBES &nbsp;&nbsp;&nbsp;<span
-                  class="fa fa-chevron-down fa-1x"
-                ></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/post_marvi.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Equipo Marvisur</div>
-              <div class="letra2">
-                &nbsp;&nbsp;&nbsp;<span class="fa fa-chevron-down fa-1x"></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="contenedorNoticia">
-            <div>
-              <img src="assets/images/069_juliaca.png" class="img-noticia" />
-            </div>
-            <div>
-              <div class="letra2">Nueva Sucursal</div>
-              <div class="letra2">
-                JULIACA &nbsp;&nbsp;&nbsp;<span
-                  class="fa fa-chevron-down fa-1x"
-                ></span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </swiper>
-    </div> -->
   </section>
 
-  <div
-    class="modal fade"
-    id="exampleModalLong"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog md-tracking" role="document">
-      <div class="modal-content">
-        <div class="modal-header md-header">
-          <h5 class="modal-title" id="exampleModalLabel">RASTREA TU ENVIO</h5>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="cnt" *ngIf="infoRastreo.length != 0">
-            <div class="form-group tabla-info-tracking">
-              <div class="row row-modal">
-                <div class="letra-info col-lg-2">ORIGEN:</div>
-                <div class="letra-tracking col-11 col-lg-3">
-                  {{ primeraInfo.DEPORIGEN }}
-                </div>
-                <!--primeraInfo.DEPORIGEN -->
-                <div class="letra-info col-lg-2">DESTINO:</div>
-                <div class="letra-tracking col-11 col-lg-3">
-                  {{ primeraInfo.DEPDESTINO }}
-                </div>
-                <!--primeraInfo.DEPDESTINO -->
-              </div>
-
-              <div class="row row-modal">
-                <div class="letra-info col-lg-5">FECHA DE RECEPCIÓN:</div>
-                <div class="letra-tracking col-11 col-lg-5">
-                  {{ primeraInfo.FECEVENTO | date : "dd-MM-yyyy hh:mm:ss a" }}
-                </div>
-              </div>
-
-              <div class="row row-modal">
-                <div class="letra-info col-lg-5">REMITENTE:</div>
-                <div class="letra-tracking col-11 col-lg-5">
-                  {{ primeraInfo.REMITENTE }}
-                </div>
-              </div>
-              <!--
-                            <div class="row row-modal">
-                                <div class="letra-info col-lg-5">DESTINATARIO: </div>
-                                <div class="letra-tracking col-11 col-lg-5"> {{primeraInfo.DESTINATARIO}}   </div>
-                            </div>-->
-              <div class="row row-modal">
-                <div class="letra-info col-lg-5">ESTADO DE PAGO:</div>
-                <div class="letra-tracking col-11 col-lg-5">
-                  {{ primeraInfo.PAGO }}
-                </div>
-              </div>
-            </div>
-            <div class="timeline">
-              <!-- Line component -->
-              <div class="line text-muted"></div>
-              <!-- Separator
-                            <div class="separator text-muted">
-                                <time>26. 3. 2015</time>
-                            </div>
-                            /Separator -->
-              <div class="tracking" *ngFor="let infotrack of infoRastreo">
-                <article class="panel panel-danger panel-outline">
-                  <div class="panel-heading icon">
-                    <!-- <span class="fa fa-angle-double-right fa-4x"></span> -->
-                    <div class="fondo-rastre-img">
-                      <img
-                        *ngIf="infotrack.ID == 0"
-                        class="tracking-img"
-                        src="assets/images/tracking-casita.png"
-                        width="35px"
-                        height="35px"
-                      />
-                      <img
-                        *ngIf="infotrack.ID == 1"
-                        class="tracking-img"
-                        src="assets/images/tracking-camion.png"
-                        width="35px"
-                        height="35px"
-                      />
-                      <img
-                        *ngIf="infotrack.ID == 2"
-                        class="tracking-img"
-                        src="assets/images/tracking-montacarga.png"
-                        width="35px"
-                        height="35px"
-                      />
-                      <img
-                        *ngIf="infotrack.ID == 3"
-                        class="tracking-img"
-                        src="assets/images/tracking-cargador.png"
-                        width="35px"
-                        height="35px"
-                      />
-                      <img
-                        *ngIf="infotrack.ID == 4"
-                        class="tracking-img"
-                        src="assets/images/tracking-cargador.png"
-                        width="35px"
-                        height="35px"
-                      />
-                    </div>
-                  </div>
-                  <div class="panel-body">
-                    <div class="row">
-                      <div class="letra-infotrack" *ngIf="infotrack.ID == 1">
-                        &nbsp; EN RUTA &nbsp;
-                      </div>
-                      <div class="letra-infotrack" *ngIf="infotrack.ID == 2">
-                        EN ALMACEN
-                      </div>
-                      <div class="letra-infotrack" *ngIf="infotrack.ID == 3">
-                        ENTREGADO
-                      </div>
-                      <div class="letra-infotrack" *ngIf="infotrack.ID == 0">
-                        RECEPCION
-                      </div>
-                      <div class="letra-infotrack" *ngIf="infotrack.ID == 4">
-                        ATENDIDO
-                      </div>
-                      <div>
-                        &nbsp;&nbsp;
-                        {{
-                          infotrack.FECEVENTO | date : "dd-MM-yyyy hh:mm:ss a"
-                        }}
-                      </div>
-                    </div>
-                    <div class="info-evento">{{ infotrack.EVENTO }}</div>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-          <div *ngIf="infoRastreo.length == 0" class="loaderdiv col-lg-12">
-            <div class="row">
-              <div class="col-lg-4"></div>
-              <div class="ctn-spinner" *ngIf="flagResponseTrack">
-                <div class="spinner">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                Cargando datos...
-              </div>
-              <div *ngIf="!flagResponseTrack">Guía no encontrada</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </main>

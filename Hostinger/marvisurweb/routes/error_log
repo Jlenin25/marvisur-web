@@ -1,0 +1,4 @@
+[26-Aug-2021 04:44:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Route' not found in /home/marvisurexpreso/public_html/marvisur2.0/marvisurweb/routes/web.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/marvisurexpreso/public_html/marvisur2.0/marvisurweb/routes/web.php on line 14
