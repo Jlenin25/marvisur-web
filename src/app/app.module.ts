@@ -28,6 +28,9 @@ import { PruebaComponent } from './components/prueba/prueba.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
 import { HeaderComponent } from './components/layouts/header/header.component';
+import { InfoTrackingModalComponent } from './components/inicio/modal/infotrakingmodal.component';
+import { SeccionComponent } from './components/secciones/seccion.component';
+
 // import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
 import { SwiperModule } from 'swiper/angular';
@@ -41,9 +44,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
-import {MatDialogModule} from '@angular/material/dialog';
-import { SeccionComponent } from './components/secciones/seccion.component';
-import { secRouting } from './components/secciones/sec.routing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { secRouting } from './components/secciones/sec.routing';
     SolucionesenlineaComponent,
     TerminosycondicionesComponent,
     EncuestaComponent,
+    InfoTrackingModalComponent,
     //ReclamacionesComponent
   ],
   imports: [
@@ -79,6 +82,7 @@ import { secRouting } from './components/secciones/sec.routing';
     FormsModule,
     MatStepperModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAMpoXbrRESRM1KgPzG0o0JIDh61LuOtEQ',
     }),

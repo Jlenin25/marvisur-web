@@ -1,0 +1,65 @@
+@import "../../../app.component.scss";
+
+.all-modal-mit {
+  position: fixed;
+  display: none;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  max-width: 1000px;
+  width: 100%;
+  height: 70vh;
+  background-color: $gris-c;
+  z-index: 900 !important;
+  // transform: scale(2);
+  // overflow: hidden;
+  margin: auto;
+  .modal-info-traking {
+    position: relative;
+    // top: 0;
+    // max-width: 1300px;
+    // width: 100%;
+    // height: auto;
+    // margin: auto;
+    border-radius: 20px;
+    .ctn-mit {
+      position: relative;
+      .mit-head {
+        height: 10vh;
+        background-color: $negro;
+        h5 {
+          font-size: 2em;
+        }
+      }
+      .mit-body {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        // background-color: blue;
+        .loading-not-found {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          .mat-progress-spinner circle {
+            stroke-dasharray: 282.743px;
+            stroke-width: 4% !important;
+            fill: transparent;
+            transform-origin: center;
+            transition: stroke-dashoffset 22005ms linear;
+            stroke: $color-global-claro !important;
+          }
+          .mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] circle {
+            transition-property: stroke;
+            animation-duration: 40s !important;
+            animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+            animation-iteration-count: infinite;
+        }
+        }
+      }
+    }
+  }
+}
+

@@ -108,7 +108,7 @@
     <div class="ctn-tracking" id="rastreadoenvio">
       <h2>RASTREA TU ENVÍO</h2>
       <div class="ctn-form">
-        <form (ngSubmit)="openInfoTrack(cotizaUserForm)" #cotizaUserForm="ngForm" mat-button>
+        <form (ngSubmit)="onSubmitInfoTraking(cotizaUserForm)" #cotizaUserForm="ngForm">
           <input
             type="text"
             [(ngModel)]="rastreo.serie"
@@ -124,14 +124,9 @@
             #serie="ngModel"
             class="right"
             placeholder="Número"
-          />
-          <div class="ctn-buttons">
-            <button
-              type="submit"
-              data-toggle="modal"
-              data-target="#exampleModalLong"
-              class="btn btn-search"
-            ></button>
+            />
+            <div class="ctn-buttons">
+              <button type="submit" class="btn btn-search"></button>
             <button class="btn btn-info" [tooltip]="tolTemplate"></button>
             <ng-template #tolTemplate triggers="hover">
               <img src="assets/images/info-rastrea.png" />
@@ -267,4 +262,11 @@
 		</div>
   </section>
 
+  <!-- Modal -->
+  <info-tracking-modal
+    [primeraInfo]="primeraInfo"
+    [infoRastreo]="infoRastreo"
+    [flagResponseTrack]="flagResponseTrack"
+    >
+  </info-tracking-modal>
 </main>

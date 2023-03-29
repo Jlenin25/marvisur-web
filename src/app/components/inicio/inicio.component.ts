@@ -1,15 +1,15 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ElementRef
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { TerminosycondicionesComponent } from '../secciones/terminosycondiciones/terminosycondiciones.component';
 
 import { RastreoService } from 'src/app/services/rastreo.service';
-import { InfoTrackComponent } from './infotracking.component';
 import { Tracking } from 'src/app/models/tracking';
 import { Infotracking } from '../../models/infotracking';
 
@@ -29,7 +29,6 @@ export class InicioComponent implements OnInit {
   public url: string;
   public urlSafe: SafeResourceUrl;
   public page_title: string;
-  // private name: string = '';
   public serie: string;
   public numero: string;
 
@@ -48,12 +47,15 @@ export class InicioComponent implements OnInit {
   public limitSucursales: number;
   public limitTrabajadores: number;
 
+  padreForm: FormControl = new FormControl();
+
 
   constructor(
     private _formBuilder: FormBuilder,
     public sanitizer: DomSanitizer,
     public dialog: MatDialog,
     private _RastreoService: RastreoService,
+    private elementRef:ElementRef,
   ) {
     let timestamp = 1643658989;
     // @ts-ignore
@@ -61,8 +63,8 @@ export class InicioComponent implements OnInit {
     this.page_title = 'Inicio Marvisur';
     this.url = '';
     this.urlSafe = '';
-    this.serie = '';
-    this.numero = '';
+    this.serie = '0007';
+    this.numero = '2738402';
 
     this.rastreo = new Tracking('', '');
     this.primeraInfo = new Infotracking(
@@ -87,15 +89,13 @@ export class InicioComponent implements OnInit {
     this.limitSucursales = 135;
     this.limitTrabajadores = 1500;
     this.limitGuias = 5981832;
-
-    console.log('hola mundo')
   }
 
   openTermsAndConditions() {
     return this.dialog.open(TerminosycondicionesComponent);
   }
 
-  openInfoTrack(form: any) {
+  onSubmitInfoTraking(form: any) {
     this.flagResponseTrack = true;
     this.infoRastreo = [];
     this.primeraInfo = new Infotracking(
@@ -113,8 +113,6 @@ export class InicioComponent implements OnInit {
     
     this._RastreoService.getTracking(this.rastreo).subscribe(
       (response) => {
-        //   if(response.statusCode=='200'){
-        //
         if (response.length == 0) {
           this.flagResponseTrack = false;
         } else {
@@ -122,18 +120,13 @@ export class InicioComponent implements OnInit {
           this.buscarPrimero(this.infoRastreo);
           this.flagResponseTrack = true;
         }
-
-        //
-        // }else{
-        //   console.log("error")
-        // }
       },
       (error) => {
         console.log(<any>error);
       }
     );
-    return this.dialog.open(InfoTrackComponent);
   }
+
   buscarPrimero(arreglo: any) {
     for (let info of arreglo) {
       if (info.ID == 0) {
@@ -147,33 +140,54 @@ export class InicioComponent implements OnInit {
     this.cargarCantidadesSucursales();
     this.cargarCantidadesTrabajadores();
     this.cargarCantidadesGuias();
+    this._RastreoService.getcantidadGuias().subscribe(
+      (response) => {
+        if (response.status == 'success') {
+          this.limitGuias = response.consultaguia[0].cantidad;
+          
+        } else {
+          console.log('error');
+        }
+      },
+      (error) => {
+        console.log(<any>error);
+      }
+    );
   }
 
-  delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  openInfoTraking() {
+    let changeCard = this.elementRef.nativeElement.querySelector('.openModal')
+    if(!changeCard.classList.contains('modal') && !changeCard.classList.contains('modal')) {
+      let list1 = changeCard.classList.add('modal')
+      return changeCard.classList.add('fade') + list1
+    } else {
+      let list1 = changeCard.classList.remove('modal')
+      return changeCard.classList.remove('fade') + list1
+    }
   }
+
   async cargarCantidadesAnios() {
     for (var _i = 0; _i <= this.limitAnios; _i++) {
       this.cantidadanios = _i;
-      await this.delay(80);
+      await new Promise((resolve) => setTimeout(resolve, 80));
     }
   }
   async cargarCantidadesSucursales() {
     for (var _i = 0; _i <= this.limitSucursales; _i++) {
       this.cantidadSucursales = _i;
-      await this.delay(15);
+      await new Promise((resolve) => setTimeout(resolve, 15));
     }
   }
   async cargarCantidadesTrabajadores() {
     for (var _i = 0; _i <= this.limitTrabajadores; _i =+ 10) {
       this.cantidadTrabajadores = _i;
-      await this.delay(14);
+      await new Promise((resolve) => setTimeout(resolve, 14));
     }
   }
   async cargarCantidadesGuias() {
     for (var _i = 0; _i <= this.limitGuias; _i =+ 13240) {
       this.cantidadGuias = _i;
-      await this.delay(0);
+      await new Promise((resolve) => setTimeout(resolve, 0));
     }
   }
     
