@@ -2,64 +2,247 @@
 
 .all-modal-mit {
   position: fixed;
-  display: none;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  max-width: 1000px;
-  width: 100%;
-  height: 70vh;
-  background-color: $gris-c;
-  z-index: 900 !important;
-  // transform: scale(2);
-  // overflow: hidden;
-  margin: auto;
+  z-index: 1000;
+  transform: scale(0);
+  transition: .4s ease;
   .modal-info-traking {
-    position: relative;
-    // top: 0;
-    // max-width: 1300px;
-    // width: 100%;
-    // height: auto;
-    // margin: auto;
-    border-radius: 20px;
-    .ctn-mit {
-      position: relative;
-      .mit-head {
-        height: 10vh;
-        background-color: $negro;
-        h5 {
-          font-size: 2em;
-        }
-      }
-      .mit-body {
-        position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+  }
+}
+
+.all-modal-mit, .modal-info-traking {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  .ctn-mit {
+    position: static;
+    position: absolute;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    max-width: 650px;
+    width: 100%;
+    height: 80vh;
+    .ctn-modal-card {
+      transform: none;
+      overflow: visible;
+      width: 190px;
+      height: 254px;
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      max-height: inherit;
+      .content {
         width: 100%;
-        height: 60vh;
-        // background-color: blue;
-        .loading-not-found {
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 300ms;
+        box-shadow: 0px 0px 10px 1px #000000ee;
+        border-radius: 12px;
+        .back {
+          background-color: $blanco;
+          position: absolute;
+          width: 100%;
           height: 100%;
-          display: flex;
           justify-content: center;
+          display: flex;
           align-items: center;
-          margin: auto;
-          .mat-progress-spinner circle {
-            stroke-dasharray: 282.743px;
-            stroke-width: 4% !important;
-            fill: transparent;
-            transform-origin: center;
-            transition: stroke-dashoffset 22005ms linear;
-            stroke: $color-global-claro !important;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          border-radius: 12px;
+          overflow: hidden;
+          &::before {
+            position: absolute;
+            content: ' ';
+            display: block;
+            width: 160px;
+            height: 160%;
+            background: linear-gradient(90deg, transparent, $color-global-claro, $color-global-claro, $color-global-claro, $color-global-claro, transparent);
+            animation: rotation_481 5000ms infinite linear;
           }
-          .mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] circle {
-            transition-property: stroke;
-            animation-duration: 40s !important;
-            animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
-            animation-iteration-count: infinite;
-        }
+          .back-content {
+            position: absolute;
+            width: 98%;
+            height: 98%;
+            background-color: $blanco;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            .mit-head {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 8vh;
+              padding: 0 20px;
+              margin: auto;
+              font-size: 1.5em;
+              color: $gris-intenso;
+              i {
+                cursor: pointer;
+                &:hover {
+                  color: $color-global-claro;
+                }
+              }
+            }
+            .mit-body {
+              .info-body {
+                display: grid;
+                grid-template-columns: 39% 59%;
+                margin-top: 8vh;
+                height: 70vh;
+                gap: 20px;
+                padding: 1%;
+                .left {
+                  background-color: $color-global-claro;
+                  color: $blanco;
+                  border-radius: 10px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 20px 0;
+                  li {
+                    margin-left: 10px;
+                    margin-top: 10px;
+                    display: flex;
+                    flex-direction: column;
+                  }
+                }
+                .right {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 60px 0;
+                  margin-top: 10px;
+                  .box-tracking {
+                    .top {
+                      display: flex;
+                      color: $color-global-claro;
+                      font-weight: bold;
+                      font-size: 1.4em;
+                      align-items: center;
+                      .row {
+                        margin-left: 3px;
+                      }
+                    }
+                    .date {
+                      font-size: 1em;
+                    }
+                    .event {
+                      font-size: 1em;
+                    }
+                  }
+                }
+              }
+              .loading-not-found {
+                .ctn-spinner {
+                  .loader {
+                    width: 98px;
+                    height: 98px;
+                    margin: auto;
+                    position: relative;
+                    &::before {
+                      content: '';
+                      width: 98px;
+                      height: 10px;
+                      background: $sombra-rojo-global;
+                      position: absolute;
+                      top: 110px;
+                      left: 0;
+                      border-radius: 50%;
+                      animation: shadow324 0.5s linear infinite;
+                    }
+                    &::after {
+                      content: '';
+                      width: 100%;
+                      height: 100%;
+                      background: $color-global-claro;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      border-radius: 4px;
+                      animation: jump7456 0.5s linear infinite;
+                    }
+                  }
+                  span {
+                    position: absolute;
+                    top: 63%;
+                    color: $color-global-claro;
+                    font-size: 1.5em;
+                    left: 35%;
+                  }
+                }
+                .file-not-found {
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
+                  text-align: center;
+                  color: $color-global-claro;
+                  i {
+                    font-size: 12em;
+                  }
+                  span {
+                    font-size: 2em;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
   }
 }
 
+
+// Loading
+@keyframes jump7456 {
+  15% {
+    border-bottom-right-radius: 3px;
+  }
+  25% {
+    transform: translateY(9px) rotate(22.5deg);
+  }
+  50% {
+    transform: translateY(18px) scale(1, .9) rotate(45deg);
+    border-bottom-right-radius: 40px;
+  }
+  75% {
+    transform: translateY(9px) rotate(67.5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+@keyframes shadow324 {
+  0%,
+    100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1);
+  }
+}
+
+
+// Modal Card Info Traking
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}

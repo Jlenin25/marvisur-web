@@ -23,44 +23,44 @@
     <section>
         <!-- Departamentos -->
         <div class="place department">
-            <!-- <input
+            <input
                 type="text"
                 placeholder="Departamento..."
+                matInput
                 [formControl]="myControl"
                 [matAutocomplete]="auto"
                 class="i-d"
             >
-            <mat-autocomplete #auto="matAutocomplete" class="ctn-automcomplete">
-                <mat-option *ngFor="let item of filteredOptions | async" [value]="item" class="ctn-ac">
-                    {{item.name}}
+            <mat-autocomplete #auto="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of optionsDepartments | async" [value]="option" class="ctn-ac">
+                    {{option.nombre}}
                 </mat-option>
-            </mat-autocomplete> -->
-
-            <input
+            </mat-autocomplete>
+            <!-- <input
                 type="text"
                 placeholder="Departamento..."
                 (change)='onOptionsSelected($event)'
                 class="i-d"
-            >
+            > -->
         </div>
         <!-- Provincias -->
-        <div class="place province">
+        <!-- <div class="place province">
             <input type="text" matInput [formControl]="myControl" placeholder="Provincia..." [matAutocomplete]="auto" class="i-p">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option.name}}
+                <mat-option *ngFor="let option of optionsDepartments | async" [value]="option">
+                {{option.nombre}}
                 </mat-option>
             </mat-autocomplete>
-        </div>
+        </div> -->
         <!-- Sucursales -->
-        <div class="place branch">
+        <!-- <div class="place branch">
             <input type="text" matInput [formControl]="myControl" placeholder="Sucursal..." [matAutocomplete]="auto" class="i-s">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option.name}}
                 </mat-option>
             </mat-autocomplete>
-        </div>
+        </div> -->
     </section>
     <div class="ctn-info-map">
         <div class="info-map">

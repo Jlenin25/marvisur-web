@@ -13,7 +13,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="seccion/" routerLinkActive="active">
+                    <a routerLink="seccion/" routerLinkActive="active" class="secciones">
                         Secciones
                         <i class="fa-solid fa-chevron-down"></i>
                     </a>
@@ -40,6 +40,12 @@
                             <a routerLink="seccion/buzon-de-sugerencias">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Buzón de Sugerencias
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="seccion/publicaciones">
+                                <i class="fa-solid fa-angle-right"></i>
+                                Publicaciones
                             </a>
                         </li>
                     </ul>
@@ -70,4 +76,3 @@
     </div>
 </header> 
 <router-outlet class="router" (activate)="onActivate($event)"></router-outlet>
-<app-footer></app-footer>

@@ -2,8 +2,10 @@ import {
   Component,
   OnInit,
   ViewEncapsulation,
-  ElementRef
+  Inject
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -51,11 +53,11 @@ export class InicioComponent implements OnInit {
 
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     private _formBuilder: FormBuilder,
     public sanitizer: DomSanitizer,
     public dialog: MatDialog,
     private _RastreoService: RastreoService,
-    private elementRef:ElementRef,
   ) {
     let timestamp = 1643658989;
     // @ts-ignore
@@ -111,7 +113,7 @@ export class InicioComponent implements OnInit {
       ''
     );
     
-    this._RastreoService.getTracking(this.rastreo).subscribe(
+    setTimeout(() => {this._RastreoService.getTracking(this.rastreo).subscribe(
       (response) => {
         if (response.length == 0) {
           this.flagResponseTrack = false;
@@ -124,7 +126,7 @@ export class InicioComponent implements OnInit {
       (error) => {
         console.log(<any>error);
       }
-    );
+      )}, 2000)
   }
 
   buscarPrimero(arreglo: any) {
@@ -155,15 +157,8 @@ export class InicioComponent implements OnInit {
     );
   }
 
-  openInfoTraking() {
-    let changeCard = this.elementRef.nativeElement.querySelector('.openModal')
-    if(!changeCard.classList.contains('modal') && !changeCard.classList.contains('modal')) {
-      let list1 = changeCard.classList.add('modal')
-      return changeCard.classList.add('fade') + list1
-    } else {
-      let list1 = changeCard.classList.remove('modal')
-      return changeCard.classList.remove('fade') + list1
-    }
+  modalInfoTraking() {
+    return this.document.body.classList.add('cdk-global-scrollblock')
   }
 
   async cargarCantidadesAnios() {
@@ -179,13 +174,13 @@ export class InicioComponent implements OnInit {
     }
   }
   async cargarCantidadesTrabajadores() {
-    for (var _i = 0; _i <= this.limitTrabajadores; _i =+ 10) {
+    for (var _i = 0; _i <= this.limitTrabajadores; _i = _i + 10) {
       this.cantidadTrabajadores = _i;
       await new Promise((resolve) => setTimeout(resolve, 14));
     }
   }
   async cargarCantidadesGuias() {
-    for (var _i = 0; _i <= this.limitGuias; _i =+ 13240) {
+    for (var _i = 0; _i <= this.limitGuias; _i = _i + 13240) {
       this.cantidadGuias = _i;
       await new Promise((resolve) => setTimeout(resolve, 0));
     }

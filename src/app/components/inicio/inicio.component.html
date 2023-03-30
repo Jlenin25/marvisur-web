@@ -39,7 +39,10 @@
         <div class="ctn-box">
           <div class="front">
             <div class="left">
-              <img src="assets/slide/NUEVA SUCURSAL.png" class="title" />
+              <div class="h1-font">
+                <div class="normal">Nueva</div>
+                <div class="amertha">Sucursal</div>
+              </div>
               <a class="title-place" routerLink="/sucursales">Magdalena</a>
               <div class="bottom-place">
                 <img src="assets/slide/icono ubicacion.png" />
@@ -126,7 +129,7 @@
             placeholder="Número"
             />
             <div class="ctn-buttons">
-              <button type="submit" class="btn btn-search"></button>
+              <button type="submit" class="btn btn-search" (click)="modalInfoTraking()"></button>
             <button class="btn btn-info" [tooltip]="tolTemplate"></button>
             <ng-template #tolTemplate triggers="hover">
               <img src="assets/images/info-rastrea.png" />
@@ -152,8 +155,12 @@
           data-target="#modalReclamaciones"
         />
       </div>
-      <a class="a-img" routerLink="/soluciones-en-linea">
+      <a class="a-img" routerLink="/seccion/soluciones-en-linea">
         <img src="assets/images/solucionesnuevo.png" />
+      </a>
+      <a class="a-img directorio" href="https://online.fliphtml5.com/ekxyo/jrqp/#p=1" target="_blank">
+        <i class="fa-solid fa-book"></i>
+        <span>Directorio</span>
       </a>
     </div>
   </section>

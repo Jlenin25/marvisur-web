@@ -1,0 +1,34 @@
+@import "../../app.component.scss";
+
+.btn-closeModal {
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    z-index: 20;
+    color: $negro;
+    width: 30px;
+    height: 30px;
+    background-color: $blanco;
+    border-radius: 100%;
+    box-shadow: 0 1px 8px $negro;
+}
+
+.modal-dialog {
+    height: 100vh;
+    position: relative;
+    max-width: 850px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    padding: 0;
+    .modal-content {
+        margin: auto;
+    }
+}
+
+// Celular
+@media only screen and (max-width: 1000px) {
+    .btn-closeModal {
+        right: 0;
+    }
+}

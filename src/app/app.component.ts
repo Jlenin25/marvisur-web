@@ -10,8 +10,6 @@ declare var gtag:any;
   styleUrls: ['./app.component.scss']
 })
 
-
-
 export class AppComponent {
   title = 'Marvisur';
   phone ='';
