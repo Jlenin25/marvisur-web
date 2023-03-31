@@ -93,6 +93,11 @@ export class InicioComponent implements OnInit {
     this.limitGuias = 5981832;
   }
 
+  singleNumber(e:any) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57)
+  }
+
   openTermsAndConditions() {
     return this.dialog.open(TerminosycondicionesComponent);
   }

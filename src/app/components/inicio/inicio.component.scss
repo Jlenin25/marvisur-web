@@ -1,6 +1,3 @@
-@import "swiper/swiper";
-@import "swiper/components/pagination/pagination";
-@import "swiper/components/navigation/navigation";
 @import "../../app.component.scss";
 
 .home {
@@ -40,16 +37,19 @@
               display: flex;
               flex-direction: column;
               .h1-font {
-                font-weight: bold;
                 font-size: 6em;
                 .normal {
-                  font-weight: 700;
+                  font-size: 1.2em;
+                  font-family: montserrat;
+                  text-transform: uppercase;
+                  margin-left: -15px;
                 }
                 .amertha {
                   font-size: 1.4em;
-                  margin: -40px 0 50px 40px;
+                  margin: -120px 0 50px 40px;
                   font-family: amertha;
-                  color: $color-global-claro
+                  color: $color-global-claro;
+                  transform: rotate(-8deg);
                 }
               }
               .title-place {

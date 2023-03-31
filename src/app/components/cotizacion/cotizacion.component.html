@@ -1,28 +1,155 @@
+<main class="quote">
+  <div class="title-quote">
+    <h2>COTIZACIÓN</h2>
+  </div>
+  <section class="quote-section">
+    <div class="ctn-quote">
+      <form (ngSubmit)="calculateQuote(quoteUserForm)" #quoteUserForm="ngForm">
+        <ul class="document">
+            <li class="box dniRuc">
+                <select (change)="dniRuc($event)">
+                    <option value="dni" selected="selected">DNI</option>
+                    <option value="ruc">RUC</option>
+                </select>
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        class="dni-ruc" autocomplete="off"
+                        maxlength=11
+                        (keypress)="singleNumber($event)"
+                        [(ngModel)]="cotizaUserModel.dni"
+                    >
+                    <label class="user-label">N° de {{ changeDniRuc }}</label>
+                </div>
+            </li>
+            <li class="box personCompany">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        class="per-com"
+                        autocomplete="off"
+                        [(ngModel)]="cotizaUserModel.nombre"
+                    >
+                    <label class="user-label">{{ changeNameBusiness }}</label>
+                </div>
+            </li>
+            <li class="box phone">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        autocomplete="off"
+                        maxlength=9
+                        (keypress)="singleNumber($event)"
+                        [(ngModel)]="cotizaUserModel.telefono"
+                    >
+                    <label class="user-label">Celular</label>
+                </div>
+            </li>
+            <li class="box email">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        class="email"
+                        autocomplete="off"
+                        [(ngModel)]="cotizaUserModel.correo"
+                    >
+                    <label class="user-label">Correo electrónico</label>
+                </div>
+            </li>
+            <li class="box quantity">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        autocomplete="off"
+                        (keypress)="singleNumber($event)"
+                        name="cantidad"
+                        [(ngModel)]="cotizaUserModel.cantidad"
+                    >
+                    <label class="user-label">Cantidad</label>
+                </div>
+            </li>
+            <li class="box weight">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        autocomplete="off"
+                        (keypress)="singleNumber($event)"
+                        name="peso"
+                        [(ngModel)]="cotizaUserModel.peso"
+                    >
+                    <label class="user-label">Peso (k)</label>
+                </div>
+            </li>
+            <li class="box width-box">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        autocomplete="off"
+                        (keypress)="singleNumber($event)"
+                        name="ancho"
+                        [(ngModel)]="cotizaUserModel.ancho"
+                    >
+                    <label class="user-label">Ancho (m)</label>
+                </div>
+            </li>
+            <li class="box long">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        autocomplete="off"
+                        (keypress)="singleNumber($event)"
+                        name="largo"
+                        [(ngModel)]="cotizaUserModel.largo"
+                    >
+                    <label class="user-label">Largo (m)</label>
+                </div>
+            </li>
+            <li class="box height-box">
+                <div class="input-group">
+                    <input
+                        required
+                        type="text"
+                        autocomplete="off"
+                        (keypress)="singleNumber($event)"
+                        name="alto"
+                        [(ngModel)]="cotizaUserModel.alto"
+                    >
+                    <label class="user-label">Alto (m)</label>
+                </div>
+            </li>
+          </ul>
+          <button type="submit" class="calculator">
+            Cotizar
+            <i class="fa-solid fa-calculator"></i>
+          </button>
+      </form>
+      <div class="price-calculate">
+        <div class="pr-ca-title">
+            <h3>Precio Aproximado</h3>
+        </div>
+        <div class="pr-ca-body">
+            <img src="assets/images/img-guias.png" alt="">
+            <span>El precio aprox. es de <b>{{ result }}</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-
-<div class="portadaAll ">
-
-    <img class="img" src="assets/images/portadacotizacionnuevo.png" height="100%" width="100%">
-
-
-</div>
-<!--- asdasdsa-->
-<div class="title-peque text-center">
-    COTIZACIÓN
-</div>
+<!-- 
 <br><br><br>
 <div class="container">
 <div class="animated fadeIn fast">
-    <!-- primera imagen-->
 </div>
-  
-    <!-- tres imagenes-->
-    <!--tabla cotizacion  tipo servicio - origen - destino-->
-
     <div class="fondoCotizaciones d-block">
-
-
-        <!-- tipos de servicio-->
         <div class="row fila-servicio">
             <div class="col-lg-1"></div>
             <div class="col-lg-3 form-group">
@@ -36,7 +163,6 @@
                     <select class="col-12 browser-default custom-select" name="tipo1" #tipo1="ngModel" [(ngModel)]="cotizaUserModel.tipo" >
                         <option   value="Seleccione2" disabled="true">Seleccione el tipo</option>
                         <option value="TRANSPORTE DE CARGA">TRANSPORTE DE CARGA</option>
-                        <!-- <option value="SERVICIO EXPRESO">SERVICIO EXPRESO</option> este servicio es cuando no haya un destino-->
                         <option value="SERVICIO DE MUDANZA">SERVICIO DE MUDANZA</option>
                     </select>
                 </div>
@@ -105,7 +231,6 @@
                                       [tooltip]="tooltipsobre"
                                       placement="right"
                                       triggers="hover">
-                                     <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
                                      <img  class="img-cotizacion-tablita" src="assets/images/sobre.png" height="50px">
                                 </div>  
                         </div>
@@ -119,7 +244,6 @@
                                       [tooltip]="toltipminipaque"
                                       placement="right"
                                       triggers="hover">
-                                     <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
                                      <img class="img-cotizacion-tablita" src="assets/images/mini_paquete.png" height="50px">
                                 </div>  
                         </div>    
@@ -132,7 +256,6 @@
                                   [tooltip]="tooltippaquete"
                                   placement="right"
                                   triggers="hover">
-                                 <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
                                  <img class="img-cotizacion-tablita" src="assets/images/paquete.png" height="50px">
                             </div>  
                         </div>
@@ -145,7 +268,6 @@
                                   [tooltip]="tooltipmaxi"
                                   placement="right"
                                   triggers="hover">
-                                 <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
                                  <img class="img-cotizacion-tablita" src="assets/images/maxi_paquete.png" height="50px">
                             </div> 
                             
@@ -159,7 +281,6 @@
                                       [tooltip]="tooltippeso"
                                       placement="right"
                                       triggers="hover">
-                                     <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
                                      <img class="img-cotizacion-tablita" src="assets/images/peso.png" height="50px">
                                 </div> 
                         </div>
@@ -173,7 +294,6 @@
                                   color=red
                                   placement="right"
                                   triggers="hover">
-                                 <!-- <i class="fa fa-thumb-tack" aria-hidden="true"></i> --> 
                                  <img class="img-cotizacion-tablita" src="assets/images/volumen.png" height="50px">
                             </div> 
                         </div>
@@ -325,8 +445,6 @@
 
 <div>
     
-<!-- Button trigger modal -->
-  <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-sm modal-cotiza" role="document">
       <div class="modal-content">
@@ -353,7 +471,6 @@
       </div>
     </div>
   </div>
-  <!-- modal cotizaciones corporativas-->
 
 
 <div class="modal fade" id="modalcotizacionescorporativas" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"   >
@@ -463,19 +580,14 @@
         
   
                             <button type="button" (click)="onSubmitcorpo($event)" data-toggle="modal" data-dismiss="modal" data-target="#exampleModal" class="btn btn-solicitud  btn-success col-lg-12" >Enviar Solicitud</button>
-                            <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
                        
                        </form> 
                     </div>             
   
             </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        </div> -->
       </div>
     </div>
   </div>
 
 
-</div>
-
+</div> -->

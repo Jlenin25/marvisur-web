@@ -13,25 +13,34 @@ $url-img-slide: "../../../assets/slide/";
   font-family: amertha;
   src: url('../fonts/amertha-personal-use-only.ttf');
 }
+@font-face {
+  font-family: montserrat;
+  src: url('../fonts/Montserrat-BlackItalic.otf');
+}
 
 /* Colors */
 $blanco: hsl(0, 0%, 100%);
 $negro: hsl(0, 0%, 0%);
 $color-global-claro: hsl(1, 100%, 55%);
-$color-global-claro-3: hsl(358, 80%, 50%);
+$anaranjado: hsl(39, 100%, 50%);
 $gris: hsl(0, 0%, 80%);
 $verde: hsl(128, 51%, 49%);
 $azul: hsl(239, 100%, 50%);
+$celeste: hsl(207, 90%, 54%);
 $sombra-rojo-global: hsla(0, 54%, 59%, 0.314);
 $color-global-claro-2: hsl(0, 100%, 71%);
+$rosado-borde: hsl(349, 100%, 69%);
 $color-global-claro-2-transparente: hsla(0, 100%, 80%, 0.548);
+$color-global-claro-3: hsl(358, 80%, 50%);
 $color-global-oscuro: hsl(1, 100%, 32%);
 $azul-claro: hsl(223, 82%, 56%);
 $azul-oscuro: hsl(223, 100%, 30%);
 $verde-claro: hsl(131, 72%, 56%);
+$verde-oscuro: hsl(131, 100%, 22%);
 $gris-c: hsl(0, 0%, 91%);
 $gris-transparente: hsla(0, 0%, 80%, 0.635);
 $gris-intenso: hsl(0, 0%, 59%);
+$bkg: hsl(340, 10%, 6%);
 
 * {
   outline: none;

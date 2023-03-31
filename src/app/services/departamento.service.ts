@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { Departamento } from '../models/departamento';
 import {global} from './global';
-// import { map } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'

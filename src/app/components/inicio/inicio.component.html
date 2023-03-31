@@ -60,7 +60,7 @@
         </div>
         <img src="assets/slide/FONDO CAMION ROJO.png" class="trailer" />
       </div>
-      <!-- <div class="carousel-item">
+      <div class="carousel-item">
             <img src="assets/images/carousel/sucursalChosica.jpg" class="d-block w-100">
           </div>
           <div class="carousel-item">
@@ -83,7 +83,7 @@
           </div>
           <div class="carousel-item">
             <img src="assets/images/carousel/sucursalOlivosIII.jpg" class="d-block w-100">
-          </div> -->
+          </div>
     </div>
     <div class="carousel-control">
       <button
@@ -119,6 +119,8 @@
             #serie="ngModel"
             class="left"
             placeholder="Serie"
+            autocomplete="off"
+            (keypress)="singleNumber($event)"
           />
           <input
             type="text"
@@ -127,7 +129,9 @@
             #serie="ngModel"
             class="right"
             placeholder="Número"
-            />
+            autocomplete="off"
+            (keypress)="singleNumber($event)"
+          />
             <div class="ctn-buttons">
               <button type="submit" class="btn btn-search" (click)="modalInfoTraking()"></button>
             <button class="btn btn-info" [tooltip]="tolTemplate"></button>

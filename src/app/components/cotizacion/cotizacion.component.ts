@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, Input } from '@angular/core';
 import { CotizaUser } from '../../models/cotizauser';
 import {CotizacionService} from '../../services/cotizacion.service';
 import { DepartamentoService } from 'src/app/services/departamento.service';
@@ -11,7 +11,7 @@ import { Tarifa } from 'src/app/models/tarifa';
 @Component({
   selector: 'app-cotizacion',
   templateUrl: './cotizacion.component.html',
-  styleUrls: ['./cotizacion.component.css'],
+  styleUrls: ['./cotizacion.component.scss'],
   providers:[CotizacionService, DepartamentoService,TarifarioService]
 
 })
@@ -36,7 +36,11 @@ export class CotizacionComponent implements OnInit{
   public flagBusquedaTarifario:boolean
   public tarifarioBuscado:any;
 
-  
+  public changeDniRuc: string = 'DNI'
+  public changePersonCompany: string = 'Persona'
+  public changeNameBusiness: string = 'Nombre completo'
+  public maxminDniRuc: string = '9'
+  public result: number = 0
 
   afuConfig = {
     multiple:false,
@@ -57,7 +61,8 @@ export class CotizacionComponent implements OnInit{
   constructor(
   	private _cotizacionService:CotizacionService,
     private _SucursalesTodasService:DepartamentoService,
-    private _TarifarioService:TarifarioService
+    private _TarifarioService:TarifarioService,
+    private el: ElementRef
   	) { 
     
     this.tarifarioBuscado=new Tarifa(0,"","","","","","","","")
@@ -74,9 +79,49 @@ export class CotizacionComponent implements OnInit{
     this.flagCotiza=false;
     this.flagBusquedaTarifario=false;
     this.tarifario= new Tarifario("","")
-    this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","","no hay imagen","Seleccione2","","0")
-    this.tarifarioBuscado=new Array<any>();
+    this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","0","0","0","0","","no hay imagen","Seleccione2","","0")
+    // this.tarifarioBuscado=new Array<any>();
   }
+
+  dniRuc(e:any) {
+    let inputVisible = this.el.nativeElement.querySelector('.dni-ruc')
+    if(e.target.value === 'ruc') {
+      this.changeDniRuc = 'RUC'
+      // this.maxminDniRuc = 11
+      this.changePersonCompany = 'Empresa'
+      this.changeNameBusiness = 'Razón social'
+      return inputVisible.classList.add('ruc')
+    } else {
+      this.changeDniRuc = 'DNI'
+      // this.maxminDniRuc = 9
+      this.changePersonCompany = 'Persona'
+      this.changeNameBusiness = 'Nombre completo'
+      return inputVisible.classList.remove('ruc')
+    }
+  }
+
+  singleNumber(e:any) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57)
+  }
+
+  calculateQuote(form:any) {
+    // console.log(typeof(parseInt(form.value.cantidad)))
+    let cantidad = parseInt(form.value.cantidad)
+    let peso = parseInt(form.value.peso)
+    let ancho = parseInt(form.value.ancho)
+    let largo = parseInt(form.value.largo)
+    let alto = parseInt(form.value.alto)
+
+    this.result = (cantidad + peso + ancho + largo + alto)* 135
+    console.log(this.result)
+
+    let priceVisible = this.el.nativeElement.querySelector('.price-calculate')
+    if(!priceVisible.classList.contains('visible')) {
+      return priceVisible.classList.add('visible')
+    }
+  }
+
   async onSubmit(form:any){ 
     for( var i=1;i<3;i++){
       await this.delay(1000);
