@@ -15,11 +15,11 @@ export class DepartamentoService{
 		this.url=global.url;
 	}
 	
-	getDepartamento():Observable<any>{
+	getDepartamento():Observable<any> {
 		//let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 		return this.http.get(this.url+'obtenerdepartamentos',);
 	}
-	getSucursalesTodas():Observable<any>{
+	getSucursalesTodas():Observable<any> {
 		//let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 		return this.http.get(this.url+'sucursalesTodas',);
 	}

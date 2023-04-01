@@ -26,12 +26,12 @@
             <input
                 type="text"
                 placeholder="Departamento..."
-                matInput
                 [matAutocomplete]="auto1"
+                [formControl]="myControl"
                 class="i-d"
             >
             <mat-autocomplete #auto1="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnDepartments">
-                <mat-option *ngFor="let departamento of departamentos" [value]="departamento" (click)="onOptionsSelected(departamento)" class="ctn-ac">
+                <mat-option *ngFor="let departamento of optionsDepartments | async" [value]="departamento" (click)="onOptionsSelected(departamento)" class="ctn-ac">
                     {{departamento.nombre}}
                 </mat-option>
             </mat-autocomplete>
