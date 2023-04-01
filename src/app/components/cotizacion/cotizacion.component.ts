@@ -41,6 +41,9 @@ export class CotizacionComponent implements OnInit{
   public changeNameBusiness: string = 'Nombre completo'
   public maxminDniRuc: string = '9'
   public result: number = 0
+  public cantidad: number = 0
+  public alto: number = 0
+  public ancho: number = 0
 
   afuConfig = {
     multiple:false,
@@ -79,7 +82,7 @@ export class CotizacionComponent implements OnInit{
     this.flagCotiza=false;
     this.flagBusquedaTarifario=false;
     this.tarifario= new Tarifario("","")
-    this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","0","0","0","0","","no hay imagen","Seleccione2","","0")
+    this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","","","","","","","","no hay imagen","Seleccione2","","0")
     // this.tarifarioBuscado=new Array<any>();
   }
 
@@ -87,13 +90,11 @@ export class CotizacionComponent implements OnInit{
     let inputVisible = this.el.nativeElement.querySelector('.dni-ruc')
     if(e.target.value === 'ruc') {
       this.changeDniRuc = 'RUC'
-      // this.maxminDniRuc = 11
       this.changePersonCompany = 'Empresa'
       this.changeNameBusiness = 'Razón social'
       return inputVisible.classList.add('ruc')
     } else {
       this.changeDniRuc = 'DNI'
-      // this.maxminDniRuc = 9
       this.changePersonCompany = 'Persona'
       this.changeNameBusiness = 'Nombre completo'
       return inputVisible.classList.remove('ruc')
@@ -107,23 +108,28 @@ export class CotizacionComponent implements OnInit{
 
   calculateQuote(form:any) {
     // console.log(typeof(parseInt(form.value.cantidad)))
-    let cantidad = parseInt(form.value.cantidad)
-    let peso = parseInt(form.value.peso)
-    let ancho = parseInt(form.value.ancho)
-    let largo = parseInt(form.value.largo)
-    let alto = parseInt(form.value.alto)
+    var cantidad = form.value.cantidad
+    if(cantidad === '') { cantidad = '0'}
+    var peso = form.value.peso
+    if(peso === '') { peso = '0'}
+    var ancho = form.value.ancho
+    if(ancho === '') { ancho = '0'}
+    var largo = form.value.largo
+    if(largo === '') { largo = '0'}
+    var alto = form.value.alto
+    if(alto === '') { alto = '0'}
 
-    this.result = (cantidad + peso + ancho + largo + alto)* 135
-    console.log(this.result)
+    this.result = (parseInt(cantidad) + parseInt(peso) + parseInt(ancho) + parseInt(largo) + parseInt(alto))* 135
 
     let priceVisible = this.el.nativeElement.querySelector('.price-calculate')
     if(!priceVisible.classList.contains('visible')) {
       return priceVisible.classList.add('visible')
     }
+
   }
 
   async onSubmit(form:any){ 
-    for( var i=1;i<3;i++){
+    for(var i=1;i<3;i++) {
       await this.delay(1000);
 
     }

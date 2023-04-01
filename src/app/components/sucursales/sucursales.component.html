@@ -27,37 +27,41 @@
                 type="text"
                 placeholder="Departamento..."
                 matInput
-                [formControl]="myControl"
-                [matAutocomplete]="auto"
+                [matAutocomplete]="auto1"
                 class="i-d"
             >
-            <mat-autocomplete #auto="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let option of optionsDepartments | async" [value]="option" class="ctn-ac">
-                    {{option.nombre}}
+            <mat-autocomplete #auto1="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnDepartments">
+                <mat-option *ngFor="let departamento of departamentos" [value]="departamento" (click)="onOptionsSelected(departamento)" class="ctn-ac">
+                    {{departamento.nombre}}
                 </mat-option>
             </mat-autocomplete>
-            <!-- <input
-                type="text"
-                placeholder="Departamento..."
-                (change)='onOptionsSelected($event)'
-                class="i-d"
-            > -->
         </div>
         <!-- Provincias -->
         <div class="place province">
-            <input type="text" matInput [formControl]="myControl" placeholder="Provincia..." [matAutocomplete]="auto" class="i-p">
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let option of optionsDepartments | async" [value]="option">
-                {{option.nombre}}
+            <input
+                type="text"
+                placeholder="Provincia..."
+                matInput
+                [matAutocomplete]="auto2"
+                class="i-p"
+            >
+            <mat-autocomplete #auto2="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnProvinces">
+                <mat-option id="seleccioneprovincia" *ngFor="let provincia of provincias" [value]="provincia" (click)="provinciaSelect(provincia)" class="ctn-ac">
+                    {{provincia.ciudad}}
                 </mat-option>
             </mat-autocomplete>
         </div>
         <!-- Sucursales -->
         <div class="place branch">
-            <input type="text" matInput [formControl]="myControl" placeholder="Sucursal..." [matAutocomplete]="auto" class="i-s">
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let option of optionsDepartments | async" [value]="option">
-                {{option.nombre}}
+            <input
+                type="text"
+                placeholder="Sucursales..."
+                [matAutocomplete]="auto3"
+                class="i-s"
+            >
+            <mat-autocomplete #auto3="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnSucursal">
+                <mat-option id="seleccionesucursal" *ngFor="let sucursal of sucursales" [value]="sucursal" (click)="suscursalSelect(sucursal)" class="ctn-ac">
+                    {{sucursal.titulo}}
                 </mat-option>
             </mat-autocomplete>
         </div>
@@ -73,89 +77,33 @@
             </agm-map>
             <div class="info">
                 <h3>INFORMACIÓN:</h3>
-                <ul>
-                    <li>
+                <ul *ngIf="sucursales && flaginformacion">
+                    <li *ngIf="sucursales[0].direccion">
                         <span class="fa fa-map-marker fa-1x"></span>
-                        &nbsp; CALLE FRANCISCO PIZARRO NRO 351 BAGUA GRANDE - UTCUBAMBA - AMAZONAS (Costado Caja Trujillo)
+                        &nbsp; {{sucursalesSelecionada[0].direccion}}
                     </li>
-                    <li>
-                        <span class="fa fa fa-map fa-1x"> </span>
-                        &nbsp; AL FRENTE DE ENSEU
+                    <li *ngIf="sucursales[0].direccion">
+                        <span class="fa fa fa-map fa-1x"></span>
+                        &nbsp; {{sucursalesSelecionada[0].referencia}}
                     </li>
-                    <li>
-                        <span class="fa fa-phone-square fa-1x"> </span>
-                        &nbsp; 944261903
+                    <li *ngIf="sucursales[0].direccion">
+                        <span class="fa fa-phone-square fa-1x"></span>
+                        &nbsp; {{sucursalesSelecionada[0].telefono_primario}}
                     </li>
-                    <li>
-                        <span class="fa fa-envelope-square fa-1x"> </span>
-                        &nbsp; baguagrande@expresomarvisur.com
+                    <li *ngIf="sucursales[0].direccion">
+                        <span class="fa fa-envelope-square fa-1x"></span>
+                        &nbsp; {{sucursalesSelecionada[0].correo}}
                     </li>
-                    <li>
-                        <span class="fa fa-clock-o fa-1x"> </span>
-                        &nbsp; LUN - SAB: 8:00 AM - 6:00 PM
+                    <li *ngIf="sucursales[0].direccion">
+                        <span class="fa fa-clock-o fa-1x"></span>
+                        &nbsp; {{sucursalesSelecionada[0].horario}}
                     </li>
-                    <li>
-                        <span class="fa fa-paper-plane fa-1x"> </span>
-                        &nbsp; NIVEL NACIONAL
+                    <li *ngIf="sucursales[0].direccion">
+                        <span class="fa fa-paper-plane fa-1x"></span>
+                        &nbsp; {{sucursalesSelecionada[0].detalles}}
                     </li>
                 </ul>
-                <!-- <div class="cuerpo border-left" *ngIf="sucursales && flaginformacion">
-                    <div class="info-sucu" *ngIf="sucursales[0].direccion"><span class="fa fa-map-marker fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].direccion}}  </div>
-                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-phone-square fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].telefono_primario}}</div>
-                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-envelope-square fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].correo}} </div>
-                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-clock-o fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].horario}}</div>
-                    <div class="info-sucu" *ngIf="sucursales[0].direccion"> <span class="fa fa-paper-plane fa-1x"> </span>&nbsp; {{sucursalesSelecionada[0].detalles}}</div>
-                </div> -->
             </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="animated fadeIn fast">
-            <!-- espacio para los filtros de sucursales-->
-            <div>
-                <!-- Departamentos -->
-                <!-- <div class="conjunto">
-                    <div class="rojo col-5 col-lg-3">
-                        DEPARTAMENTO
-                    </div>
-                    <div class="col-6 col-lg-3 opciones-select">
-                        <select (change)='onOptionsSelected($event)' class="browser-default custom-select combs">
-                                <option   selected  disabled="true">Seleccione Departamento</option>
-        
-                                <option  *ngFor="let departamento of departamentos" value="{{departamento.id}}">{{departamento.nombre}}</option>
-                        </select>
-                    </div>
-                </div> -->
-                <!-- Provincias -->
-                <!-- <div class="conjunto">
-                    <div class="rojo col-5 col-lg-3">
-                        PROVINCIA
-                    </div>
-                    <div class="col-6 col-lg-3 opciones-select">
-                        <select (change)='provinciaSelect($event)' class="browser-default custom-select combs">
-                                <option    id="seleccioneprovincia" selected disabled="true">Seleccione Provincia</option>
-        
-                            <option  *ngFor="let provincia of provincias" value="{{provincia.ciudad}}">{{provincia.ciudad}}</option>
-                        </select>
-                    </div>
-                </div> -->
-                <!-- Sucursales -->
-                <!-- <div class="conjunto">
-                    <div class="rojo col-5 col-lg-3">
-                        SUCURSALES
-                    </div>
-                    <div class="col-6 col-lg-3 opciones-select">
-                        <form> 
-                        <select (change)='suscursalSelect($event)' class="browser-default custom-select combs">
-                            <option  id="seleccionesucursal" value="seleccione"  selected  disabled="true">Seleccione Sucursal</option>
-                            <option  *ngFor="let sucursal of sucursales" value="{{sucursal.id}}">{{sucursal.titulo}}</option>
-                        </select>
-                    </form>
-                    </div>
-                </div> -->
-            </div>
-            
         </div>
     </div>
 </main>

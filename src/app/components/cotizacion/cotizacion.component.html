@@ -2,146 +2,350 @@
   <div class="title-quote">
     <h2>COTIZACIÓN</h2>
   </div>
-  <section class="quote-section">
-    <div class="ctn-quote">
-      <form (ngSubmit)="calculateQuote(quoteUserForm)" #quoteUserForm="ngForm">
-        <ul class="document">
-            <li class="box dniRuc">
-                <select (change)="dniRuc($event)">
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" animationDuration="1000ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <i class="fa-solid fa-bolt"></i>
+        <span class="span-slide-title">Cálculo rápido</span>
+      </ng-template>
+      <section class="quote-section">
+        <div class="ctn-quote">
+          <form
+            (ngSubmit)="calculateQuote(quoteUserForm)"
+            #quoteUserForm="ngForm"
+          >
+            <ul class="document docu-1">
+              <li class="box quantity">
+                <div class="input-group">
+                  <input
+                    required
+                    type="text"
+                    autocomplete="off"
+                    (keypress)="singleNumber($event)"
+                    name="cantidad"
+                    [(ngModel)]="cotizaUserModel.cantidad"
+                    #cantidad="ngModel"
+                  />
+                  <label class="user-label">Cantidad</label>
+                </div>
+              </li>
+              <li class="box weight">
+                <div class="input-group">
+                  <input
+                    required
+                    type="text"
+                    autocomplete="off"
+                    (keypress)="singleNumber($event)"
+                    name="peso"
+                    [(ngModel)]="cotizaUserModel.peso"
+                    #peso="ngModel"
+                  />
+                  <label class="user-label">Peso (k)</label>
+                </div>
+              </li>
+              <li class="box width-box">
+                <div class="input-group">
+                  <input
+                    required
+                    type="text"
+                    autocomplete="off"
+                    (keypress)="singleNumber($event)"
+                    name="ancho"
+                    [(ngModel)]="cotizaUserModel.ancho"
+                    #ancho="ngModel"
+                  />
+                  <label class="user-label">Ancho (m)</label>
+                </div>
+              </li>
+              <li class="box long">
+                <div class="input-group">
+                  <input
+                    required
+                    type="text"
+                    autocomplete="off"
+                    (keypress)="singleNumber($event)"
+                    name="largo"
+                    [(ngModel)]="cotizaUserModel.largo"
+                    #largo="ngModel"
+                  />
+                  <label class="user-label">Largo (m)</label>
+                </div>
+              </li>
+              <li class="box height-box">
+                <div class="input-group">
+                  <input
+                    required
+                    type="text"
+                    autocomplete="off"
+                    (keypress)="singleNumber($event)"
+                    name="alto"
+                    [(ngModel)]="cotizaUserModel.alto"
+                    #alto="ngModel"
+                  />
+                  <label class="user-label">Alto (m)</label>
+                </div>
+              </li>
+            </ul>
+            <button type="submit" class="calculator">
+              Calcular
+              <i class="fa-solid fa-calculator"></i>
+            </button>
+          </form>
+          <div class="price-calculate">
+            <div class="pr-ca-title">
+              <h3>Precio Aproximado</h3>
+            </div>
+            <div class="pr-ca-body">
+              <img src="assets/images/img-guias.png" alt="" />
+              <span
+                >El precio aprox. es de <b>S/. {{ result }}</b></span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <i class="fa-solid fa-bars-staggered"></i>
+        <span class="span-slide-title">Cotizar completo</span>
+      </ng-template>
+      <section class="quote-section">
+        <div class="ctn-quote">
+          <form
+            (ngSubmit)="calculateQuote(quoteUserForm)"
+            #quoteUserForm="ngForm"
+            class="form-docu-2"
+          >
+          <div class="origin">
+            <ul class="document">
+                <li class="box dniRuc">
+                  <select (change)="dniRuc($event)">
                     <option value="dni" selected="selected">DNI</option>
                     <option value="ruc">RUC</option>
-                </select>
-                <div class="input-group">
+                  </select>
+                  <div class="input-group">
                     <input
+                      required
+                      type="text"
+                      class="dni-ruc"
+                      autocomplete="off"
+                      maxlength="11"
+                      name="dni"
+                      (keypress)="singleNumber($event)"
+                      [(ngModel)]="cotizaUserModel.dni"
+                      #dni="ngModel"
+                    />
+                    <label class="user-label">N° de {{ changeDniRuc }}</label>
+                  </div>
+                </li>
+                <li class="box personCompany">
+                  <div class="input-group">
+                    <input
+                      required
+                      type="text"
+                      class="per-com"
+                      autocomplete="off"
+                      name="nombre"
+                      [(ngModel)]="cotizaUserModel.nombre"
+                      #nombre="ngModel"
+                    />
+                    <label class="user-label">{{ changeNameBusiness }}</label>
+                  </div>
+                </li>
+                <li class="box phone">
+                  <div class="input-group">
+                    <input
+                      required
+                      type="text"
+                      autocomplete="off"
+                      maxlength="9"
+                      name="telefono"
+                      (keypress)="singleNumber($event)"
+                      [(ngModel)]="cotizaUserModel.telefono"
+                      #telefono="ngModel"
+                    />
+                    <label class="user-label">Celular</label>
+                  </div>
+                </li>
+                <li class="box email">
+                  <div class="input-group">
+                    <input
+                      required
+                      type="text"
+                      class="email"
+                      autocomplete="off"
+                      name="correo"
+                      [(ngModel)]="cotizaUserModel.correo"
+                      #correo="ngModel"
+                    />
+                    <label class="user-label">Correo electrónico</label>
+                  </div>
+                </li>
+            </ul>
+          </div>
+          <div class="destination">
+            <ul class="document">
+                <li class="box dniRuc">
+                    <select (change)="dniRuc($event)">
+                      <option value="dni" selected="selected">DNI</option>
+                      <option value="ruc">RUC</option>
+                    </select>
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
-                        class="dni-ruc" autocomplete="off"
-                        maxlength=11
+                        class="dni-ruc"
+                        autocomplete="off"
+                        maxlength="11"
+                        name="dni"
                         (keypress)="singleNumber($event)"
                         [(ngModel)]="cotizaUserModel.dni"
-                    >
-                    <label class="user-label">N° de {{ changeDniRuc }}</label>
-                </div>
-            </li>
-            <li class="box personCompany">
-                <div class="input-group">
-                    <input
+                        #dni="ngModel"
+                      />
+                      <label class="user-label">N° de {{ changeDniRuc }}</label>
+                    </div>
+                  </li>
+                  <li class="box personCompany">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         class="per-com"
                         autocomplete="off"
+                        name="nombre"
                         [(ngModel)]="cotizaUserModel.nombre"
-                    >
-                    <label class="user-label">{{ changeNameBusiness }}</label>
-                </div>
-            </li>
-            <li class="box phone">
-                <div class="input-group">
-                    <input
+                        #nombre="ngModel"
+                      />
+                      <label class="user-label">{{ changeNameBusiness }}</label>
+                    </div>
+                  </li>
+                  <li class="box phone">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         autocomplete="off"
-                        maxlength=9
+                        maxlength="9"
+                        name="telefono"
                         (keypress)="singleNumber($event)"
                         [(ngModel)]="cotizaUserModel.telefono"
-                    >
-                    <label class="user-label">Celular</label>
-                </div>
-            </li>
-            <li class="box email">
-                <div class="input-group">
-                    <input
+                        #telefono="ngModel"
+                      />
+                      <label class="user-label">Celular</label>
+                    </div>
+                  </li>
+                  <li class="box email">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         class="email"
                         autocomplete="off"
+                        name="correo"
                         [(ngModel)]="cotizaUserModel.correo"
-                    >
-                    <label class="user-label">Correo electrónico</label>
-                </div>
-            </li>
-            <li class="box quantity">
-                <div class="input-group">
-                    <input
+                        #correo="ngModel"
+                      />
+                      <label class="user-label">Correo electrónico</label>
+                    </div>
+                  </li>
+            </ul>
+          </div>
+          <div class="details">
+            <ul class="document">
+                <li class="box quantity">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         autocomplete="off"
                         (keypress)="singleNumber($event)"
                         name="cantidad"
                         [(ngModel)]="cotizaUserModel.cantidad"
-                    >
-                    <label class="user-label">Cantidad</label>
-                </div>
-            </li>
-            <li class="box weight">
-                <div class="input-group">
-                    <input
+                        #cantidad="ngModel"
+                      />
+                      <label class="user-label">Cantidad</label>
+                    </div>
+                  </li>
+                  <li class="box weight">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         autocomplete="off"
                         (keypress)="singleNumber($event)"
                         name="peso"
                         [(ngModel)]="cotizaUserModel.peso"
-                    >
-                    <label class="user-label">Peso (k)</label>
-                </div>
-            </li>
-            <li class="box width-box">
-                <div class="input-group">
-                    <input
+                        #peso="ngModel"
+                      />
+                      <label class="user-label">Peso (k)</label>
+                    </div>
+                  </li>
+                  <li class="box width-box">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         autocomplete="off"
                         (keypress)="singleNumber($event)"
                         name="ancho"
                         [(ngModel)]="cotizaUserModel.ancho"
-                    >
-                    <label class="user-label">Ancho (m)</label>
-                </div>
-            </li>
-            <li class="box long">
-                <div class="input-group">
-                    <input
+                        #ancho="ngModel"
+                      />
+                      <label class="user-label">Ancho (m)</label>
+                    </div>
+                  </li>
+                  <li class="box long">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         autocomplete="off"
                         (keypress)="singleNumber($event)"
                         name="largo"
                         [(ngModel)]="cotizaUserModel.largo"
-                    >
-                    <label class="user-label">Largo (m)</label>
-                </div>
-            </li>
-            <li class="box height-box">
-                <div class="input-group">
-                    <input
+                        #largo="ngModel"
+                      />
+                      <label class="user-label">Largo (m)</label>
+                    </div>
+                  </li>
+                  <li class="box height-box">
+                    <div class="input-group">
+                      <input
                         required
                         type="text"
                         autocomplete="off"
                         (keypress)="singleNumber($event)"
                         name="alto"
                         [(ngModel)]="cotizaUserModel.alto"
-                    >
-                    <label class="user-label">Alto (m)</label>
-                </div>
-            </li>
-          </ul>
-          <button type="submit" class="calculator">
-            Cotizar
-            <i class="fa-solid fa-calculator"></i>
-          </button>
-      </form>
-      <div class="price-calculate">
-        <div class="pr-ca-title">
-            <h3>Precio Aproximado</h3>
+                        #alto="ngModel"
+                      />
+                      <label class="user-label">Alto (m)</label>
+                    </div>
+                  </li>
+            </ul>
+          </div>
+            
+            <button type="submit" class="calculator">
+              Cotizar
+              <i class="fa-solid fa-calculator"></i>
+            </button>
+          </form>
+          <div class="price-calculate">
+            <div class="pr-ca-title">
+              <h3>Precio Aproximado</h3>
+            </div>
+            <div class="pr-ca-body">
+              <img src="assets/images/img-guias.png" alt="" />
+              <span
+                >El precio aprox. es de <b>S/. {{ result }}</b></span
+              >
+            </div>
+          </div>
         </div>
-        <div class="pr-ca-body">
-            <img src="assets/images/img-guias.png" alt="">
-            <span>El precio aprox. es de <b>{{ result }}</b></span>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </mat-tab>
+  </mat-tab-group>
 </main>
 
 <!-- 

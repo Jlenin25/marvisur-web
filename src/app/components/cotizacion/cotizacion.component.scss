@@ -12,13 +12,27 @@
             margin-top: 70px;
         }
     }
+    .example-stretched-tabs {
+        background-color: transparent;
+        box-shadow: none;
+        margin: 70px 100px 0 100px;
+        .fa-bolt,
+        .fa-bars-staggered {
+            font-size: 1.2em;
+            color: $color-global-claro;
+            margin-right: 10px;
+        }
+        .span-slide-title {
+            font-size: 1.2em;
+        }
+    }
     .quote-section {
         background-color: $blanco;
         border: 6px solid $color-global-claro;
         box-shadow: 2px 0 15px $gris-intenso;
         max-width: 1300px;
         height: auto;
-        margin: 70px 150px;
+        margin: 70px 40px;
         padding: 60px;
         .ctn-quote {
             form {
@@ -99,7 +113,7 @@
                             }
                             .user-label {
                                 position: absolute;
-                                top: -10px;
+                                top: -7px;
                                 left: 25px;
                                 color: $rosado-borde;
                                 pointer-events: none;
@@ -117,6 +131,125 @@
                             width: 330px;
                         }
                     }
+                }
+                .docu-1 {
+                    max-width: 800px;
+                    width: 100%;
+                }
+                .calculator {
+                    background-color: $color-global-claro;
+                    width: 150px;
+                    height: 40px;
+                    color: $blanco;
+                    border-radius: 20px;
+                    display: flex;
+                    gap: 20px;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 60px 0 0 20px;
+                    font-size: 1.2em;
+                }
+            }
+            .form-docu-2 {
+                .document {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 50px 70px;
+                    margin: auto;
+                    margin-top: 50px;
+                    .box {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        select {
+                            position: absolute;
+                            font-size: 1em;
+                            font-weight: bold;
+                            top: -70px;
+                            width: 150px;
+                            border: 1px solid $rosado-borde;
+                            border-radius: 20px;
+                            padding: 5px 10px;
+                        }
+                        input {
+                            width: 330px;
+                            height: 40px;
+                            padding: 0 16px;
+                            background: transparent;
+                            border-radius: 20px;
+                            border: 1px solid $rosado-borde;
+                            color: $celeste;
+                            animation: shake_541 0.14s 3;
+                            &:focus,
+                            :valid {
+                                outline: none;
+                                border: 1.5px solid #1a73e8;
+                                box-shadow: 0 0 8px $celeste;
+                            }
+                        }
+                        span {
+                            color: $blanco;
+                            font-size: 1.3em;
+                            font-weight: bold;
+                        }
+                        .input-group {
+                            position: relative;
+                            input {
+                                border: solid 1.5px $rosado-borde;
+                                background: none;
+                                font-size: 1rem;
+                                transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+                                &:focus,
+                                :valid {
+                                    outline: none;
+                                    border: 1.5px solid #1a73e8;
+                                    box-shadow: 0 0 8px $celeste;
+                                }
+                                &:focus ~ label,
+                                :valid ~ label {
+                                    transform: translateY(-20%) scale(0.8);
+                                    background-color: $blanco;
+                                    padding: 0 .2em;
+                                    color: $celeste;
+                                }
+                            }
+                            input:valid {
+                                border: 1.5px solid #1a73e8;
+                                box-shadow: none;
+                            }
+                            input:valid ~ label {
+                                transform: translateY(-20%) scale(0.8);
+                                background-color: $blanco;
+                                padding: 0 .2em;
+                                color: $celeste;
+                            }
+                            .user-label {
+                                position: absolute;
+                                top: -7px;
+                                left: 25px;
+                                color: $rosado-borde;
+                                pointer-events: none;
+                                transform: translateY(1rem);
+                                transition: 150ms cubic-bezier(0.4,0,0.2,1);
+                            }
+                        }
+                        .dni-ruc {
+                            width: 330px;
+                        }
+                        .per-com {
+                            width: 330px;
+                        }
+                        .email {
+                            width: 330px;
+                        }
+                    }
+                }
+                .docu-1 {
+                    max-width: 800px;
+                    width: 100%;
                 }
                 .calculator {
                     background-color: $color-global-claro;
