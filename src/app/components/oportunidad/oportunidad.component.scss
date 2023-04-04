@@ -1,0 +1,83 @@
+@import "../../app.component.scss";
+
+.work-with-us {
+  .ctn-wwu {
+    .front-page-wwu {
+      position: relative;
+      height: 80vh;
+      background-color: $negro;
+      img {
+        margin: auto;
+        height: 100%;
+        object-fit: cover;
+      }
+      .ctn-curved {
+        height: 130px;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        bottom: 0
+      }
+    }
+    h2 {
+      font-size: 3em;
+      color: $color-global-claro;
+      text-align: center;
+      font-weight: bold;
+    }
+    .ctn-box-cv {
+      max-width: 1200px;
+      width: 100%;
+      margin: 80px auto;
+      .head,
+      .body {
+        display: grid;
+        grid-template-columns: 30% 55% 15%;
+        .ad-cv {
+          margin: auto;
+        }
+      }
+      .head {
+        background-color: $color-global-claro;
+        color: $blanco;
+        border-radius: 20px;
+        padding: 15px 20px;
+        li {
+          font-size: 1.4em;
+        }
+        .departamento,
+        .puesto {
+          margin: auto;
+        }
+      }
+      .body {
+        margin-top: 20px;
+        border-radius: 15px;
+        padding: 1px 20px;
+        transition: .5s ease all;
+        li {
+          margin: 20px 0;
+          button {
+            i {
+              font-size: 2em;
+              color: $color-global-claro;
+            }
+          }
+        }
+        &:hover {
+          background-color: $color-global-claro-2;
+          color: $blanco;
+          font-weight: bold;
+          li button i {
+            color: $blanco;
+          }
+        }
+      }
+      .ctn-pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+    }
+  }
+}

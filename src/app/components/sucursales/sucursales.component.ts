@@ -50,14 +50,12 @@ export class SucursalesComponent implements OnInit {
     }
 
   myControl = new FormControl()
-  optionsDepartments: Observable<Departments[]> | undefined;
+  optionsDepartments: Observable<Departments[]> | any;
   
   ngOnInit(): void {
     this.cargarDepartamentos()
     this.cargarTodas()
   }
-
-
 
   displayFnDepartments(departaments: Departments): string {
     return departaments && departaments.nombre ? departaments.nombre : '';
@@ -93,7 +91,7 @@ export class SucursalesComponent implements OnInit {
           this.optionsDepartments = this.myControl.valueChanges
           .pipe(
             startWith(''),
-            map(value => typeof value === 'string' ? value : value.name),
+            map(value => typeof value === 'string' ? value : value?.nombre),
             map(name => name ? 
               this.departamentos.filter(
                 (option:any) => (option.nombre.toLowerCase().includes(name.toLocaleLowerCase()))
@@ -155,30 +153,33 @@ export class SucursalesComponent implements OnInit {
     this._departamentoService.getDepartamentobyid(e.id).subscribe(
       response => { 
         if(response.status='success') {
-          this.departamento=response.departamento; 
+          this.departamento=response.departamento
            
-          this.lat=this.departamento.latitud;
-          this.lng=this.departamento.longitud;
+          this.lat=this.departamento.latitud
+          this.lng=this.departamento.longitud
 
           this._SucursalesTodasService.getSucursalesbyDepartamento(this.departamento.nombre).subscribe(
               response =>{ 
                 if(response.status='success') {
                   this.provincias=response.sucursales;
-                  this.select = document.getElementById("seleccioneprovincia");
+                  this.select = document.getElementById("seleccioneprovincia")
                   this.select.selected=true
 
-                  this.select = document.getElementById("seleccionesucursal");
+                  this.select = document.getElementById("seleccionesucursal")
                   this.select.selected=true
 
                  }},
               error=>{
-                this.status='error';console.log(<any>error); 
+                this.status='error';console.log(<any>error)
               }); 
 
         }
         },
-      error=>{this.status='error';console.log(<any>error); });
-     
+      error => {
+        this.status='error'
+        console.log(<any>error)
+      }
+    ) 
   }
   suscursalSelect(e:any){
     
@@ -215,7 +216,11 @@ export class SucursalesComponent implements OnInit {
         }
         );
   }
+
+  howToGet(e:any) {
+    window.open(`https://www.google.com/maps/dir/Tu%20ubicación/${e.latitud},${e.longitud}`)
+  }
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+    return new Promise( resolve => setTimeout(resolve, ms) )
   }
 }

@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
 import { OportunidadService } from '../../services/oportunidad.service';
-
 import { cv } from '../../models/cv';
 import {global} from '../../services/global';
 import { Convocatoria } from 'src/app/models/convocatoria';
 
-
-
-
 @Component({
   selector: 'app-oportunidad',
   templateUrl: './oportunidad.component.html',
-  styleUrls: ['./oportunidad.component.css'],
+  styleUrls: ['./oportunidad.component.scss'],
   providers:[OportunidadService]
  
 })
@@ -59,7 +54,7 @@ afuConfig = {
   	) 
 	  { 
 	this.check=0;
-  	this.status='';
+	this.status='';
 	this.cvModel=new cv(0,'','9999999','','','','0','','sin puesto','');
 	this.convocatorias=Array<Convocatoria>();
 	this.convocatoriaSeleccionada=new Convocatoria(0,"","","","","","","",0,"","");

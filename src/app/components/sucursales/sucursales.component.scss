@@ -76,6 +76,16 @@
                         .fa-clock-o {
                             font-weight: bold;
                         }
+                        button {
+                            background-color: $color-global-claro;
+                            color: $blanco;
+                            width: 150px;
+                            padding: 2px 5px;
+                            border-radius: 15px;
+                            span {
+                                color: $blanco;
+                            }
+                        }
                     }
                 }
             }

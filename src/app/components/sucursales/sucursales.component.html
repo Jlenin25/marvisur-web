@@ -29,6 +29,7 @@
                 [matAutocomplete]="auto1"
                 [formControl]="myControl"
                 class="i-d"
+                matInput
             >
             <mat-autocomplete #auto1="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnDepartments">
                 <mat-option *ngFor="let departamento of optionsDepartments | async" [value]="departamento" (click)="onOptionsSelected(departamento)" class="ctn-ac">
@@ -41,7 +42,6 @@
             <input
                 type="text"
                 placeholder="Provincia..."
-                matInput
                 [matAutocomplete]="auto2"
                 class="i-p"
             >
@@ -101,6 +101,12 @@
                     <li *ngIf="sucursales[0].direccion">
                         <span class="fa fa-paper-plane fa-1x"></span>
                         &nbsp; {{sucursalesSelecionada[0].detalles}}
+                    </li>
+                    <li *ngIf="sucursales[0].direccion">
+                        <button (click)="howToGet(sucursalesSelecionada[0])" class="howToGet">
+                            <span><i class="fa-solid fa-bus"></i></span>
+                            &nbsp; Cómo llegar
+                        </button>
                     </li>
                 </ul>
             </div>

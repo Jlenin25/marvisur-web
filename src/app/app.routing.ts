@@ -14,7 +14,7 @@ import { ErrorComponent } from './components/error/error.component';
 const appRoutes: Routes =[
     { path: '', component: InicioComponent },
     { path: 'inicio', component: InicioComponent },
-    { path: 'conocenos', component: ConocenosComponent },
+    { path: 'nosotros', component: ConocenosComponent },
     { path: 'seccion', loadChildren: () => import('./components/secciones/seccion.module').then(m => m.SeccionModule) },
     { path: 'sucursales', component: SucursalesComponent },
     { path: 'cotizacion', component: CotizacionComponent },
