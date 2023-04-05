@@ -30,6 +30,8 @@ import { FooterComponent } from './components/layouts/footer/footer.component';
 import { HeaderComponent } from './components/layouts/header/header.component';
 import { InfoTrackingModalComponent } from './components/inicio/modal/infotrakingmodal.component';
 import { SeccionComponent } from './components/secciones/seccion.component';
+import { NotFindYetComponent } from './components/oportunidad/NotFindYetModal/notfindyet.component';
+import { LoadCVComponent } from './components/oportunidad/LoadCVModal/loadcv.component';
 
 // import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
@@ -66,6 +68,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     TerminosycondicionesComponent,
     EncuestaComponent,
     InfoTrackingModalComponent,
+    NotFindYetComponent,
+    LoadCVComponent,
     //ReclamacionesComponent
   ],
   imports: [

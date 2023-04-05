@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OportunidadService } from '../../services/oportunidad.service';
 import { cv } from '../../models/cv';
-import {global} from '../../services/global';
 import { Convocatoria } from 'src/app/models/convocatoria';
+import { MatDialog } from '@angular/material/dialog';
+import { NotFindYetComponent } from './NotFindYetModal/notfindyet.component';
+import { LoadCVComponent } from './LoadCVModal/loadcv.component';
 
 @Component({
   selector: 'app-oportunidad',
@@ -13,130 +15,94 @@ import { Convocatoria } from 'src/app/models/convocatoria';
 })
 export class OportunidadComponent implements OnInit {
 
-public check:number;	
-public cvModel:cv;
-public flagButton:boolean=false;
-public convocatorias:Array<Convocatoria>;
-public convocatoriaSeleccionada:Convocatoria;
-public words:Array<string>;
-public funcionesList:Array<string>;
-
-public flag:boolean;
-public flagCvUp:boolean;
-items:any;
-pageOfItems: Array<any>;
-
-submitted=false;
-
-afuConfig = {
-    multiple:false,
-    maxSize: "5",
-      uploadAPI: {
-        url:global.url+'uploadcv'
-      },
-      headers:{
-         "Content-Type" : "text/plain;charset=UTF-8"
-      },
-      theme: "attachPin",
-      hideProgressBar:false,
-      hideResetBtn:true,
-      hideSelectBtn:false,
-      attachPinText:'Adjuntar CV'
-  };
-
- 
+	public check:number;	
+	public cvModel:cv;
+	public flagButton:boolean=false;
+	public convocatorias:Array<Convocatoria>;
+	public convocatoriaSeleccionada:Convocatoria;
+	public words:Array<string>;
+	public funcionesList:Array<string>;
+	public flag:boolean;
+	public flagCvUp:boolean;
   public status: string;
+	items:any;
+	pageOfItems: Array<any>;
+	submitted=false;
+
   constructor(
-	  
-
+		public dialog: MatDialog,
 	  private _oportunidadService:OportunidadService,
-	
-  	) 
+	)
 	  { 
-	this.check=0;
-	this.status='';
-	this.cvModel=new cv(0,'','9999999','','','','0','','sin puesto','');
-	this.convocatorias=Array<Convocatoria>();
-	this.convocatoriaSeleccionada=new Convocatoria(0,"","","","","","","",0,"","");
-	this.words = Array<string>();
-	this.funcionesList = Array<string>();
-	this.flag=true; // flag para listar las funciones de la oportunidad laboral
-	this.pageOfItems=new Array<any>();
-	this.flagCvUp=true;
-
+		this.check=0;
+		this.status='';
+		this.cvModel=new cv(0,'','9999999','','','','0','','sin puesto','');
+		this.convocatorias=Array<Convocatoria>();
+		this.convocatoriaSeleccionada=new Convocatoria(0,"","","","","","","",0,"","");
+		this.words = Array<string>();
+		this.funcionesList = Array<string>();
+		this.flag=true; // flag para listar las funciones de la oportunidad laboral
+		this.pageOfItems=new Array<any>();
+		this.flagCvUp=true;
 	}
 	
-	async onSubmit(form:any){ 
-		this.cvModel.lugar=this.convocatoriaSeleccionada.lugar
+	async onSubmit(form:any) {
+		this.cvModel.lugar = this.convocatoriaSeleccionada.lugar
 		//console.log(this.cvModel.lugar)
-
 		//this.submitted = true;
-			for(let i =0;i<10;i++){
-				await this.delay(1000);
-
-			}
-
-			if(!this.flagCvUp){
-				this._oportunidadService.create(this.cvModel).subscribe(
-					response=>{
-						if(response.status=='success'){
-							this.cvModel=new cv(0,'','9999999','','','','0','','sin puesto','');
-							this.check=1;
-							//this.flagsubida=false;
-	
-						}else{
-							this.status='error';
-							this.check=2;
-						}
-					},
-					error=>{
+		for(let i =0;i<10;i++) {
+			await this.delay(1000);
+		}
+		if(!this.flagCvUp) {
+			this._oportunidadService.create(this.cvModel).subscribe(
+				response => {
+					if(response.status=='success') {
+						this.cvModel = new cv(0,'','9999999','','','','0','','sin puesto','');
+						this.check=1;
+						//this.flagsubida=false;
+					} else {
 						this.status='error';
-						console.log(<any>error)
 						this.check=2;
 					}
-				)
-			
-			}else{
-				this.check=2;
-			}
-			
-
-		
-	
+				},
+				error => {
+					this.status='error';
+					console.log(<any>error)
+					this.check=2;
+				}
+			)
+		} else {
+			this.check=2;
+		}
 	}
-	
+
   ngOnInit(): void {
-    
 	  this._oportunidadService.getallconvocatorias().subscribe(
-			response=>{
+			response => {
 				if(response.status=='success'){
 					this.convocatorias=response.convocatorias;
 					this.items = this.convocatorias;
-					
 				}else{
 					this.status='error';
-				
 				}
 			},
-			error=>{
+			error => {
 				this.status='error';
 				console.log(<any>error)
 			}
-	
-	)
-
-
-	  	
+		)
   }
+
   onChangePage(pageOfItems: Array<any>) {
     this.pageOfItems = pageOfItems;
- }
+	}
  
-   CvUpload(e:any)  {
-	//console.log("entroa upload")
+	CvUpload(e:any)  {
+		console.log('hola')
+		//console.log("entroa upload")
   	let res=JSON.parse(e.response)
   	this.cvModel.cv=res.file
-	this.flagCvUp=false;	
+		this.flagCvUp=false
   }
  //cargar cv por puesto.
   async cargarCV(){
@@ -182,35 +148,45 @@ afuConfig = {
 			this.check=2
 			//console.log("5")
 		}
-		
-	 
-	
   }
 
-   doStuff(item:number){
-	 if(item>0){
-		this.flag=true;
-	 }else{
-		this.flag=false; 
-	 }
-	for (let convocatoria of this.convocatorias) {
-		if(convocatoria.code==item){
-			this.convocatoriaSeleccionada=convocatoria;
-			var str = convocatoria.conocimientos; 
-			var str1= convocatoria.funciones;
-			this.cvModel.puesto=convocatoria.cargo
-			this.words = str.split(/\r?\n|\r|\n/g);
-			this.funcionesList = str1.split(/\r?\n|\r|\n/g);
+	doStuff(item:number) {
+		var openModalDialog = LoadCVComponent
+		if(item > 0) {
+			openModalDialog = LoadCVComponent
+		} else {
+			openModalDialog = NotFindYetComponent
 		}
-			
-	}	
-}
-delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
-close(){
-	this.flagCvUp=true;
-	this.check=0;
-	//console.log("cerrado")
-}	
+		for (let convocatoria of this.convocatorias) {
+			if(convocatoria.code==item){
+				this.convocatoriaSeleccionada=convocatoria;
+				var str = convocatoria.conocimientos; 
+				var str1= convocatoria.funciones;
+				this.cvModel.puesto=convocatoria.cargo
+				this.words = str.split(/\r?\n|\r|\n/g);
+				this.funcionesList = str1.split(/\r?\n|\r|\n/g);
+			}
+		}
+		this.dialog.open(openModalDialog, {
+			data: [{
+				flag: this.flag,
+				convocatorias: this.convocatorias,
+				cvModel: this.cvModel,
+				convocatoriaSeleccionada: this.convocatoriaSeleccionada,
+				flagCvUp: this.flagCvUp,
+				check: this.check,
+				status: this.status,
+				words: this.words,
+				funcionesList: this.funcionesList
+			}]
+		})
+	}
+	delay(ms: number) {
+		return new Promise( resolve => setTimeout(resolve, ms) );
+	}
+	close() {
+		this.flagCvUp=true;
+		this.check=0;
+		//console.log("cerrado")
+	}
 }

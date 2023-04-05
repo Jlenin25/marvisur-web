@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Convocatoria } from '../models/convocatoria';
 import {global} from './global';
+
 @Injectable()
 export class ConvocatoriaService{
 	public url:string;

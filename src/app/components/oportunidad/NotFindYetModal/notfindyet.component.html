@@ -1,0 +1,191 @@
+<mat-dialog-content class="ctn-modal-nfy">
+<!-- 
+  <div
+    class="modal fade"
+    *ngFor="let convocatoria of convocatorias"
+    id="exampleModalLong"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true"
+    data-backdrop="static"
+    data-keyboard="false"
+    data-backdrop="static"
+    data-keyboard="false"
+  >
+-->
+<!-- modal de busqueda envio cv-->
+<div
+>
+  <div class="modal-dialog md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Envíanos tu Curriculum Vitae</div>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <div [hidden]="submitted">
+            <form
+              (ngSubmit)="onSubmit(CurriculumForm)"
+              #CurriculumForm="ngForm"
+            >
+              <div class="form-group">
+                <label for="nombresyape">Apellidos y Nombres</label>
+                <input
+                  type="text"
+                  name="nombresyape"
+                  #nombresyape="ngModel"
+                  [(ngModel)]="cvModel.nombresyape"
+                  class="form-control"
+                  required
+                />
+                <div
+                  [hidden]="nombresyape.valid || nombresyape.pristine"
+                  class="alert alert-danger"
+                >
+                  se requiere
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  required
+                  [(ngModel)]="cvModel.email"
+                  name="email"
+                  #email="ngModel"
+                  placeholder="example@gmail.com"
+                />
+                <div
+                  [hidden]="email.valid || email.pristine"
+                  class="alert alert-danger"
+                >
+                  se requiere
+                </div>
+              </div>
+
+              <div class="row r1">
+                <div class="form-group col-lg-5">
+                  <label for="edad">Edad:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    [(ngModel)]="cvModel.edad"
+                    name="edad"
+                    #edad="ngModel"
+                    placeholder="+18"
+                  />
+                  <div
+                    [hidden]="edad.valid || edad.pristine"
+                    class="alert alert-danger"
+                  >
+                    se requiere
+                  </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="form-group col-lg-6">
+                  <label for="telefono">Teléfono / Celular:</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    required
+                    [(ngModel)]="cvModel.telefono"
+                    name="telefono"
+                    #telefono="ngModel"
+                    placeholder="99 0999985"
+                  />
+                  <div
+                    [hidden]="telefono.valid || telefono.pristine"
+                    class="alert alert-danger"
+                  >
+                    se requiere
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="direccion">Dirección Actual:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  required
+                  [(ngModel)]="cvModel.direccion"
+                  name="direccion"
+                  #direccion="ngModel"
+                />
+                <div
+                  [hidden]="direccion.valid || direccion.pristine"
+                  class="alert alert-danger"
+                >
+                  se requiere
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="expectativa">Expectativa Salarial:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  [(ngModel)]="cvModel.expectativaSalarial"
+                  name="expectativa"
+                  #expectativa="ngModel"
+                />
+                <div
+                  [hidden]="expectativa.valid || expectativa.pristine"
+                  class="alert alert-danger"
+                >
+                  se requiere
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="file"
+                  >Cargar CV: <b>Máximo 2 MB </b></label
+                >
+
+                <angular-file-uploader
+                  [config]="afuConfig"
+                  (ApiResponse)="CvUpload($event)"
+                >
+                </angular-file-uploader>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-success col-lg-12"
+                (click)="cargarCV()"
+                data-toggle="modal"
+                data-dismiss="modal"
+                data-target="#modalRespuesta"
+                [disabled]="!CurriculumForm.form.valid"
+              >
+                Enviar Datos
+              </button>
+              <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Salir</button>
+</mat-dialog-actions>

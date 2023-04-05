@@ -79,5 +79,23 @@
         margin-top: 50px;
       }
     }
+    .foot-ctn-wwu {
+      max-width: 1200px;
+      margin: auto;
+      .foot-wwu {
+        cursor: pointer;
+        // border: 1px solid $color-global-claro;
+        border-radius: 15px;
+        width: auto;
+        // margin: auto;
+        font-size: 1.2em;
+        button {
+          margin-left: 20px;
+        }
+        &:hover {
+          color: $color-global-claro;
+        }
+      }
+    }
   }
 }

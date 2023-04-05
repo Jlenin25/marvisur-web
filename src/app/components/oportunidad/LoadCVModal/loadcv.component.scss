@@ -1,0 +1,206 @@
+@import "../../../app.component.scss";
+
+.ctn-modal-lcv {
+  min-height: 80vh;
+  .modal-lcv {
+    article {
+      .content-announ {
+        h4 {
+          font-size: 2em;
+          font-weight: bold;
+          color: $color-global-claro;
+          font-style: italic;
+          text-align: center;
+        }
+        ul {
+          .li-ge,
+          .upload-cv {
+            margin-top: 20px;
+            span {
+              margin-left: 20px;
+            }
+          }
+          li b {
+            color: $color-global-claro;
+          }
+          .upload-cv {
+            .button .button-wrapper .icon {
+              angular-file-uploader {
+                position: absolute;
+                opacity: 0;
+                border: 1px solid blue !important;
+              }
+            }
+            span {
+              background-color: $negro !important;
+              color: $negro;
+              position: relative;
+              right: 0;
+              top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// Button - Upload File
+.button {
+  --width: 120px;
+  --height: 35px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #1163ff;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.45em;
+  font-family: "Arial";
+  transition: background 0.3s;
+}
+
+.button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: var(--tooltip-color);
+  font-size: 0.9rem;
+  color: #111;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: var(--tooltip-color);
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button::after,.button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper,.text,.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0
+}
+
+.text,.icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background: #6c18ff;
+}
+
+.button:hover .text {
+  top: -100%;
+}
+
+.button:hover .icon {
+  top: 0;
+}
+
+.button:hover:before,.button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+// Button Send CV
+.send-cv {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #03045e;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+ }
+ 
+ .send-cv::before,
+ .send-cv::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  transform: skew(15deg);
+  transition: all 0.5s;
+  overflow: hidden;
+  z-index: -1;
+ }
+ 
+ .send-cv::before {
+  left: -10px;
+  background: #240046;
+ }
+ 
+ .send-cv::after {
+  right: -10px;
+  background: #5a189a;
+ }
+ 
+ .send-cv:hover::before,
+ .send-cv:hover::after {
+  width: 58%;
+ }
+ 
+ .send-cv:hover span {
+  color: #e0aaff;
+  transition: 0.3s;
+ }
+ 
+ .send-cv span {
+  color: #03045e;
+  font-size: 18px;
+  transition: all 0.3s ease-in;
+ }
