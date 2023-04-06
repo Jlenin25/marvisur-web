@@ -159,14 +159,7 @@ export class InicioComponent implements OnInit {
       (error) => {
         console.log(<any>error);
       }
-    );
-
-    let elementoTop = window.scrollTo(0,0.1);
-    let elemento = document.getElementById('fondonegroinicio')?.offsetTop
-    console.log(elementoTop)
-    // if(elementoTop>1468) {
-    //   alert('hola')
-    // }
+    )
   }
 
   modalInfoTraking() {

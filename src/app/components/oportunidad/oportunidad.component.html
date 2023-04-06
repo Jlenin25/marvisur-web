@@ -33,6 +33,7 @@
             data-toggle="modal"
             data-id="{{ item.code }}"
             data-target="#modalConvocatoriaPuesto"
+            class="btn-{{ item.code }}"
           >
             <i class="fa fa-folder-open"></i>
           </button>
@@ -56,4 +57,22 @@
       </div>
     </div>
   </div>
+  <app-loadcv
+    [convocatoriaSeleccionada]="convocatoriaSeleccionada"
+    [words]="words"
+    [funcionesList]="funcionesList"
+    [cvModel]="cvModel"
+    [flagCvUp]="flagCvUp"
+    [check]="check"
+    [status]="status"
+  ></app-loadcv>
+  <app-notfindyet
+    [convocatoriaSeleccionada]="convocatoriaSeleccionada"
+    [words]="words"
+    [funcionesList]="funcionesList"
+    [cvModel]="cvModel"
+    [flagCvUp]="flagCvUp"
+    [check]="check"
+    [status]="status"
+  ></app-notfindyet>
 </main>

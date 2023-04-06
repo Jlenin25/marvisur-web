@@ -1,9 +1,8 @@
-import { Component, Inject, OnInit } from "@angular/core";
-import { Convocatoria } from "src/app/models/convocatoria";
+import { Component, Input, Inject, OnInit } from "@angular/core";
 import { cv } from "src/app/models/cv";
 import { global } from '../../../services/global';
 import { OportunidadService } from "src/app/services/oportunidad.service";
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DOCUMENT } from "@angular/common";
 
 @Component({
   selector: 'app-notfindyet',
@@ -12,6 +11,14 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 
 export class NotFindYetComponent implements OnInit {
+
+  @Input() convocatoriaSeleccionada: any
+  @Input() words: any
+  @Input() funcionesList: any
+  @Input() cvModel: any
+  @Input() flagCvUp: any
+  @Input() check: any
+  @Input() status: any
 
   afuConfig = {
     multiple:false,
@@ -29,42 +36,53 @@ export class NotFindYetComponent implements OnInit {
     attachPinText:'Adjuntar CV'
   }
 
-  public check:number;
-  public convocatorias:Array<Convocatoria>;
-  public cvModel:cv;
-  items:any;
-  public flagCvUp:boolean;
-  public status: string;
-  public convocatoriaSeleccionada:Convocatoria;
-  public words:Array<string>;
-  public funcionesList:Array<string>;
-  public flag: boolean
-  public delay: any
-  public onSubmit: any
-  public cargarCV: any
-  public CvUpload: any
-  submitted=false;
-
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(DOCUMENT) private document: Document,
+    private _oportunidadService:OportunidadService
   ) {
-    this.flag = data[0].flag
-    this.convocatorias= data[0].convocatorias
-    this.cvModel= data[0].cvModel
-    this.convocatoriaSeleccionada= data[0].convocatoriaSeleccionada
-    this.flagCvUp= data[0].flagCvUp
-    this.check= data[0].check
-    this.status= data[0].status
-    this.words = data[0].words
-    this.funcionesList = data[0].funcionesList
-    this.delay = data[0].delay
-    // this.flag=true;
-    this.onSubmit = data[0].onSubmit
-    this.cargarCV = data[0].cargarCV
-    this.CvUpload = data[0].CvUpload
   }
-  
+  CvUpload(e:any)  {
+  	let res=JSON.parse(e.response)
+  	this.cvModel.cv=res.file
+		console.log(res.file)
+		this.flagCvUp=false
+  }
+
+  async cargarCV() {
+    this.cvModel.lugar = this.convocatoriaSeleccionada.lugar
+    for(let i=0; i<10; i++) {
+      await this.delay(1000)
+    }
+    if(!this.flagCvUp) {
+      this._oportunidadService.create(this.cvModel).subscribe(
+        response => {
+          if(response.status === 'success') {
+            this.cvModel = new cv(0,'','9999999','','','','0','','sin puesto','')
+            this.check = 1
+            console.log('enviado')
+          } else {
+            this.status = 'error'
+            this.check = 2
+          }
+        },
+        error => {
+          this.status = 'error'
+          this.check = 2
+        }
+      )
+    } else {
+      this.check = 2
+    }
+  }
+
   ngOnInit(): void {
   }
 
+  delay(ms: number) {
+		return new Promise( resolve => setTimeout(resolve, ms) );
+	}
+
+  closeModal() {
+    return this.document.body.classList.remove('modal-nfy')
+  }
 }

@@ -1,191 +1,168 @@
-<mat-dialog-content class="ctn-modal-nfy">
-<!-- 
-  <div
-    class="modal fade"
-    *ngFor="let convocatoria of convocatorias"
-    id="exampleModalLong"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true"
-    data-backdrop="static"
-    data-keyboard="false"
-    data-backdrop="static"
-    data-keyboard="false"
-  >
--->
-<!-- modal de busqueda envio cv-->
-<div
->
-  <div class="modal-dialog md" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-title">Envíanos tu Curriculum Vitae</div>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <div class="container">
-          <div [hidden]="submitted">
-            <form
-              (ngSubmit)="onSubmit(CurriculumForm)"
-              #CurriculumForm="ngForm"
-            >
-              <div class="form-group">
-                <label for="nombresyape">Apellidos y Nombres</label>
-                <input
-                  type="text"
-                  name="nombresyape"
-                  #nombresyape="ngModel"
-                  [(ngModel)]="cvModel.nombresyape"
-                  class="form-control"
-                  required
-                />
-                <div
-                  [hidden]="nombresyape.valid || nombresyape.pristine"
-                  class="alert alert-danger"
-                >
-                  se requiere
+<div class="all-modal-mit">
+  <article class="modal-info-traking">
+    <div class="ctn-modal-nfy">
+      <div class="modal-nfy">
+        <article class="announcement">
+          <div class="content-announ">
+            <form #CurriculumForm="ngForm">
+              <ul>
+                <li class="input-group">
+                  <input
+                    required=""
+                    type="text"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    [(ngModel)]="cvModel.nombresyape"
+                  >
+                  <label class="user-label">Apellidos y Nombres</label>
+                </li>
+  
+                <div class="form-group">
+                  <label for="email">Correo Electrónico</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    required
+                    [(ngModel)]="cvModel.email"
+                    name="email"
+                    #email="ngModel"
+                    placeholder="example@gmail.com"
+                  />
+                  <div
+                    [hidden]="email.valid || email.pristine"
+                    class="alert alert-danger"
+                  >
+                    se requiere
+                  </div>
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  required
-                  [(ngModel)]="cvModel.email"
-                  name="email"
-                  #email="ngModel"
-                  placeholder="example@gmail.com"
-                />
-                <div
-                  [hidden]="email.valid || email.pristine"
-                  class="alert alert-danger"
-                >
-                  se requiere
+  
+                <div class="row r1">
+                  <div class="form-group col-lg-5">
+                    <label for="edad">Edad:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      required
+                      [(ngModel)]="cvModel.edad"
+                      name="edad"
+                      #edad="ngModel"
+                      placeholder="+18"
+                    />
+                    <div
+                      [hidden]="edad.valid || edad.pristine"
+                      class="alert alert-danger"
+                    >
+                      se requiere
+                    </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="form-group col-lg-6">
+                    <label for="telefono">Teléfono / Celular:</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      required
+                      [(ngModel)]="cvModel.telefono"
+                      name="telefono"
+                      #telefono="ngModel"
+                      placeholder="99 0999985"
+                    />
+                    <div
+                      [hidden]="telefono.valid || telefono.pristine"
+                      class="alert alert-danger"
+                    >
+                      se requiere
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <div class="row r1">
-                <div class="form-group col-lg-5">
-                  <label for="edad">Edad:</label>
+  
+                <div class="form-group">
+                  <label for="direccion">Dirección Actual:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    required
+                    [(ngModel)]="cvModel.direccion"
+                    name="direccion"
+                    #direccion="ngModel"
+                  />
+                  <div
+                    [hidden]="direccion.valid || direccion.pristine"
+                    class="alert alert-danger"
+                  >
+                    se requiere
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label for="expectativa">Expectativa Salarial:</label>
                   <input
                     type="text"
                     class="form-control"
                     required
-                    [(ngModel)]="cvModel.edad"
-                    name="edad"
-                    #edad="ngModel"
-                    placeholder="+18"
+                    [(ngModel)]="cvModel.expectativaSalarial"
+                    name="expectativa"
+                    #expectativa="ngModel"
                   />
                   <div
-                    [hidden]="edad.valid || edad.pristine"
+                    [hidden]="expectativa.valid || expectativa.pristine"
                     class="alert alert-danger"
                   >
                     se requiere
                   </div>
                 </div>
-                <div class="col-1"></div>
-                <div class="form-group col-lg-6">
-                  <label for="telefono">Teléfono / Celular:</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    required
-                    [(ngModel)]="cvModel.telefono"
-                    name="telefono"
-                    #telefono="ngModel"
-                    placeholder="99 0999985"
-                  />
-                  <div
-                    [hidden]="telefono.valid || telefono.pristine"
-                    class="alert alert-danger"
+  
+                <div class="form-group">
+                  <label class="form-label" for="file"
+                    >Cargar CV: <b>Máximo 2 MB </b></label
                   >
-                    se requiere
-                  </div>
+  
+                  <angular-file-uploader
+                    [config]="afuConfig"
+                    (ApiResponse)="CvUpload($event)"
+                  >
+                  </angular-file-uploader>
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label for="direccion">Dirección Actual:</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  required
-                  [(ngModel)]="cvModel.direccion"
-                  name="direccion"
-                  #direccion="ngModel"
-                />
-                <div
-                  [hidden]="direccion.valid || direccion.pristine"
-                  class="alert alert-danger"
+  
+                <button
+                  type="button"
+                  class="btn btn-success col-lg-12"
+                  (click)="cargarCV()"
+                  data-toggle="modal"
+                  data-dismiss="modal"
+                  data-target="#modalRespuesta"
+                  [disabled]="!CurriculumForm.form.valid"
                 >
-                  se requiere
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="expectativa">Expectativa Salarial:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  required
-                  [(ngModel)]="cvModel.expectativaSalarial"
-                  name="expectativa"
-                  #expectativa="ngModel"
-                />
-                <div
-                  [hidden]="expectativa.valid || expectativa.pristine"
-                  class="alert alert-danger"
-                >
-                  se requiere
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="file"
-                  >Cargar CV: <b>Máximo 2 MB </b></label
-                >
-
-                <angular-file-uploader
-                  [config]="afuConfig"
-                  (ApiResponse)="CvUpload($event)"
-                >
-                </angular-file-uploader>
-              </div>
-
-              <button
-                type="button"
-                class="btn btn-success col-lg-12"
-                (click)="cargarCV()"
-                data-toggle="modal"
-                data-dismiss="modal"
-                data-target="#modalRespuesta"
-                [disabled]="!CurriculumForm.form.valid"
-              >
-                Enviar Datos
-              </button>
+                  Enviar Datos
+                </button>
+              </ul>
               <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
             </form>
+            <div class="modal-footer">
+              <button (click)="cargarCV()" class="send-cv">
+                <div class="svg-wrapper-1">
+                  <div class="svg-wrapper">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+                <span>Enviar</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </article>
       </div>
-
-      <div class="modal-footer"></div>
+      <button class="mdl-close-nfy" (click)="closeModal()">
+        <span class="text">Salir</span>
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
+          </svg>
+        </span>
+      </button>
     </div>
-  </div>
+  </article>
 </div>
-
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Salir</button>
-</mat-dialog-actions>

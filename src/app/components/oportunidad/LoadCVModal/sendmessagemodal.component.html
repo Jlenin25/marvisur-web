@@ -1,0 +1,16 @@
+<div mat-dialog-content>
+  <div>
+    <div>
+      <span *ngIf="check === 1" style="color: green; font-weight: bold;">Se ingresó correctamente</span>
+    </div>
+    <div>
+      <span *ngIf="check === 0">Ingresando datos...</span>
+    </div>
+    <div>
+      <span *ngIf="check === 2" style="color: red; font-weight: bold;">No se envió, verifique los datos.</span>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</div>

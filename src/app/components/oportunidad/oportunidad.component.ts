@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, ElementRef, OnInit } from '@angular/core';
 import { OportunidadService } from '../../services/oportunidad.service';
 import { cv } from '../../models/cv';
 import { Convocatoria } from 'src/app/models/convocatoria';
 import { MatDialog } from '@angular/material/dialog';
 import { NotFindYetComponent } from './NotFindYetModal/notfindyet.component';
-import { LoadCVComponent } from './LoadCVModal/loadcv.component';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-oportunidad',
@@ -25,13 +25,17 @@ export class OportunidadComponent implements OnInit {
 	public flag:boolean;
 	public flagCvUp:boolean;
   public status: string;
+	public devolver: any
 	items:any;
 	pageOfItems: Array<any>;
 	submitted=false;
 
+
   constructor(
+		@Inject(DOCUMENT) private document: Document,
 		public dialog: MatDialog,
 	  private _oportunidadService:OportunidadService,
+		private el: ElementRef
 	)
 	  { 
 		this.check=0;
@@ -77,6 +81,10 @@ export class OportunidadComponent implements OnInit {
 	}
 
   ngOnInit(): void {
+		window.onscroll = () => {
+			// console.log(window.scrollY)
+			this.document.body.setAttribute('style', `top: -${window.scrollY}px`)
+		}
 	  this._oportunidadService.getallconvocatorias().subscribe(
 			response => {
 				if(response.status=='success'){
@@ -93,69 +101,65 @@ export class OportunidadComponent implements OnInit {
 		)
   }
 
+	openModalLCV() {
+    this.document.body.classList.add('modal-lcv')
+		this.devolver = document.querySelector('body')
+		// var docuBody2 = this.el.nativeElement.querySelector('body')
+		// console.log(this.el.nativeElement.querySelector('.webkit-scrollbar')?.offsetTop)
+		// var docuBody2 = this.el.nativeElement.querySelector(`.btn-${e}`)?.offsetTop
+		this.document.body.setAttribute('style', `top: ${this.devolver.style.top}`)
+  }
+
+	openModalNFY() {
+    this.document.body.classList.add('modal-nfy')
+		this.devolver = document.querySelector('body')
+		this.document.body.setAttribute('style', `top: ${this.devolver.style.top}`)
+  }
+
   onChangePage(pageOfItems: Array<any>) {
     this.pageOfItems = pageOfItems;
 	}
- 
+
 	CvUpload(e:any)  {
-		console.log('hola')
-		//console.log("entroa upload")
   	let res=JSON.parse(e.response)
   	this.cvModel.cv=res.file
+		console.log(res.file)
 		this.flagCvUp=false
   }
+
  //cargar cv por puesto.
   async cargarCV(){
 	this.cvModel.lugar=this.convocatoriaSeleccionada.lugar
-	//console.log(this.cvModel.lugar)
-	 	 /* 
-		while(this.flagCvUp){
-			await this.delay(1000);
-			//console.log("esperando...")
-		
-		}*/
 		for(let i =0;i<10;i++){
 			await this.delay(1000);
 
 		}
 		if(!this.flagCvUp){
-			//console.log("1")
 			this._oportunidadService.create(this.cvModel).subscribe(
-			
 				response=>{
-					//console.log("1" );
-					//console.log(this.cvModel)
 					if(response.status=='success'){
-						this.cvModel=new cv(0,'','9999999','','','','0','','sin puesto','');
-						//console.log(this.cvModel)
+						this.cvModel=new cv(0,'','9999999','','','','0','','sin puesto','')
 						this.check=1;
-						//console.log("2")
-						//this.flagsubida=false;
-						
 					}else{
 						this.status='error';
 						this.check=2;
-						//console.log("3")
 					}
 				},
 				error=>{
 					this.status='error';
 					this.check=2;
-					//console.log("4")
 				}
 			)
 		}else{
 			this.check=2
-			//console.log("5")
 		}
   }
 
 	doStuff(item:number) {
-		var openModalDialog = LoadCVComponent
 		if(item > 0) {
-			openModalDialog = LoadCVComponent
+			this.openModalLCV()
 		} else {
-			openModalDialog = NotFindYetComponent
+			this.openModalNFY()
 		}
 		for (let convocatoria of this.convocatorias) {
 			if(convocatoria.code==item){
@@ -167,19 +171,6 @@ export class OportunidadComponent implements OnInit {
 				this.funcionesList = str1.split(/\r?\n|\r|\n/g);
 			}
 		}
-		this.dialog.open(openModalDialog, {
-			data: [{
-				flag: this.flag,
-				convocatorias: this.convocatorias,
-				cvModel: this.cvModel,
-				convocatoriaSeleccionada: this.convocatoriaSeleccionada,
-				flagCvUp: this.flagCvUp,
-				check: this.check,
-				status: this.status,
-				words: this.words,
-				funcionesList: this.funcionesList
-			}]
-		})
 	}
 	delay(ms: number) {
 		return new Promise( resolve => setTimeout(resolve, ms) );

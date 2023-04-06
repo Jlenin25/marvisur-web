@@ -41,6 +41,9 @@ $gris-c: hsl(0, 0%, 91%);
 $gris-transparente: hsla(0, 0%, 80%, 0.635);
 $gris-intenso: hsl(0, 0%, 59%);
 $bkg: hsl(340, 10%, 6%);
+$bkg-card: hsl(0, 0%, 13%);
+$color-lcv: hsl(225, 73%, 57%);
+$color-lcv-claro: hsl(225, 100%, 75%);
 
 * {
   outline: none;
@@ -150,4 +153,46 @@ body.cdk-global-scrollblock {
   .all-modal-mit {
     transform: scale(1);
   }
+}
+body.modal-lcv {
+  overflow-y: hidden !important;
+  .ctn-backdrop1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity .1ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: rgba(0,0,0,.32);
+  }
+  .all-modal-mit {
+    transform: scale(1);
+  }
+}
+body.modal-nfy {
+  overflow-y: hidden !important;
+  .ctn-backdrop1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity .1ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: rgba(0,0,0,.32);
+  }
+  .all-modal-mit {
+    transform: scale(1);
+  }
+}
+body.modal-open {
+  overflow-y: hidden;
+}
+.cdk-global-scrollblock {
+  overflow-y: hidden !important;
 }
