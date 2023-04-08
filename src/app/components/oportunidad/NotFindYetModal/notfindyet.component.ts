@@ -3,6 +3,7 @@ import { cv } from "src/app/models/cv";
 import { global } from '../../../services/global';
 import { OportunidadService } from "src/app/services/oportunidad.service";
 import { DOCUMENT } from "@angular/common";
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-notfindyet',
@@ -38,20 +39,34 @@ export class NotFindYetComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
+    public dialog: MatDialog,
     private _oportunidadService:OportunidadService
   ) {
   }
+  
   CvUpload(e:any)  {
   	let res=JSON.parse(e.response)
   	this.cvModel.cv=res.file
-		console.log(res.file)
 		this.flagCvUp=false
+  }
+
+  sendOpenCV() {
+    this.dialog.open(SendMessageModalNFY, {
+      data: [{
+        check: this.check
+      },]
+    })
+  }
+
+  singleNumber(e:any) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57)
   }
 
   async cargarCV() {
     this.cvModel.lugar = this.convocatoriaSeleccionada.lugar
     for(let i=0; i<10; i++) {
-      await this.delay(1000)
+      await this.delay(100)
     }
     if(!this.flagCvUp) {
       this._oportunidadService.create(this.cvModel).subscribe(
@@ -59,7 +74,7 @@ export class NotFindYetComponent implements OnInit {
           if(response.status === 'success') {
             this.cvModel = new cv(0,'','9999999','','','','0','','sin puesto','')
             this.check = 1
-            console.log('enviado')
+            this.sendOpenCV()
           } else {
             this.status = 'error'
             this.check = 2
@@ -72,6 +87,7 @@ export class NotFindYetComponent implements OnInit {
       )
     } else {
       this.check = 2
+      this.sendOpenCV()
     }
   }
 
@@ -84,5 +100,19 @@ export class NotFindYetComponent implements OnInit {
 
   closeModal() {
     return this.document.body.classList.remove('modal-nfy')
+  }
+}
+
+
+@Component({
+  selector: 'app-sendmessage',
+  templateUrl: '../sendmessagemodal.component.html',
+})
+export class SendMessageModalNFY {
+
+  public check: any
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.check = data[0].check
   }
 }

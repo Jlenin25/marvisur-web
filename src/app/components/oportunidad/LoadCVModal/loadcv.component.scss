@@ -1,11 +1,11 @@
 @import "../../../app.component.scss";
 
-.all-modal-mit {
+.all-modal-lcv {
   position: fixed;
   z-index: 1000;
   transform: scale(0);
   transition: .4s ease;
-  .modal-info-traking {
+  .modal-info-lcv {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -14,7 +14,7 @@
   }
 }
 
-.all-modal-mit, .modal-info-traking {
+.all-modal-lcv, .modal-info-lcv {
   pointer-events: none;
   top: 0;
   left: 0;
@@ -51,7 +51,7 @@
           width: 100%;
           height: 100%;
           background-color: $blanco;
-          border: 2px solid $color-lcv;
+          border: 2px solid $color-lcv-nfy;
           box-shadow: 2px 2px 15px $gris inset;
           color: $negro;
           overflow-y: auto;
@@ -95,12 +95,12 @@
             }
           }
           &:hover {
-            box-shadow: 2px 2px 15px $color-lcv inset;
+            box-shadow: 2px 2px 15px $color-lcv-nfy inset;
           }
           .send-cv {
             font-family: inherit;
             font-size: 20px;
-            background: $color-lcv;
+            background: $color-lcv-nfy;
             color: white;
             padding: 0.7em 1em;
             padding-left: 0.9em;
@@ -222,9 +222,9 @@
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $color-lcv-claro;
+  background: $color-lcv-nfy-claro;
   border-radius: 10px;
   &:hover {
-    background: $color-lcv;
+    background: $color-lcv-nfy;
   }
 }

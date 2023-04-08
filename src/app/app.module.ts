@@ -30,8 +30,8 @@ import { FooterComponent } from './components/layouts/footer/footer.component';
 import { HeaderComponent } from './components/layouts/header/header.component';
 import { InfoTrackingModalComponent } from './components/inicio/modal/infotrakingmodal.component';
 import { SeccionComponent } from './components/secciones/seccion.component';
-import { NotFindYetComponent } from './components/oportunidad/NotFindYetModal/notfindyet.component';
-import { LoadCVComponent, SendMessageModal } from './components/oportunidad/LoadCVModal/loadcv.component';
+import { NotFindYetComponent, SendMessageModalNFY } from './components/oportunidad/NotFindYetModal/notfindyet.component';
+import { LoadCVComponent, SendMessageModalLCV } from './components/oportunidad/LoadCVModal/loadcv.component';
 
 // import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
@@ -70,7 +70,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     InfoTrackingModalComponent,
     NotFindYetComponent,
     LoadCVComponent,
-    SendMessageModal,
+    SendMessageModalNFY,
+    SendMessageModalLCV,
     //ReclamacionesComponent
   ],
   imports: [

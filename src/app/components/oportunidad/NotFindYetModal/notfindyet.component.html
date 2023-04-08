@@ -1,141 +1,103 @@
-<div class="all-modal-mit">
-  <article class="modal-info-traking">
+<div class="all-modal-nfy">
+  <article class="modal-info-nfy">
     <div class="ctn-modal-nfy">
       <div class="modal-nfy">
         <article class="announcement">
           <div class="content-announ">
             <form #CurriculumForm="ngForm">
               <ul>
-                <li class="input-group">
+                <li>
                   <input
                     required=""
                     type="text"
-                    name="text"
+                    name="nombresyape"
+                    #nombresyape="ngModel"
                     autocomplete="off"
                     class="input"
                     [(ngModel)]="cvModel.nombresyape"
                   >
                   <label class="user-label">Apellidos y Nombres</label>
                 </li>
-  
-                <div class="form-group">
-                  <label for="email">Correo Electrónico</label>
+                <li>
                   <input
-                    type="email"
-                    class="form-control"
-                    required
-                    [(ngModel)]="cvModel.email"
+                    required=""
+                    type="text"
                     name="email"
                     #email="ngModel"
-                    placeholder="example@gmail.com"
-                  />
-                  <div
-                    [hidden]="email.valid || email.pristine"
-                    class="alert alert-danger"
+                    autocomplete="off"
+                    class="input"
+                    [(ngModel)]="cvModel.email"
                   >
-                    se requiere
-                  </div>
-                </div>
-  
-                <div class="row r1">
-                  <div class="form-group col-lg-5">
-                    <label for="edad">Edad:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      required
-                      [(ngModel)]="cvModel.edad"
-                      name="edad"
-                      #edad="ngModel"
-                      placeholder="+18"
-                    />
-                    <div
-                      [hidden]="edad.valid || edad.pristine"
-                      class="alert alert-danger"
-                    >
-                      se requiere
-                    </div>
-                  </div>
-                  <div class="col-1"></div>
-                  <div class="form-group col-lg-6">
-                    <label for="telefono">Teléfono / Celular:</label>
-                    <input
-                      type="tel"
-                      class="form-control"
-                      required
-                      [(ngModel)]="cvModel.telefono"
-                      name="telefono"
-                      #telefono="ngModel"
-                      placeholder="99 0999985"
-                    />
-                    <div
-                      [hidden]="telefono.valid || telefono.pristine"
-                      class="alert alert-danger"
-                    >
-                      se requiere
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="form-group">
-                  <label for="direccion">Dirección Actual:</label>
+                  <label class="user-label">Correo Electrónico</label>
+                </li>
+                <li>
+                  <ul class="sub-group">
+                    <li>
+                      <input
+                        required=""
+                        type="text"
+                        name="edad"
+                        #edad="ngModel"
+                        autocomplete="off"
+                        class="input"
+                        [(ngModel)]="cvModel.edad"
+                        (keypress)="singleNumber($event)"
+                        maxlength="2"
+                      >
+                      <label class="user-label">Edad</label>
+                    </li>
+                    <li>
+                      <input
+                        required=""
+                        type="text"
+                        name="telefono"
+                        #telefono="ngModel"
+                        autocomplete="off"
+                        class="input"
+                        [(ngModel)]="cvModel.telefono"
+                        (keypress)="singleNumber($event)"
+                        maxlength="9"
+                      >
+                      <label class="user-label">Celular</label>
+                    </li>
+                  </ul>
+                </li>
+                <li>
                   <input
-                    type="email"
-                    class="form-control"
-                    required
-                    [(ngModel)]="cvModel.direccion"
+                    required=""
+                    type="text"
                     name="direccion"
                     #direccion="ngModel"
-                  />
-                  <div
-                    [hidden]="direccion.valid || direccion.pristine"
-                    class="alert alert-danger"
+                    autocomplete="off"
+                    class="input"
+                    [(ngModel)]="cvModel.direccion"
                   >
-                    se requiere
-                  </div>
-                </div>
-  
-                <div class="form-group">
-                  <label for="expectativa">Expectativa Salarial:</label>
+                  <label class="user-label">Dirección Actual</label>
+                </li>
+                <li>
                   <input
+                    required=""
                     type="text"
-                    class="form-control"
-                    required
-                    [(ngModel)]="cvModel.expectativaSalarial"
                     name="expectativa"
                     #expectativa="ngModel"
-                  />
-                  <div
-                    [hidden]="expectativa.valid || expectativa.pristine"
-                    class="alert alert-danger"
+                    autocomplete="off"
+                    class="input"
+                    [(ngModel)]="cvModel.expectativaSalarial"
+                    (keypress)="singleNumber($event)"
                   >
-                    se requiere
-                  </div>
-                </div>
+                  <label class="user-label">Expectativa Salarial</label>
+                </li>
   
                 <div class="form-group">
                   <label class="form-label" for="file"
                     >Cargar CV: <b>Máximo 2 MB </b></label
                   >
-  
                   <angular-file-uploader
                     [config]="afuConfig"
                     (ApiResponse)="CvUpload($event)"
                   >
                   </angular-file-uploader>
                 </div>
-  
-                <button
-                  type="button"
-                  class="btn btn-success col-lg-12"
-                  (click)="cargarCV()"
-                  data-toggle="modal"
-                  data-dismiss="modal"
-                  data-target="#modalRespuesta"
-                  [disabled]="!CurriculumForm.form.valid"
-                >
-                  Enviar Datos
-                </button>
               </ul>
               <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
             </form>
@@ -166,3 +128,5 @@
     </div>
   </article>
 </div>
+
+<div class="ctn-backdrop1"></div>

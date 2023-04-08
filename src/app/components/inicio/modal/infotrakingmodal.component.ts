@@ -24,6 +24,6 @@ export class InfoTrackingModalComponent implements OnInit {
   }
 
   modalInfoTraking() {
-    return this.document.body.classList.remove('cdk-global-scrollblock');
+    return this.document.body.classList.remove('modal-it');
   }
 }

@@ -1,9 +1,8 @@
-import { Component, Inject, ElementRef, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { OportunidadService } from '../../services/oportunidad.service';
 import { cv } from '../../models/cv';
 import { Convocatoria } from 'src/app/models/convocatoria';
 import { MatDialog } from '@angular/material/dialog';
-import { NotFindYetComponent } from './NotFindYetModal/notfindyet.component';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -35,7 +34,6 @@ export class OportunidadComponent implements OnInit {
 		@Inject(DOCUMENT) private document: Document,
 		public dialog: MatDialog,
 	  private _oportunidadService:OportunidadService,
-		private el: ElementRef
 	)
 	  { 
 		this.check=0;
@@ -81,10 +79,6 @@ export class OportunidadComponent implements OnInit {
 	}
 
   ngOnInit(): void {
-		window.onscroll = () => {
-			// console.log(window.scrollY)
-			this.document.body.setAttribute('style', `top: -${window.scrollY}px`)
-		}
 	  this._oportunidadService.getallconvocatorias().subscribe(
 			response => {
 				if(response.status=='success'){
@@ -103,17 +97,15 @@ export class OportunidadComponent implements OnInit {
 
 	openModalLCV() {
     this.document.body.classList.add('modal-lcv')
-		this.devolver = document.querySelector('body')
+		/*this.devolver = document.querySelector('body')
+		this.document.body.setAttribute('style', `top: ${this.devolver.style.top}`)*/
 		// var docuBody2 = this.el.nativeElement.querySelector('body')
 		// console.log(this.el.nativeElement.querySelector('.webkit-scrollbar')?.offsetTop)
 		// var docuBody2 = this.el.nativeElement.querySelector(`.btn-${e}`)?.offsetTop
-		this.document.body.setAttribute('style', `top: ${this.devolver.style.top}`)
   }
 
 	openModalNFY() {
     this.document.body.classList.add('modal-nfy')
-		this.devolver = document.querySelector('body')
-		this.document.body.setAttribute('style', `top: ${this.devolver.style.top}`)
   }
 
   onChangePage(pageOfItems: Array<any>) {

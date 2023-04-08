@@ -27,6 +27,8 @@ export class InicioComponent implements OnInit {
     groupCtrl: ['', Validators.required],
   })
 
+  public devolver: any
+
   fechaHoy!: any;
   public url: string;
   public urlSafe: SafeResourceUrl;
@@ -117,7 +119,6 @@ export class InicioComponent implements OnInit {
       '',
       ''
     );
-    
     setTimeout(() => {this._RastreoService.getTracking(this.rastreo).subscribe(
       (response) => {
         if (response.length == 0) {
@@ -131,7 +132,8 @@ export class InicioComponent implements OnInit {
       (error) => {
         console.log(<any>error);
       }
-      )}, 2000)
+    )}, 2000)
+    this.modalInfoTraking()
   }
 
   buscarPrimero(arreglo: any) {
@@ -163,7 +165,7 @@ export class InicioComponent implements OnInit {
   }
 
   modalInfoTraking() {
-    return this.document.body.classList.add('cdk-global-scrollblock')
+    this.document.body.classList.add('modal-it')
   }
 
   async cargarCantidadesAnios() {

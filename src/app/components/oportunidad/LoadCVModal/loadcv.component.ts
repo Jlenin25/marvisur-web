@@ -47,8 +47,15 @@ export class LoadCVComponent implements OnInit {
   CvUpload(e:any)  {
   	let res=JSON.parse(e.response)
   	this.cvModel.cv=res.file
-		console.log(res.file)
 		this.flagCvUp=false
+  }
+
+  sendOpenCV() {
+    this.dialog.open(SendMessageModalLCV, {
+      data: [{
+        check: this.check
+      },]
+    })
   }
 
   async cargarCV() {
@@ -62,7 +69,7 @@ export class LoadCVComponent implements OnInit {
           if(response.status === 'success') {
             this.cvModel = new cv(0,'','9999999','','','','0','','sin puesto','')
             this.check = 1
-            console.log('enviado')
+            this.sendOpenCV()
           } else {
             this.status = 'error'
             this.check = 2
@@ -72,15 +79,11 @@ export class LoadCVComponent implements OnInit {
           this.status = 'error'
           this.check = 2
         }
-      )
-    } else {
-      this.check = 2
-    }
-    this.dialog.open(SendMessageModal, {
-      data: [{
-        check: this.check
-      },]
-    });
+        )
+      } else {
+        this.check = 2
+        this.sendOpenCV()
+      }
   }
 
   ngOnInit(): void {
@@ -98,9 +101,9 @@ export class LoadCVComponent implements OnInit {
 
 @Component({
   selector: 'app-sendmessage',
-  templateUrl: './sendmessagemodal.component.html',
+  templateUrl: '../sendmessagemodal.component.html',
 })
-export class SendMessageModal {
+export class SendMessageModalLCV {
 
   public check: any
 

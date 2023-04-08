@@ -1,20 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, ParamMap, NavigationEnd} from '@angular/router';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import {filter} from "rxjs/operators";
+import { DOCUMENT } from '@angular/common';
+
 declare var gtag:any;
+
 @Component({
   providers:[PruebaComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Marvisur';
   phone ='';
 
-    constructor(private route: ActivatedRoute,
+    constructor(
+      @Inject(DOCUMENT) private document: Document,
+      private route: ActivatedRoute,
       private router: Router,
       private prueba: PruebaComponent){
       const navEndEvents$ = this.router.events.pipe(
@@ -28,6 +32,9 @@ export class AppComponent {
     }
 
     ngOnInit(): void {
+      window.onscroll = () => {
+        this.document.body.setAttribute('style', `top: -${window.scrollY}px`)
+      }
       this.prueba.open();
     }
 
