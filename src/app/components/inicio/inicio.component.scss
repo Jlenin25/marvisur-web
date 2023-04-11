@@ -561,10 +561,18 @@
   }
 }
 @media only screen and (max-width: 670px) {
-  .home .slide .carousel-inner .carousel-item .front .left .h1-font {
-    .amertha {
-      margin: -40px 0 150px 200px !important;
-      color: $blanco !important;
+  .home .slide .carousel-inner .carousel-item .front .left {
+    .h1-font {
+      .amertha {
+        margin: -40px 0 150px 200px !important;
+        color: $blanco !important;
+      }
+    }
+    .bottom-place {
+      span {
+        font-size: 1.5em !important;
+        text-shadow: 1px 1px 1px $blanco;
+      }
     }
   }
 }
