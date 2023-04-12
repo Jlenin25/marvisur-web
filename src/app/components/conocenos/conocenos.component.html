@@ -1,19 +1,115 @@
 <main class="about-us">
-    <div class="portadaAll ">
-
+  <div class="ctn-a-u">
+    <div class="front-page">
+      <div class="box-relative">
+        <h2>Más de 30 años formando parte del Perú</h2>
+      </div>
+      <div style="height: 150px; overflow: hidden" class="ctn-curved-au">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%"
+        >
+          <path
+            d="M0.28,8.41 C307.28,150.50 211.90,145.56 500.27,10.38 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: rgb(255, 255, 255)"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <section class="our-history">
+      <div class="ctn-oh">
+        <h3>Conoce nuestra historia</h3>
+        <section class="timeline">
+          <div class="timeline-wrapper">
+            <div class="timeline-line"></div>
+            <div class="timeline-items">
+              <div
+                *ngFor="let item of timelineItems; let i = index"
+                class="timeline-item"
+                [class]="getClass(i)"
+              >
+                <div class="timeline-item-top">
+                  <i class="{{ item.icon }}"></i>
+                  <span>{{ item.date }}</span>
+                </div>
+                <p>{{ item.description }}</p>
+                <i class="{{ item.arrow }}"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- <div class="timeline">
+          <div class="line"></div>
+          <div class="art-au">
+            <div class="bead"></div>
+            <div class="content">
+              <h4>01 de Mayo 1989</h4>
+              <p>
+                Iniciamos como una empre familiar, con dos vehículos que nos
+                permitieron conectar las principales ciudades del Sur como:
+                Arequipa, Juliaca, Puno y Cusco.
+              </p>
+            </div>
+          </div>
+          <div class="art-au">
+            <div class="bead"></div>
+            <div class="content">
+              <h4>2002</h4>
+              <p>
+                Se abrió la primera sucursal en Lima, es ahí cuando el sueño de
+                expandirse a todo el Perú se iba volviendo realidad, ya que la
+                empresa empezaría a tener un crecimiento considerable.
+              </p>
+            </div>
+          </div>
+          <div class="art-au">
+            <div class="bead"></div>
+            <div class="content">
+              <h4>2022</h4>
+              <p>
+                Con sacrificio y perseverancia nos hemos posicionado como la
+                empresa líder en transporte de carga a nivel nacional,
+                permaneciendo en el camino del éxito y así mismo llevar el
+                negocio de miles de emprendedores a todo el Perú.
+              </p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+    <section class="mision-vision">
+        <ul class="group-cards-m-v">
+            <li class="mision">
+                    <img src="assets/svg/undraw_product_teardown_re_m1pc.svg" alt="">
+                <p>
+                    “Nuestra misión como empresa de transporte es asegurar relaciones rentables a largo plazo con nuestros clientes, empleados y socios comerciales al ofrecer servicios confiables e innovadores.”
+                </p>
+            </li>
+            <li class="vision">
+                    <img src="assets/svg/undraw_team_collaboration_re_ow29.svg" alt="">
+                <p>
+                    “Ser reconocidos como una de las empresas de transporte más reconocidas de la industria debido a nuestros compromisos con los clientes, empleados y socios comerciales.”
+                </p>
+            </li>
+            <li class="objetivo">
+                    <img src="assets/svg/undraw_blogging_re_kl0d.svg" alt="">
+                <p>
+                    “Nuestro objetivo es proporcionar los servicios más amplios y eficientes que satisfagan las demandas de todos nuestros clientes.”
+                </p>
+            </li>
+        </ul>
+    </section>
+  </div>
+  <!-- <div class="portadaAll ">
         <img class="img" src="assets/images/portadaconocenosnuevo.png" height="100%" width="100%">
-    
-    
     </div>
     <div class="title-peque text-center">
         CONÓCENOS
     </div>
     <div class="container">
     <div class="animated fadeIn fast">
-    
         <br>
-    
-        <!---   Nuestra historia-->
         <div class="contenedorSomos1">
             <div class="contiene1">
                 <div class="letra-nuestra-historia">NUESTRA HISTORIA:</div>
@@ -52,10 +148,7 @@
                 </div>
             </div>
         </div>
-    
         <br><br><br><br>
-       
-        <!-- MISION -->
         <div class="contenedorSomos2 col-12">
            
             <div class="row">
@@ -71,11 +164,9 @@
                     <div class="col-lg-3"></div>
                 </div>
             </div>
-    
             <br>
         </div>
         <div class="contenedorSomos2 visionpc col-12">
-           
             <div class="row">
                 <div class="row">
                     <div class="col-lg-2"></div>
@@ -85,16 +176,12 @@
                         <div class="col-12 texto-historia3 border-left">Consolidarnos como la empresa lider en el transporte de mercancías por vía terrestre, expandiéndonos por nuevos mercados para ser la empresa más rápida, segura y con calidad de servicio a nivel nacional.
                         </div>
                      </div>
-                   
                     <div class="col-lg-3"></div>
                 </div>
             </div>
-    
             <br>
         </div>
         <br><br><br><br>
-        <!-- VISION -->
-     
         <div class="contenedorSomos2  visioncel col-12">
             <div class="row">
                     <div class="col-lg-2"></div>
@@ -113,8 +200,6 @@
             <br>
         </div>
         <br>
-        <!-- asdsa-->
-    
     </div>
-    </div>
+    </div> -->
 </main>

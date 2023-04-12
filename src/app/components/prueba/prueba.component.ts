@@ -10,13 +10,13 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   <article id="carouselModalMain" class="modal-carousel-main carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-          <img src="assets/images/cotizaciones_e_informes_modal_main.jpg" class="title" />
-      </div>
-      <div class="carousel-item">
         <img src="assets/images/pago plin y yape.jpg" class="d-block w-100">
       </div>
       <div class="carousel-item">
         <img src="assets/images/siguenos en ig.jpg" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/images/cotizaciones_e_informes_modal_main.jpg" class="d-block w-100" />
       </div>
     </div>
     <div class="carousel-control">
