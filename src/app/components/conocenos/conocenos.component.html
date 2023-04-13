@@ -2,6 +2,10 @@
   <div class="ctn-a-u">
     <div class="front-page">
       <div class="box-relative">
+        <div class="ctn-img">
+          <img src="assets/newimg/portada.jpg" alt="">
+          <div class="background"></div>
+        </div>
         <h2>Más de 30 años formando parte del Perú</h2>
       </div>
       <div style="height: 150px; overflow: hidden" class="ctn-curved-au">
@@ -20,186 +24,37 @@
     <section class="our-history">
       <div class="ctn-oh">
         <h3>Conoce nuestra historia</h3>
-        <section class="timeline">
-          <div class="timeline-wrapper">
-            <div class="timeline-line"></div>
-            <div class="timeline-items">
-              <div
-                *ngFor="let item of timelineItems; let i = index"
-                class="timeline-item"
-                [class]="getClass(i)"
-              >
-                <div class="timeline-item-top">
-                  <i class="{{ item.icon }}"></i>
-                  <span>{{ item.date }}</span>
-                </div>
-                <p>{{ item.description }}</p>
-                <i class="{{ item.arrow }}"></i>
+        <div class="timeline">
+          <div
+            *ngFor="let item of timelineItems; let i = index"
+            class="timeline-item"
+            [class]="getClass(i)"
+          >
+            <div class="box-horizontal-tl">
+              <div class="tl-circle-black"></div>
+              <div class="tl-line-black"></div>
+            </div>
+            <div class="info-timeline">
+              <div class="timeline-item-top">
+                <i class="{{ item.icon }}"></i>
+                <span>{{ item.date }}</span>
               </div>
+              <p>{{ item.description }}</p>
+              <i class="{{ item.arrow }}"></i>
             </div>
           </div>
-        </section>
-        <!-- <div class="timeline">
-          <div class="line"></div>
-          <div class="art-au">
-            <div class="bead"></div>
-            <div class="content">
-              <h4>01 de Mayo 1989</h4>
-              <p>
-                Iniciamos como una empre familiar, con dos vehículos que nos
-                permitieron conectar las principales ciudades del Sur como:
-                Arequipa, Juliaca, Puno y Cusco.
-              </p>
-            </div>
-          </div>
-          <div class="art-au">
-            <div class="bead"></div>
-            <div class="content">
-              <h4>2002</h4>
-              <p>
-                Se abrió la primera sucursal en Lima, es ahí cuando el sueño de
-                expandirse a todo el Perú se iba volviendo realidad, ya que la
-                empresa empezaría a tener un crecimiento considerable.
-              </p>
-            </div>
-          </div>
-          <div class="art-au">
-            <div class="bead"></div>
-            <div class="content">
-              <h4>2022</h4>
-              <p>
-                Con sacrificio y perseverancia nos hemos posicionado como la
-                empresa líder en transporte de carga a nivel nacional,
-                permaneciendo en el camino del éxito y así mismo llevar el
-                negocio de miles de emprendedores a todo el Perú.
-              </p>
-            </div>
-          </div>
-        </div> -->
+        </div>
       </div>
     </section>
     <section class="mision-vision">
-        <ul class="group-cards-m-v">
-            <li class="mision">
-                    <img src="assets/svg/undraw_product_teardown_re_m1pc.svg" alt="">
-                <p>
-                    “Nuestra misión como empresa de transporte es asegurar relaciones rentables a largo plazo con nuestros clientes, empleados y socios comerciales al ofrecer servicios confiables e innovadores.”
-                </p>
-            </li>
-            <li class="vision">
-                    <img src="assets/svg/undraw_team_collaboration_re_ow29.svg" alt="">
-                <p>
-                    “Ser reconocidos como una de las empresas de transporte más reconocidas de la industria debido a nuestros compromisos con los clientes, empleados y socios comerciales.”
-                </p>
-            </li>
-            <li class="objetivo">
-                    <img src="assets/svg/undraw_blogging_re_kl0d.svg" alt="">
-                <p>
-                    “Nuestro objetivo es proporcionar los servicios más amplios y eficientes que satisfagan las demandas de todos nuestros clientes.”
-                </p>
-            </li>
-        </ul>
+      <ul>
+        <li *ngFor="let item2 of infoAboutUsItems; let i = index"
+        class="group-cards-mv"
+        [class]="getClassAboutUs(i)">
+          <img src="{{ item2.image }}" alt="" />
+          <p>{{ item2.description }}</p>
+        </li>
+      </ul>
     </section>
   </div>
-  <!-- <div class="portadaAll ">
-        <img class="img" src="assets/images/portadaconocenosnuevo.png" height="100%" width="100%">
-    </div>
-    <div class="title-peque text-center">
-        CONÓCENOS
-    </div>
-    <div class="container">
-    <div class="animated fadeIn fast">
-        <br>
-        <div class="contenedorSomos1">
-            <div class="contiene1">
-                <div class="letra-nuestra-historia">NUESTRA HISTORIA:</div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="row col-lg-12">
-                        <div class="col-lg-1"></div>
-    
-                        <div class="row col-lg-3 col-12">
-                            <div><img src="assets/images/icono1.png"></div>
-                            <div class="flecha">01 de Mayo
-                                <div> 1989</div>
-                            </div>
-                            <div class="texto-historia border-left col-12">Iniciamos como una empresa familiar, con dos vehiculos que nos permitieron conectar las principales ciudades del Sur como: Arequipa, Juliaca, Puno, Cusco</div>
-                        </div>
-    
-                        <div class="guiones col-12 col-lg-1">----</div>
-    
-                        <div class="row col-lg-3 col-12">
-                            <div><img src="assets/images/icono2.png"></div>
-                            <div class="flecha1">2001
-                            </div>
-                            <div class="texto-historia1 border-left  col-12">Abrimos la primera sucursal de Lima. Iniciando la expansion soñada</div>
-    
-                        </div>
-                        <div class="guiones col-12 col-lg-1">----</div>
-    
-                        <div class="row col-lg-3 col-12">
-                            <div><img src="assets/images/icono3.png"></div>
-                            <div class="flecha1">2021
-                            </div>
-                            <div class="texto-historia2 border-left  col-12">Con sacrificio y perseverancia hemos permanecido en el camino del éxito. para poder formar parte de su crecimiento empresarial.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br><br><br>
-        <div class="contenedorSomos2 col-12">
-           
-            <div class="row">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="x1 col-lg-3"><img class="borde-img" src="assets/images/prueba.png" height="250px"></div>
-                    <div class="col-lg-6">  
-                        <div class="letrita2 col-1">MISIÓN</div>
-                        <div class="col-lg-8 col-12 texto-historia3 border-left">“Somos la empresa con mayor cobertura a nivel nacional en el transporte de mercancías por vía terrestre, brindando un servicio de calidad ya que contamos con una sólida cultura organizacional, lo que nos permite promover el desarrollo integral de nuestro personal y mantener una estrecha relación con los clientes, para poder consolidarnos como la empresa líder a nivel nacional.”
-                        </div>
-                     </div>
-                   
-                    <div class="col-lg-3"></div>
-                </div>
-            </div>
-            <br>
-        </div>
-        <div class="contenedorSomos2 visionpc col-12">
-            <div class="row">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="x1 col-lg-3"><img class="borde-img" src="assets/images/circulo-img.png" height="250px"></div>
-                    <div class="col-lg-6">  
-                        <div class="letrita2 col-1">VISIÓN</div>
-                        <div class="col-12 texto-historia3 border-left">Consolidarnos como la empresa lider en el transporte de mercancías por vía terrestre, expandiéndonos por nuevos mercados para ser la empresa más rápida, segura y con calidad de servicio a nivel nacional.
-                        </div>
-                     </div>
-                    <div class="col-lg-3"></div>
-                </div>
-            </div>
-            <br>
-        </div>
-        <br><br><br><br>
-        <div class="contenedorSomos2  visioncel col-12">
-            <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-5">  
-                        <div class="letrita3 col-lg-12 col-12">VISIÓN</div>
-                        <div class="col-12 texto-historia3 border-right">Consolidarnos como la empresa lider en el transporte de mercancías por vía terrestre, expandiéndonos por nuevos mercados para ser la empresa más rápida, segura y con calidad de servicio a nivel nacional.
-                        </div>
-                    </div>
-    
-                    <div class=" col-lg-3"><img class="borde-img" src="assets/images/circulo-img.png" height="250px">
-                    </div>
-                    <div class="col-lg-4"></div>
-    
-            </div>
-    
-            <br>
-        </div>
-        <br>
-    </div>
-    </div> -->
 </main>

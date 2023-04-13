@@ -5,7 +5,7 @@ import { SolucionesService } from 'src/app/services/footer.service';
 @Component({
   selector: 'app-sugerencias',
   templateUrl: './sugerencias.component.html',
-  styleUrls: ['./sugerencias.component.css'],
+  styleUrls: ['./suggestions.component.scss'],
   providers:[SolucionesService],
  
 })

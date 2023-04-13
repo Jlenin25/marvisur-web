@@ -48,7 +48,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { NgxExtendedPdfViewerModule  } from 'ngx-extended-pdf-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatStepperModule,
     MatDialogModule,
     MatTabsModule,
+    NgxExtendedPdfViewerModule,
+    PdfViewerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAMpoXbrRESRM1KgPzG0o0JIDh61LuOtEQ',
     }),
