@@ -9,7 +9,7 @@ import { SucursalesComponent } from './components/sucursales/sucursales.componen
 import { CotizacionComponent } from './components/cotizacion/cotizacion.component';
 import { OportunidadComponent } from './components/oportunidad/oportunidad.component';
 import { ErrorComponent } from './components/error/error.component';
-//import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
+import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
 const appRoutes: Routes =[
     { path: '', component: InicioComponent },
@@ -19,8 +19,8 @@ const appRoutes: Routes =[
     { path: 'sucursales', component: SucursalesComponent },
     { path: 'cotizacion', component: CotizacionComponent },
     { path: 'oportunidad', component: OportunidadComponent },
-    { path: '**', component: ErrorComponent },
-    //{path: 'reclamaciones',component: ReclamacionesComponent}
+    { path: 'reclamaciones',component: ReclamacionesComponent },
+    { path: '**', component: ErrorComponent }
 ];
 
 export const appRoutingProviders:any[]=[];

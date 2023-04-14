@@ -120,6 +120,7 @@
                     width: 6px;
                     top: -220px;
                     left: 17px;
+                    transition: all .5s ease-out;
                   }
                 }
               }
@@ -164,7 +165,6 @@
                   .box-horizontal-tl {
                     .tl-line-black {
                       height: 300px;
-                      transition: all .5s ease-out;
                     }
                   }
                 }

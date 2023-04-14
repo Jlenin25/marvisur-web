@@ -32,7 +32,7 @@ import { InfoTrackingModalComponent } from './components/inicio/modal/infotrakin
 import { SeccionComponent } from './components/secciones/seccion.component';
 import { NotFindYetComponent, SendMessageModalNFY } from './components/oportunidad/NotFindYetModal/notfindyet.component';
 import { LoadCVComponent, SendMessageModalLCV } from './components/oportunidad/LoadCVModal/loadcv.component';
-// import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
+import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
 import { SwiperModule } from 'swiper/angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -76,7 +76,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     LoadCVComponent,
     SendMessageModalNFY,
     SendMessageModalLCV,
-    //ReclamacionesComponent
+    ReclamacionesComponent
   ],
   imports: [
     ReactiveFormsModule,
