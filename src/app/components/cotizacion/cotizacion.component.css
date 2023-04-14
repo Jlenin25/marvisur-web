@@ -294,9 +294,9 @@ h6 {
   
 }
 
-:host >>> .tooltip-inner {
+/* :host >>> .tooltip-inner {
   background: black!important;
-}
+} */
 
 /*
 asdsad
