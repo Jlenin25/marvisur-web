@@ -216,7 +216,7 @@
     <h3>NUESTROS SERVICIOS</h3>
     <div class="ctn-services">
       <div class="ctn-s-info">
-        <mat-stepper [orientation]="'vertical'">
+        <mat-stepper [orientation]="'vertical'" (selectionChange)="onSelectionChange($event)">
           <mat-step [stepControl]="groupNumberServices" label="TRANSPORTE DE CARGA">
             <p>
               Brindamos un servicio de calidad en el transporte de toda variedad
@@ -242,7 +242,7 @@
         </mat-stepper>
       </div>
       <div class="ctn-s-image">
-        <img src="assets/images/transportecargaexpreso.png">
+        <img src="assets/newimg/{{ imgChangeTruck }}.png" loading="lazy">
       </div>
     </div>
   </section>

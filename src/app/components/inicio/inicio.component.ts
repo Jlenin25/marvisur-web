@@ -17,6 +17,7 @@ import { TyCModalComponent } from '../secciones/terminosycondiciones/terminosyco
 import { RastreoService } from 'src/app/services/rastreo.service';
 import { Tracking } from 'src/app/models/tracking';
 import { Infotracking } from '../../models/infotracking';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'inicio',
@@ -57,6 +58,8 @@ export class InicioComponent implements OnInit {
   public limitAnios: number;
   public limitSucursales: number;
   public limitTrabajadores: number;
+
+  public imgChangeTruck:string
 
   padreForm: FormControl = new FormControl();
 
@@ -101,6 +104,7 @@ export class InicioComponent implements OnInit {
     this.limitSucursales = 135;
     this.limitTrabajadores = 1500;
     this.limitGuias = 5981832;
+    this.imgChangeTruck = 'CAMION2'
   }
 
   openTermsAndConditions() {
@@ -242,5 +246,14 @@ export class InicioComponent implements OnInit {
     const position = element.getBoundingClientRect().top + 50;
     return position;
   }
-    
+
+  onSelectionChange(event: StepperSelectionEvent) {
+    if(event.selectedIndex === 0) {
+      this.imgChangeTruck = 'CAMION2'
+    } else if (event.selectedIndex === 1) {
+      this.imgChangeTruck = 'CAMION'
+    } else {
+      this.imgChangeTruck = 'CAMIONREPARTO_2'
+    }
+  }
 }
