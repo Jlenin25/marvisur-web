@@ -19,10 +19,10 @@ import { ConocenosComponent } from './components/conocenos/conocenos.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { CotizacionComponent } from './components/cotizacion/cotizacion.component';
 import { OportunidadComponent } from './components/oportunidad/oportunidad.component';
-import { SugerenciasComponent } from './components/secciones/sugerencias/sugerencias.component';
+import { SugerenciasComponent, modalSuggestionsComponent } from './components/secciones/sugerencias/sugerencias.component';
 import { PreguntasfrecuentesComponent } from './components/secciones/preguntasfrecuentes/preguntasfrecuentes.component';
 import { SolucionesenlineaComponent } from './components/secciones/solucionesenlinea/solucionesenlinea.component';
-import { TerminosycondicionesComponent } from './components/secciones/terminosycondiciones/terminosycondiciones.component';
+import { TerminosycondicionesComponent, TyCModalComponent, TyCModalComponentText } from './components/secciones/terminosycondiciones/terminosycondiciones.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -32,7 +32,6 @@ import { InfoTrackingModalComponent } from './components/inicio/modal/infotrakin
 import { SeccionComponent } from './components/secciones/seccion.component';
 import { NotFindYetComponent, SendMessageModalNFY } from './components/oportunidad/NotFindYetModal/notfindyet.component';
 import { LoadCVComponent, SendMessageModalLCV } from './components/oportunidad/LoadCVModal/loadcv.component';
-
 // import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 
 import { SwiperModule } from 'swiper/angular';
@@ -65,9 +64,12 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     HeaderComponent,
     PruebaComponent,
     SugerenciasComponent,
+    modalSuggestionsComponent,
     PreguntasfrecuentesComponent,
     SolucionesenlineaComponent,
     TerminosycondicionesComponent,
+    TyCModalComponent,
+    TyCModalComponentText,
     EncuestaComponent,
     InfoTrackingModalComponent,
     NotFindYetComponent,

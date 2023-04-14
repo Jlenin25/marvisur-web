@@ -41,20 +41,21 @@ export class ConocenosComponent implements OnInit {
       },
       {
         image: 'assets/svg/undraw_product_teardown_re_m1pc.svg',
+        name: 'Misión',
         description: `“Nuestra misión como empresa de transporte es asegurar relaciones rentables a largo plazo con nuestros clientes, empleados y socios comerciales al ofrecer servicios confiables e innovadores.”`
       },
       {
         image: 'assets/svg/undraw_team_collaboration_re_ow29.svg',
+        name: 'Visión',
         description: `“Ser reconocidos como una de las empresas de transporte más reconocidas de la industria debido a nuestros compromisos con los clientes, empleados y socios comerciales.”`
       },
       {
         image: 'assets/svg/undraw_product_teardown_re_m1pc.svg',
+        name: 'Objetivos',
         description: `“Nuestro objetivo es proporcionar los servicios más amplios y eficientes que satisfagan las demandas de todos nuestros clientes.”`
       }
     ]
   }
-
-  
 
   // TimeLine
   @HostListener('window:scroll', ['$event'])

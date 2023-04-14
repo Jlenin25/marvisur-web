@@ -39,6 +39,7 @@ $color-global-claro-3: hsl(358, 80%, 50%);
 $color-global-oscuro: hsl(1, 100%, 32%);
 $azul-claro: hsl(223, 82%, 56%);
 $azul-oscuro: hsl(223, 100%, 30%);
+$celeste-claro: hsl(207, 100%, 69%);
 $verde-claro: hsl(131, 72%, 56%);
 $verde-oscuro: hsl(131, 100%, 22%);
 $gris-c: hsl(0, 0%, 91%);
@@ -48,6 +49,11 @@ $bkg: hsl(340, 10%, 6%);
 $bkg-card: hsl(0, 0%, 13%);
 $color-lcv-nfy: hsl(225, 73%, 57%);
 $color-lcv-nfy-claro: hsl(225, 100%, 75%);
+/* Redes sociales*/
+$facebook: linear-gradient(to top right, $azul, $azul-claro, $celeste, $celeste-claro, $blanco);
+$instagram: linear-gradient(to top right, #FCDE30, #E9712A, #D2313B, #AE4198, #75401A, #5443A8);
+$linkedin: linear-gradient(to top right, #0077B5, #5fd2ff);
+$tiktok: radial-gradient(circle, #cc082c, #250007, $negro);
 
 * {
   outline: none;
@@ -104,7 +110,6 @@ button {
 main {
   position: relative;
   top: 10vh;
-  margin-bottom: 200px;
   .relevant,
   .why-choose-us,
   .fondonegroinicio,

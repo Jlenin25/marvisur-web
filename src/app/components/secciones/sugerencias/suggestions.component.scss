@@ -1,9 +1,13 @@
 @import "../../../app.component.scss";
 
 .suggestions {
+  background-image: url('../'+$url-au+'LINEAS M.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
   .ctn-suggestions {
-    max-width: 600px;
-    width: 100%;
+    max-width: 700px;
     margin: auto;
     padding: 100px 0;
     display: flex;
@@ -17,70 +21,68 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: all 0.3s ease-in-out;
-      transform: scale(.8);
+      transform: scale(.9);
       &:hover {
         transform: scale(1);
-        background-size: 200% auto;
+        background-size: 100% auto;
         -webkit-text-fill-color: $color-global-claro;
       }
     }
     .form {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding-left: 2em;
-      padding-right: 2em;
-      padding-bottom: 0.4em;
-      background-color: #cfcfcf;
+      justify-content: center;
+      max-width: 450px;
+      width: 100%;
+      gap: 30px;
+      margin: auto;
+      padding: 25px;
+      background-color: transparent;
       border-radius: 25px;
+      border: 1px solid transparent;
       transition: .4s ease-in-out;
       &:hover {
-        transform: scale(1.05);
-        border: 1px solid black;
+        border: 1px solid $color-global-claro;
+        box-shadow: 0 0 10px $color-global-claro-2;
       }
       .field {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5em;
-        border-radius: 25px;
+        border-radius: 22px;
         padding: 0.6em;
-        border: none;
+        border: 1px solid $azul-claro;
         outline: none;
-        color: white;
-        background-color: #171717;
-        box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
-        .input-icon {
-          height: 1.3em;
-          width: 1.3em;
-          fill: white;
-        }
         .input-field {
           background: none;
           border: none;
           outline: none;
           width: 100%;
-          color: #d3d3d3;
+          color: $negro;
+          padding: 0 10px;
         }
         textarea {
           resize: none;
         }
       }
-      .btn {
-        .button2 {
-          padding: 0.5em;
-          padding-left: 2.3em;
-          padding-right: 2.3em;
-          border-radius: 5px;
-          border: none;
-          outline: none;
-          transition: .4s ease-in-out;
-          background-color: #252525;
-          color: white;
-          &:hover {
-            background-color: black;
-            color: white;
-          }
+      button {
+        width: 200px;
+        padding: 0.5em;
+        padding-left: 2.3em;
+        padding-right: 2.3em;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        margin: auto;
+        transition: .3s ease-in-out;
+        color: $blanco;
+        background-color: #646464;
+        &:hover {
+          background-color: $negro;
+          color: $blanco;
+        }
+        i {
+          margin-right: 20px;
         }
       }
     }

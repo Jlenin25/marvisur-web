@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
       window.onscroll = () => {
-        this.document.body.setAttribute('style', `top: -${window.scrollY}px`)
+        this.document.body.setAttribute('style', `top: ${window.scrollY}px`)
       }
       this.prueba.open();
     }

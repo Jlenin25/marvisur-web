@@ -131,7 +131,7 @@ export class SucursalesComponent implements OnInit {
   async cargarSucursales(){
     this.flaginformacion=true
     while(this.flagProvi){
-			await this.delay(1000);
+			await this.delay(1000)
 			//console.log("esperando...") 
 		}
     this._departamentoService.getSucursalesbyCiudad(this.firstPro).subscribe(

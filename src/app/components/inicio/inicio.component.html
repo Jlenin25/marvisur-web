@@ -145,7 +145,7 @@
   </section>
 
   <section id="relevant" class="relevant">
-    <div class="ctn-img-link">
+    <div class="ctn-img-link" id="ctn-relevant" [class.visible]="showRelevant" [class.hidden]="!showRelevant">
       <a class="a-img" routerLink="/cotizacion">
         <img src="assets/images/cotizanuevo.png" />
       </a>
@@ -195,26 +195,19 @@
           </div>
         </div>
       </div>
+      <div class="ctn-gif">
+        <div class="degradate-top"></div>
+        <img src="assets/gif/GIF-CARRO-CARRETERA-WEB.gif" alt="Descripción del gif">
+        <div class="degradate-bottom"></div>
+      </div>
     </div>
   </section>
 
   <section class="why-choose-us">
     <h3>¿POR QUÉ ELEGIRNOS?</h3>
-    <div class="ctn-img-link">
-      <div class="a-img">
-        <img src="assets/images/coberturanuevo.png" />
-      </div>
-      <div class="a-img">
-        <img src="assets/images/servicionuevo.png" />
-      </div>
-      <div class="a-img">
-        <img src="assets/images/flotavehicularnuevo.png" />
-      </div>
-      <div class="a-img">
-        <img src="assets/images/monitoreonuevo.png" />
-      </div>
-      <div class="a-img">
-        <img src="assets/images/clientescorponuevo.png" />
+    <div class="ctn-img-link" id="ctn-wcu" [class.visible]="showWhyChooseUs" [class.hidden]="!showWhyChooseUs">
+      <div class="a-img" *ngFor="let item2 of dataWhyChooseUs; let i = index">
+        <img src="assets/images/{{ item2.image_name }}.png" />
       </div>
     </div>
   </section>

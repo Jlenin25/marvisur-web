@@ -2,10 +2,6 @@
   <div class="ctn-a-u">
     <div class="front-page">
       <div class="box-relative">
-        <div class="ctn-img">
-          <img src="assets/newimg/portada.jpg" alt="">
-          <div class="background"></div>
-        </div>
         <h2>Más de 30 años formando parte del Perú</h2>
       </div>
       <div style="height: 150px; overflow: hidden" class="ctn-curved-au">
@@ -21,40 +17,45 @@
         </svg>
       </div>
     </div>
-    <section class="our-history">
-      <div class="ctn-oh">
-        <h3>Conoce nuestra historia</h3>
-        <div class="timeline">
-          <div
-            *ngFor="let item of timelineItems; let i = index"
-            class="timeline-item"
-            [class]="getClass(i)"
-          >
-            <div class="box-horizontal-tl">
-              <div class="tl-circle-black"></div>
-              <div class="tl-line-black"></div>
-            </div>
-            <div class="info-timeline">
-              <div class="timeline-item-top">
-                <i class="{{ item.icon }}"></i>
-                <span>{{ item.date }}</span>
+    <div class="ctn-sections">
+      <section class="our-history">
+        <div class="ctn-oh">
+          <h3>Conoce nuestra historia</h3>
+          <div class="timeline">
+            <div
+              *ngFor="let item of timelineItems; let i = index"
+              class="timeline-item"
+              [class]="getClass(i)"
+            >
+              <div class="box-horizontal-tl">
+                <div class="tl-circle-black"></div>
+                <div class="tl-line-black"></div>
               </div>
-              <p>{{ item.description }}</p>
-              <i class="{{ item.arrow }}"></i>
+              <div class="info-timeline">
+                <div class="timeline-item-top">
+                  <i class="{{ item.icon }}"></i>
+                  <span>{{ item.date }}</span>
+                </div>
+                <p>{{ item.description }}</p>
+                <i class="{{ item.arrow }}"></i>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="mision-vision">
-      <ul>
-        <li *ngFor="let item2 of infoAboutUsItems; let i = index"
-        class="group-cards-mv"
-        [class]="getClassAboutUs(i)">
-          <img src="{{ item2.image }}" alt="" />
-          <p>{{ item2.description }}</p>
-        </li>
-      </ul>
-    </section>
+      </section>
+      <section class="mision-vision">
+        <ul>
+          <li *ngFor="let item2 of infoAboutUsItems; let i = index"
+          class="group-cards-mv"
+          [class]="getClassAboutUs(i)">
+            <img src="{{ item2.image }}" alt="" />
+            <div class="info-mv">
+              <h4>{{ item2.name }}</h4>
+              <p>{{ item2.description }}</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
   </div>
 </main>

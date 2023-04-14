@@ -11,7 +11,7 @@ import { Tarifa } from 'src/app/models/tarifa';
 @Component({
   selector: 'app-cotizacion',
   templateUrl: './cotizacion.component.html',
-  styleUrls: ['./cotizacion.component.scss'],
+  styleUrls: ['./cotizacion.component.css'],
   providers:[CotizacionService, DepartamentoService,TarifarioService]
 
 })

@@ -1,0 +1,14 @@
+<div class="modal-body">
+  <div *ngIf="check==1">
+    Gracias por tu sugerencia, nos ayudas a seguir mejorando. 😊
+  </div>
+  <div *ngIf="check==2">
+      No se envió, verifique los datos.
+  </div>
+  <div *ngIf="check==0">
+    Ingresando Datos...
+</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</div>
