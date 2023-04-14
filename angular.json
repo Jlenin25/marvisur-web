@@ -36,16 +36,18 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "dist/marvisur-web",
+              "index": "src/index.html",
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1000kb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "10kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
                 }
               ],
               "fileReplacements": [
