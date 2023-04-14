@@ -136,7 +136,7 @@
               <button type="submit" class="btn btn-search"></button>
             <div class="btn btn-info" [tooltip]="tolTemplate"></div>
             <ng-template #tolTemplate triggers="hover">
-              <img src="assets/images/info-rastrea.png" />
+              <img src="assets/images/info-rastrea.png" loading="lazy" />
             </ng-template>
           </div>
         </form>
@@ -147,7 +147,7 @@
   <section id="relevant" class="relevant">
     <div class="ctn-img-link" id="ctn-relevant" [class.visible]="showRelevant" [class.hidden]="!showRelevant">
       <a class="a-img" routerLink="/cotizacion">
-        <img src="assets/images/cotizanuevo.png" />
+        <img src="assets/images/cotizanuevo.png" loading="lazy" />
       </a>
       <a class="a-img" routerLink="/sucursales">
         <img src="assets/images/sucursalnuevo.png" />
@@ -157,10 +157,11 @@
           src="assets/images/terminosnuevo.png"
           data-toggle="modal"
           data-target="#modalReclamaciones"
+          loading="lazy"
         />
       </div>
       <a class="a-img" routerLink="/seccion/soluciones-en-linea">
-        <img src="assets/images/solucionesnuevo.png" />
+        <img src="assets/images/solucionesnuevo.png" loading="lazy" />
       </a>
       <a class="a-img directorio" href="https://online.fliphtml5.com/ekxyo/jrqp/#p=1" target="_blank">
         <i class="fa-solid fa-book"></i>
@@ -187,18 +188,9 @@
           <div class="subtitle subtitle1">Trabajadores</div>
           <div class="subtitle subtitle2">A su servicio.</div>
         </div>
-        <div class="box-numbers">
-          <h4>{{ cantidadGuias }}</h4>
-          <div class="subtitle subtitle1">Guías de remisión</div>
-          <div class="subtitle subtitle2">
-            Atendidas con clientes satisfechos.
-          </div>
-        </div>
       </div>
       <div class="ctn-gif">
-        <div class="degradate-top"></div>
-        <img src="assets/gif/GIF-CARRO-CARRETERA-WEB.gif" alt="Descripción del gif">
-        <div class="degradate-bottom"></div>
+        <img src="assets/gif/GIF-CARRO-CARRETERA-WEB.gif" alt="Descripción del gif" loading="lazy">
       </div>
     </div>
   </section>
@@ -207,14 +199,14 @@
     <h3>¿POR QUÉ ELEGIRNOS?</h3>
     <div class="ctn-img-link" id="ctn-wcu" [class.visible]="showWhyChooseUs" [class.hidden]="!showWhyChooseUs">
       <div class="a-img" *ngFor="let item2 of dataWhyChooseUs; let i = index">
-        <img src="assets/images/{{ item2.image_name }}.png" />
+        <img src="assets/images/{{ item2.image_name }}.png" loading="lazy" />
       </div>
     </div>
   </section>
 
   <section class="services">
     <h3>NUESTROS SERVICIOS</h3>
-    <div class="ctn-services">
+    <div class="ctn-services" id="ctn-services" [class.visible]="showServices" [class.hidden]="!showServices">
       <div class="ctn-s-info">
         <mat-stepper [orientation]="'vertical'" (selectionChange)="onSelectionChange($event)">
           <mat-step [stepControl]="groupNumberServices" label="TRANSPORTE DE CARGA">
@@ -242,7 +234,7 @@
         </mat-stepper>
       </div>
       <div class="ctn-s-image">
-        <img src="assets/newimg/{{ imgChangeTruck }}.png" loading="lazy">
+        <img src="assets/newimg/{{ imgChangeTruck }}.png" loading="lazy" class="{{ imgChangeTruck }}">
       </div>
     </div>
   </section>
@@ -253,15 +245,15 @@
       <span>ver más</span>
       <i class="fa-solid fa-arrow-right"></i>
     </a>
-    <div class="card-inner-news">
+    <div class="card-inner-news" id="ctn-news" [class.visible]="showNews" [class.hidden]="!showNews">
       <a target="_blank" href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1500245460502715/">
-        <img src="assets/images/news/CENTRO DE ACOPIO LOS OLIVOS 3.jpg" alt="">
+        <img src="assets/images/news/CENTRO DE ACOPIO LOS OLIVOS 3.jpg" alt="" loading="lazy">
       </a>
       <a target="_blank" href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1514174475776480/">
-        <img src="assets/images/news/NOS MUDAMOS huacho.jpg" alt="">
+        <img src="assets/images/news/NOS MUDAMOS huacho.jpg" alt="" loading="lazy">
       </a>
       <a target="_blank" href="https://www.facebook.com/MARVISUROFICIAL/photos/a.145591065968168/1509513512909243/">
-        <img src="assets/images/news/puente piedra 3.jpg" alt="">
+        <img src="assets/images/news/puente piedra 3.jpg" alt="" loading="lazy">
       </a>
 		</div>
   </section>

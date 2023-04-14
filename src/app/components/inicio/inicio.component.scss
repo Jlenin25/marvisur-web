@@ -1,4 +1,5 @@
 @import "../../app.component.scss";
+$elementos: 5;
 
 .home {
   top: 0;
@@ -343,19 +344,33 @@
       }
     }
     .visible {
-      opacity: 1;
-      transition: opacity 3s ease-in-out;
+      .a-img {
+        @for $i from 1 through $elementos {
+          &:nth-child(#{$i}) {
+            transform: translateY(0);
+            opacity: 1;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+          }
+        }
+      }
     }
     .hidden {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+      .a-img {
+        @for $i from 1 through $elementos {
+          &:nth-child(#{$i}) {
+            transform: translateY((($i - 1) * 60) + px);
+            opacity: 0;
+            transition: opacity .5s ease-in-out, transform .5s ease-in-out;
+          }
+        }
+      }
     }
   }
   .fondonegroinicio {
-    margin-top: 100px;
+    margin-top: 200px;
     .col {
       .ctn-box {
-        background-image: linear-gradient(to top, #0084CA, $blanco);
+        // background-image: linear-gradient(to top, #0084CA, $blanco);
         min-height: auto;
         position: relative;
         display: flex;
@@ -386,29 +401,15 @@
       }
       .ctn-gif {
         position: relative;
-        // margin-top: 90px;
-        .degradate-top {
-          position: absolute;
-          // background-image: linear-gradient(to top, #0084CA, #73c5f1, $blanco);
-          background-color: #0084CA;
-          height: 250px;
-          width: 100%;
-          z-index: 2;
-          top: -250px;
-        }
         img {
           margin: auto;
-          margin-top: 250px;
           width: 100%;
-        }
-        .degradate-bottom {
-          background-image: linear-gradient(to bottom, $negro, $gris, $blanco);
-          height: 100px;
         }
       }
     }
   }
   .services {
+    overflow: hidden;
     position: relative;
     max-width: 1400px;
     margin: auto;
@@ -454,6 +455,29 @@
           position: absolute;
           right: 0;
           text-align: center;
+          &.CAMIONREPARTO_2 {
+            transform: scaleX(-1);
+          }
+        }
+      }
+      &.visible {
+        .ctn-s-info,
+        .ctn-s-image {
+          transform: translateX(0);
+          opacity: 1;
+          transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+      }
+      &.hidden {
+        .ctn-s-info {
+          transform: translateX(-280px);
+          opacity: 0;
+          transition: opacity .5s ease-in-out, transform .5s ease-in-out;
+        }
+        .ctn-s-image {
+          transform: translateX(280px);
+          opacity: 0;
+          transition: opacity .5s ease-in-out, transform .5s ease-in-out;
         }
       }
     }
@@ -500,6 +524,16 @@
           animation-iteration-count: 1;
         }
       }
+    }
+    .visible {
+      transform: translateY(0);
+      opacity: 1;
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    }
+    .hidden {
+      transform: translateY(280px);
+      opacity: 0;
+      transition: opacity .5s ease-in-out, transform .5s ease-in-out;
     }
   }
 }
@@ -667,9 +701,9 @@
 // Efecto Shake
 @keyframes shake {
   0% { transform: translate(0, 0) rotate(0); }
-  20% { transform: translate(-10px, 0) rotate(-5deg); }
-  40% { transform: translate(10px, 0) rotate(5deg); }
-  60% { transform: translate(-10px, 0) rotate(-5deg); }
-  80% { transform: translate(10px, 0) rotate(5deg); }
+  20% { transform: translate(-6px, 0) rotate(-2deg); }
+  40% { transform: translate(6px, 0) rotate(2deg); }
+  60% { transform: translate(-6px, 0) rotate(-2deg); }
+  80% { transform: translate(6px, 0) rotate(2deg); }
   100% { transform: translate(0, 0) rotate(0); }
 }

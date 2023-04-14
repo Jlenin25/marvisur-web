@@ -35,6 +35,10 @@ export class InicioComponent implements OnInit {
 
   showRelevant: boolean = false;
   showWhyChooseUs: boolean = false;
+  showNews: boolean = false;
+  showServices: boolean = false;
+  showFondoNegroInicio: boolean = false;
+  divVisible: boolean = false
   dataWhyChooseUs: any[] = [];
 
   fechaHoy!: any;
@@ -62,7 +66,6 @@ export class InicioComponent implements OnInit {
   public imgChangeTruck:string
 
   padreForm: FormControl = new FormControl();
-
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -102,9 +105,9 @@ export class InicioComponent implements OnInit {
 
     this.limitAnios = 33;
     this.limitSucursales = 135;
-    this.limitTrabajadores = 1500;
+    this.limitTrabajadores = 1700;
     this.limitGuias = 5981832;
-    this.imgChangeTruck = 'CAMION2'
+    this.imgChangeTruck = 'CAMION'
   }
 
   openTermsAndConditions() {
@@ -192,17 +195,17 @@ export class InicioComponent implements OnInit {
   async cargarCantidadesSucursales() {
     for (var _i = 0; _i <= this.limitSucursales; _i++) {
       this.cantidadSucursales = _i;
-      await new Promise((resolve) => setTimeout(resolve, 15));
+      await new Promise((resolve) => setTimeout(resolve, 3));
     }
   }
   async cargarCantidadesTrabajadores() {
-    for (var _i = 0; _i <= this.limitTrabajadores; _i = _i + 10) {
+    for (var _i = 0; _i <= this.limitTrabajadores; _i = _i + 25) {
       this.cantidadTrabajadores = _i;
-      await new Promise((resolve) => setTimeout(resolve, 14));
+      await new Promise((resolve) => setTimeout(resolve, 10));
     }
   }
   async cargarCantidadesGuias() {
-    for (var _i = 0; _i <= this.limitGuias; _i = _i + 13240) {
+    for (var _i = 0; _i <= this.limitGuias; _i = _i + 25000) {
       this.cantidadGuias = _i;
       await new Promise((resolve) => setTimeout(resolve, 0));
     }
@@ -234,11 +237,15 @@ export class InicioComponent implements OnInit {
   onWindowScroll(event: any) {
     this.showRelevant = window.scrollY > this.getDivPositionRelevant();
     this.showWhyChooseUs = window.scrollY > this.getDivPosition();
+    this.showServices = window.scrollY > this.getDivPositionServices();
+    this.showFondoNegroInicio = window.scrollY > this.getDivPositionFondoNegroInicio();
+    this.showNews = window.scrollY > this.getDivPositionNews();
+    console.log(this.getDivPositionNews( ))
   }
 
   getDivPositionRelevant() {
     const element:any = document.getElementById('ctn-relevant');
-    const position = element.getBoundingClientRect().top - 900;
+    const position = element.getBoundingClientRect().top;
     return position;
   }
   getDivPosition() {
@@ -246,14 +253,29 @@ export class InicioComponent implements OnInit {
     const position = element.getBoundingClientRect().top + 50;
     return position;
   }
+  getDivPositionServices() {
+    const element:any = document.getElementById('ctn-services');
+    const position = element.getBoundingClientRect().top + 630;
+    return position;
+  }
+  getDivPositionFondoNegroInicio() {
+    const element:any = document.getElementById('fondonegroinicio');
+    const position = element.getBoundingClientRect().top;
+    return position;
+  }
+  getDivPositionNews() {
+    const element:any = document.getElementById('ctn-news');
+    const position = element.getBoundingClientRect().top + 1200;
+    return position;
+  }
 
   onSelectionChange(event: StepperSelectionEvent) {
     if(event.selectedIndex === 0) {
-      this.imgChangeTruck = 'CAMION2'
-    } else if (event.selectedIndex === 1) {
       this.imgChangeTruck = 'CAMION'
-    } else {
+    } else if (event.selectedIndex === 1) {
       this.imgChangeTruck = 'CAMIONREPARTO_2'
+    } else {
+      this.imgChangeTruck = 'CAMION2'
     }
   }
 }

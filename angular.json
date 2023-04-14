@@ -69,6 +69,14 @@
           },
           "defaultConfiguration": "production"
         },
+        "deploy": {
+          "builder": "@angular-devkit/build-angular:deploy",
+          "options": {
+            "repo": "https://github.com/jlenin25/marvisur-web.git",
+            "baseHref": "/marvisur-web/",
+            "deployUrl": "https://jlenin25.github.io/marvisur-web/"
+          }
+        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
