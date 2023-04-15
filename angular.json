@@ -39,6 +39,7 @@
             "production": {
               "outputPath": "dist/marvisur-web",
               "index": "src/index.html",
+              "baseHref": "/marvisur-web/",
               "budgets": [
                 {
                   "type": "initial",
