@@ -30,26 +30,6 @@ header {
         justify-content: center;
         align-items: center;
         margin: auto;
-        .pay {
-          background-color: $color-global-claro;
-          border-radius: 50%;
-          // font-size: 2em;
-          color: $blanco;
-          height: 50px;
-          width: 50px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: auto;
-          i {
-            padding: 2px;
-            font-size: 1.7em
-          }
-          &:hover {
-            background-color: $blanco;
-            color: $color-global-claro;
-          }
-        }
         li {
           margin-right: 40px;
           transition: all 0.6s ease-in-out;
@@ -156,6 +136,40 @@ header {
           }
           .home {
             display: none;
+          }
+          .pay {
+            background-color: $color-global-claro;
+            border-radius: 50%;
+            // font-size: 2em;
+            color: $blanco;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            i {
+              padding: 2px;
+              font-size: 1.7em
+            }
+            &.active,
+            &:hover,
+            &.active::after {
+              background-color: $blanco;
+              color: $color-global-claro;
+            }
+            // &.active {
+              //   &:hover::after {
+                //     background-color: $blanco !important;
+                //     color: $color-global-claro !important;
+                //     transform: scaleX(0) !important;
+                //   }
+                // }
+          }
+        }
+        .li-pay {
+          &::after {
+            height: 0px;
           }
         }
       }

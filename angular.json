@@ -23,7 +23,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "baseHref": "/marvisur-web/",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -33,13 +32,14 @@
               "src/styles.scss",
               "node_modules/aos/dist/aos.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ]
           },
           "configurations": {
             "production": {
               "outputPath": "dist/marvisur-web",
               "index": "src/index.html",
-              "baseHref": "/marvisur-web/",
               "budgets": [
                 {
                   "type": "initial",

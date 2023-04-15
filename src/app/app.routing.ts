@@ -10,6 +10,7 @@ import { CotizacionComponent } from './components/cotizacion/cotizacion.componen
 import { OportunidadComponent } from './components/oportunidad/oportunidad.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const appRoutes: Routes =[
     { path: '', component: InicioComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes =[
     { path: 'cotizacion', component: CotizacionComponent },
     { path: 'oportunidad', component: OportunidadComponent },
     { path: 'reclamaciones',component: ReclamacionesComponent },
+    { path: 'paga-aqui',component: PaymentComponent },
     { path: '**', component: ErrorComponent }
 ];
 

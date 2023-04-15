@@ -1,0 +1,25 @@
+<main class="payment">
+  <div class="ctn-payment">
+    <div class="carousel relative overflow-hidden">
+      <div class="carousel-inner relative w-full overflow-hidden">
+        <div *ngFor="let item of items" class="carousel-item absolute h-full w-full">
+          <img [src]="item.image" alt="" class="w-full h-full object-cover">
+          <div class="carousel-caption absolute bottom-0 left-0 pb-4 pt-2 w-full">
+            <h2 class="text-white text-lg font-bold">{{ item.title }}</h2>
+            <p class="text-white">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-button left absolute top-1/2 transform -translate-y-1/2 hover:bg-gray-800 hover:bg-opacity-50 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </div>
+      <div class="carousel-button right absolute top-1/2 right-0 transform -translate-y-1/2 hover:bg-gray-800 hover:bg-opacity-50 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</main>
