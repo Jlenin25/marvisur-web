@@ -71,10 +71,10 @@
           "defaultConfiguration": "production"
         },
         "deploy": {
-          "builder": "@angular-devkit/build-angular:deploy",
+          "builder": "angular-cli-ghpages:deploy",
           "options": {
             "repo": "https://github.com/jlenin25/marvisur-web.git",
-            "baseHref": "/marvisur-web/",
+            "baseHref": "https://jlenin25.github.io/marvisur-web/",
             "deployUrl": "https://jlenin25.github.io/marvisur-web/"
           }
         },
