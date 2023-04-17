@@ -31,6 +31,10 @@ export class AppComponent implements OnInit {
       });
     }
 
+    onActivate(event: any) {
+      window.scrollTo(0, 0);
+    }
+
     ngOnInit(): void {
       window.onscroll = () => {
         this.document.body.setAttribute('style', `top: ${window.scrollY}px`)

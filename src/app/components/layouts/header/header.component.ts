@@ -16,9 +16,6 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen
   }
 
-  onActivate(event: any) {
-    window.scrollTo(0, 0);
-  }
 
   // TODO: Cross browsing
   

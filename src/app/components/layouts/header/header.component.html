@@ -1,61 +1,61 @@
 <header>
     <div class="ctn-header">
         <div class="ctn-logo">
-            <a routerLink="">
+            <a [routerLink]="['/']">
                 <img class="header__logo" src="assets/images/logo_pb.png">
             </a>
         </div>
         <nav [class.is-open]="isMenuOpen">
             <ul class="card-general">
                 <li>
-                    <a routerLink="" class="home">
+                    <a [routerLink]="['/']" class="home">
                         Inicio
                     </a>
                 </li>
-                <li><a routerLink="nosotros" routerLinkActive="active">Nosotros</a></li>
+                <li><a [routerLink]="['/nosotros']" routerLinkActive="active">Nosotros</a></li>
                 <li>
-                    <a routerLink="seccion/" routerLinkActive="active" class="secciones">
+                    <a [routerLink]="['/seccion/']" routerLinkActive="active" class="secciones">
                         Secciones
                         <i class="fa-solid fa-chevron-down"></i>
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a routerLink="seccion/preguntas-frecuentes">
+                            <a [routerLink]="['/seccion/preguntas-frecuentes']">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Preguntas Frecuentes
                             </a>
                         </li>
                         <li>
-                            <a routerLink="seccion/soluciones-en-linea">
+                            <a [routerLink]="['/seccion/soluciones-en-linea']">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Soluciones en Linea
                             </a>
                         </li>
                         <li>
-                            <a routerLink="seccion/terminos&condiciones">
+                            <a [routerLink]="['/seccion/terminos&condiciones']">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Términos y Condiciones
                             </a>
                         </li>
                         <li>
-                            <a routerLink="seccion/buzon-de-sugerencias">
+                            <a [routerLink]="['/seccion/buzon-de-sugerencias']">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Buzón de Sugerencias
                             </a>
                         </li>
                         <li>
-                            <a routerLink="seccion/publicaciones">
+                            <a [routerLink]="['/seccion/publicaciones']">
                                 <i class="fa-solid fa-angle-right"></i>
                                 Publicaciones
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li><a routerLink="sucursales" routerLinkActive="active">Sucursales</a></li>
-                <li><a routerLink="cotizacion" routerLinkActive="active">Cotización</a></li>
-                <li><a routerLink="oportunidad" routerLinkActive="active">Oportunidad Laboral</a></li>
+                <li><a [routerLink]="['/sucursales']" routerLinkActive="active">Sucursales</a></li>
+                <li><a [routerLink]="['/cotizacion']" routerLinkActive="active">Cotización</a></li>
+                <li><a [routerLink]="['/oportunidad']" routerLinkActive="active">Oportunidad Laboral</a></li>
                 <li class="li-pay">
-                    <a routerLink="paga-aqui" routerLinkActive="active" class="pay">
+                    <a [routerLink]="['/paga-aqui']" routerLinkActive="active" class="pay">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
                     </a>
                 </li>
@@ -80,4 +80,3 @@
         </button>
     </div>
 </header> 
-<router-outlet class="router" (activate)="onActivate($event)"></router-outlet>
