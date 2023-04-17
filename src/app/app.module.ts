@@ -1,3 +1,4 @@
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,8 +11,8 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs, 'es');
-import { routing } from './app.routing';
 import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
 
 // Import Components-WebSite
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -51,6 +52,20 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NgxExtendedPdfViewerModule  } from 'ngx-extended-pdf-viewer';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
+// Rutas
+const route: Routes =[
+    { path: '', component: InicioComponent },
+    { path: 'inicio', component: InicioComponent },
+    { path: 'nosotros', component: ConocenosComponent },
+    { path: 'seccion', loadChildren: () => import('./components/secciones/seccion.module').then(m => m.SeccionModule) },
+    { path: 'sucursales', component: SucursalesComponent },
+    { path: 'cotizacion', component: CotizacionComponent },
+    { path: 'oportunidad', component: OportunidadComponent },
+    { path: 'reclamaciones',component: ReclamacionesComponent },
+    { path: 'paga-aqui',component: PaymentComponent },
+    { path: '**', component: ErrorComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +101,6 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     TooltipModule.forRoot(),
     BrowserModule,
     JwPaginationModule,
-    routing,
     SwiperModule,
     HttpClientModule,
     NgbModule,
@@ -101,13 +115,16 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
       apiKey: 'AIzaSyAMpoXbrRESRM1KgPzG0o0JIDh61LuOtEQ',
     }),
     AngularFileUploaderModule,
+    RouterModule.forRoot(route,{
+      anchorScrolling: 'enabled'}),
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
     BrowserAnimationsModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
+  exports: [RouterModule],
+  providers: [{ provide: LOCALE_ID, useValue: 'es', useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

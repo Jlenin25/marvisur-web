@@ -240,7 +240,6 @@ export class InicioComponent implements OnInit {
     this.showServices = window.scrollY > this.getDivPositionServices();
     this.showFondoNegroInicio = window.scrollY > this.getDivPositionFondoNegroInicio();
     this.showNews = window.scrollY > this.getDivPositionNews();
-    console.log(this.getDivPositionNews( ))
   }
 
   getDivPositionRelevant() {
