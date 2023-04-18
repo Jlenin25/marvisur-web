@@ -72,8 +72,7 @@ export class InicioComponent implements OnInit {
     private _formBuilder: FormBuilder,
     public sanitizer: DomSanitizer,
     public dialog: MatDialog,
-    private _RastreoService: RastreoService,
-    private el: ElementRef
+    private _RastreoService: RastreoService
   ) {
     let timestamp = 1643658989;
     // @ts-ignore

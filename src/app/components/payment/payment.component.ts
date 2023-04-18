@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef } from "@angular/core";
 
 @Component ({
   selector: 'app-payment',
@@ -7,36 +7,46 @@ import { Component } from "@angular/core";
 })
 
 export class PaymentComponent {
-  
-  items = [
+
+  nameCard = 'Visa'
+
+  itemsCard:any [] = [
     {
-      image: 'https://placehold.it/800x400',
-      title: 'Slide 1',
-      description: 'Description for slide 1'
+      'img': 'visa',
+      'name': 'visa'
     },
     {
-      image: 'https://placehold.it/800x400',
-      title: 'Slide 2',
-      description: 'Description for slide 2'
+      'img': 'mastercard',
+      'name': 'mastercard'
     },
     {
-      image: 'https://placehold.it/800x400',
-      title: 'Slide 3',
-      description: 'Description for slide 3'
+      'img': 'americanexpress',
+      'name': 'americanexpress'
     },
-    // ...
-  ];
-  currentIndex = 0;
+    {
+      'img': 'dinnersclub',
+      'name': 'dinnersclub'
+    }
+  ]
 
-  previousItem(): void {
-    this.currentIndex = this.currentIndex === 0 ? this.items.length - 1 : this.currentIndex - 1;
+  constructor(private el: ElementRef) {
+    this.nameCard
   }
 
-  nextItem(): void {
-    this.currentIndex = this.currentIndex === this.items.length - 1 ? 0 : this.currentIndex + 1;
+  selectItemCard(e:any) {
+    switch(e) {
+      case 0:
+        this.nameCard = 'Visa'
+        break
+      case 1:
+        this.nameCard = 'Mastercard'
+        break
+      case 2:
+        this.nameCard = 'American Express'
+        break
+      case 3:
+        this.nameCard = 'Dinners Club'
+        break
+    }
   }
-  
-  constructor() {
-  }
-
 }
