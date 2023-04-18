@@ -9,6 +9,7 @@ import { Component, ElementRef } from "@angular/core";
 export class PaymentComponent {
 
   nameCard = 'Visa'
+  inputDC = 'DNI'
 
   itemsCard:any [] = [
     {
@@ -31,6 +32,7 @@ export class PaymentComponent {
 
   constructor(private el: ElementRef) {
     this.nameCard
+    this.inputDC
   }
 
   selectItemCard(e:any) {
@@ -49,4 +51,17 @@ export class PaymentComponent {
         break
     }
   }
+  
+  singleNumber(e:any) {
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57)
+  }
+  changeInputDC() {
+    if(this.inputDC === 'DNI') {
+      this.inputDC = 'CE'
+    } else {
+      this.inputDC = 'DNI'
+    }
+  }
+
 }

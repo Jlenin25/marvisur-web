@@ -243,12 +243,12 @@ export class InicioComponent implements OnInit {
 
   getDivPositionRelevant() {
     const element:any = document.getElementById('ctn-relevant');
-    const position = element.getBoundingClientRect().top;
+    const position = element.getBoundingClientRect().top - 799;
     return position;
   }
   getDivPosition() {
     const element:any = document.getElementById('ctn-wcu');
-    const position = element.getBoundingClientRect().top + 50;
+    const position = element.getBoundingClientRect().top + 250;
     return position;
   }
   getDivPositionServices() {
