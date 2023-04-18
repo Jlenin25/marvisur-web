@@ -8,47 +8,45 @@ import { Component, ElementRef } from "@angular/core";
 
 export class PaymentComponent {
 
-  nameCard = 'Visa'
+  nameCard = 'Scotiabank'
   inputDC = 'DNI'
+  payMethod = 'Tarjeta'
 
-  itemsCard:any [] = [
-    {
-      'img': 'visa',
-      'name': 'visa'
-    },
-    {
-      'img': 'mastercard',
-      'name': 'mastercard'
-    },
-    {
-      'img': 'americanexpress',
-      'name': 'americanexpress'
-    },
-    {
-      'img': 'dinnersclub',
-      'name': 'dinnersclub'
-    }
-  ]
+  itemsCard:any [] = [ { 'img': 'bcp' }, { 'img': 'scotiabank' } ]
+  itemsWallet:any [] = [ { 'img': 'yape' }, { 'img': 'plin' } ]
+  itemsPayMethod:any [] = [ { 'method': 'Tarjeta' }, { 'method': 'Billetera digital' } ]
 
   constructor(private el: ElementRef) {
     this.nameCard
     this.inputDC
+    this.payMethod
   }
 
   selectItemCard(e:any) {
     switch(e) {
       case 0:
-        this.nameCard = 'Visa'
+        this.nameCard = 'BCP'
         break
       case 1:
-        this.nameCard = 'Mastercard'
+        this.nameCard = 'Scotiabank'
         break
-      case 2:
-        this.nameCard = 'American Express'
-        break
-      case 3:
-        this.nameCard = 'Dinners Club'
-        break
+    }
+  }
+  selectItemWallet(e:any) {
+  }
+  selectitemPayMethod(e:any) {
+    let queryCard = this.el.nativeElement.querySelector('.container-cards')
+    let queryWallet = this.el.nativeElement.querySelector('.container-wallets')
+    if(e===0) {
+      if(!queryCard.classList.contains('active')) {
+        queryCard.classList.add('active')
+        queryWallet.classList.remove('active')
+      }
+    } else {
+      if(!queryWallet.classList.contains('active')) {
+        queryWallet.classList.add('active')
+        queryCard.classList.remove('active')
+      }
     }
   }
   

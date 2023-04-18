@@ -1,11 +1,19 @@
 <main class="payment">
   <div class="ctn-payment">
     <nav>
-      <div class="content-title-pay title-card">
-        <h3>Tarjeta</h3>
-      </div>
-      <div class="content-title-pay title-wallets">
-        <h3>Billetera digital</h3>
+      <div
+        class="ctn-nav-pay"
+        *ngFor="let item of itemsPayMethod; let i = index"
+      >
+        <label class="radio">
+          <input
+            type="radio"
+            name="payRadio"
+            checked=""
+            (click)="selectitemPayMethod(i)"
+          />
+          <span>{{ item.method }}</span>
+        </label>
       </div>
     </nav>
     <div class="content-info">
@@ -15,9 +23,20 @@
             *ngFor="let item of itemsCard; let i = index"
             (click)="selectItemCard(i)"
           >
-            <div class="item">
-              <img src="assets/payments/cards/{{ item.img }}.png" alt="" />
-            </div>
+            <label>
+              <i class="fa-solid fa-check"></i>
+              <input
+                checked="1"
+                type="radio"
+                class="radio-input"
+                name="radioCard"
+              />
+              <span class="radio-tile">
+                <span class="box-img">
+                  <img src="assets/payments/cards/{{ item.img }}.png" alt="" />
+                </span>
+              </span>
+            </label>
           </li>
         </ul>
         <form>
@@ -33,18 +52,37 @@
                     type="text"
                     placeholder="N° de {{ inputDC }}"
                     maxlength="12"
+                    name="documento"
+                    class="idc"
+                    autocomplete="off"
+                    (keypress)="singleNumber($event)"
+                  />
+                </div>
+                <div class="inputDC">
+                  <input
+                    type="text"
+                    placeholder="N° de celular"
+                    minlength="9"
+                    maxlength="9"
+                    class="celular"
+                    class="icel"
+                    autocomplete="off"
                     (keypress)="singleNumber($event)"
                   />
                 </div>
               </div>
               <div class="email">
                 <div class="inputDC">
-                  <input type="email" placeholder="Correo electrónico" />
+                  <input
+                    type="email"
+                    placeholder="Correo electrónico"
+                    autocomplete="off"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div class="card">
+          <div class="card {{ nameCard }}">
             <div class="card__info">
               <div class="ctn-top">
                 <h5>{{ nameCard }}</h5>
@@ -132,7 +170,7 @@
                   <input
                     type="text"
                     name=""
-                    placeholder="Número de tarjeta"
+                    placeholder="Número de tarjeta..."
                     (keypress)="singleNumber($event)"
                   />
                 </span>
@@ -159,7 +197,9 @@
                   />
                 </time>
               </div>
-              <!-- <div class="card__name" aria-label="Dee Stroyer">Jk Huger</div> -->
+              <div class="card__name" aria-label="Dee Stroyer">
+                <input type="text" placeholder="Nombre del titular..." />
+              </div>
               <!-- <div
                 class="card__vendor"
                 role="img"
@@ -170,14 +210,40 @@
               <div class="card__texture"></div>
             </div>
           </div>
+          <button type="submit">
+            <div class="default-btn">
+              <span>Pagar ahora</span>
+            </div>
+            <div class="hover-btn">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+          </button>
         </form>
       </div>
-      <div class="container-wallets">
+      <div class="container-wallets active">
         <ul>
-          <div>
-            <img src="" alt="" />
-            <input type="radio" name="" id="" />
-          </div>
+          <li
+            *ngFor="let item of itemsWallet; let i = index"
+            (click)="selectItemWallet(i)"
+          >
+            <label>
+              <i class="fa-solid fa-check"></i>
+              <input
+                checked="1"
+                type="radio"
+                class="radio-input"
+                name="radioWallet"
+              />
+              <span class="radio-tile">
+                <span class="box-img">
+                  <img
+                    src="assets/payments/wallets/{{ item.img }}.png"
+                    alt=""
+                  />
+                </span>
+              </span>
+            </label>
+          </li>
         </ul>
       </div>
     </div>
