@@ -60,7 +60,7 @@ const route: Routes =[
     { path: 'seccion', loadChildren: () => import('./components/secciones/seccion.module').then(m => m.SeccionModule) },
     { path: 'sucursales', component: SucursalesComponent },
     { path: 'cotizacion', component: CotizacionComponent },
-    { path: 'oportunidad', component: OportunidadComponent },
+    { path: 'trabaja-con-nosotros', component: OportunidadComponent },
     { path: 'reclamaciones',component: ReclamacionesComponent },
     { path: 'paga-aqui',component: PaymentComponent },
     { path: '**', component: ErrorComponent }

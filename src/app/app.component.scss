@@ -49,6 +49,7 @@ $bkg: hsl(340, 10%, 6%);
 $bkg-card: hsl(0, 0%, 13%);
 $color-lcv-nfy: hsl(225, 73%, 57%);
 $color-lcv-nfy-claro: hsl(225, 100%, 75%);
+$color-bcp: hsl(204, 99%, 30%);
 /* Redes sociales*/
 $facebook: linear-gradient(to top right, $azul, $azul-claro, $celeste, $celeste-claro, $blanco);
 $instagram: linear-gradient(to top right, #FCDE30, #E9712A, #D2313B, #AE4198, #75401A, #5443A8);
@@ -109,7 +110,7 @@ button {
 
 main {
   position: relative;
-  top: 10vh;
+  top: 8vh;
   .relevant,
   .why-choose-us,
   .fondonegroinicio,

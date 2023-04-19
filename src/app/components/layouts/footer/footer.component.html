@@ -2,11 +2,11 @@
   <div class="ctn-footer">
     <div class="top">
       <div class="left">
-        <a routerLink="//">
+        <a [routerLink]="['/']">
           <img src="assets/images/LOGO_TRAZO.png" alt="">
         </a>
         <div class="ctn-social-networks">
-          <a href="https://www.facebook.com/MARVISUROFICIAL" class="facebook" target="_blank">
+          <a href="https://www.facebook.com/MARVISUROFICIAL" target="_blank">
             <i class="fa-brands fa-facebook-f"></i>
           </a>
           <a href="https://www.instagram.com/expreso_marvisur" target="_blank">
@@ -24,27 +24,33 @@
         <ul>
           <h6>Secciones</h6>
           <li>
-            <a routerLink="/seccion/preguntas-frecuentes">
+            <a [routerLink]="['/seccion/preguntas-frecuentes']">
               <i class="fa-solid fa-angle-right"></i>
               Preguntas frecuentes
             </a>
           </li>
           <li>
-            <a routerLink="/seccion/soluciones-en-linea">
+            <a [routerLink]="['/seccion/soluciones-en-linea']">
               <i class="fa-solid fa-angle-right"></i>
               Soluciones en línea
             </a>
           </li>
           <li>
-            <a routerLink="/seccion/terminos&condiciones">
+            <a [routerLink]="['/seccion/terminos&condiciones']">
               <i class="fa-solid fa-angle-right"></i>
               Términos y condiciones
             </a>
           </li>
           <li>
-            <a routerLink="/seccion/buzon-de-sugerencias">
+            <a [routerLink]="['/seccion/buzon-de-sugerencias']">
               <i class="fa-solid fa-angle-right"></i>
               Buzón de sugerencias
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/trabaja-con-nosotros']">
+              <i class="fa-solid fa-angle-right"></i>
+              Trabaja con nosotros
             </a>
           </li>
         </ul>
@@ -52,12 +58,12 @@
       <div class="right">
         <ul>
           <li>
-            <a routerLink="/reclamaciones" class="reclamaciones">
+            <a [routerLink]="['/reclamaciones']" class="reclamaciones">
               Libro de reclamaciones
             </a>
           </li>
           <li>
-            <a routerLink="/reclamaciones">
+            <a [routerLink]="['/reclamaciones']">
               <img src="assets/images/libro-footer.png">
             </a>
           </li>

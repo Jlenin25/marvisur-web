@@ -53,28 +53,14 @@
                 </li>
                 <li><a [routerLink]="['/sucursales']" routerLinkActive="active">Sucursales</a></li>
                 <li><a [routerLink]="['/cotizacion']" routerLinkActive="active">Cotización</a></li>
-                <li><a [routerLink]="['/oportunidad']" routerLinkActive="active">Oportunidad Laboral</a></li>
-                <li class="li-pay">
-                    <a [routerLink]="['/paga-aqui']" routerLinkActive="active" class="pay">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                <li><a [routerLink]="['/paga-aqui']" routerLinkActive="active">Pago</a></li>
+                <li>
+                    <a [routerLink]="['/login']" routerLinkActive="active">
+                        <i class="fa-solid fa-user"></i>
                     </a>
                 </li>
             </ul>
         </nav>
-        <div class="right next-center">
-            <a href="https://www.facebook.com/MARVISUROFICIAL" target="_blank">
-                <i class="fa-brands fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/expreso_marvisur" target="_blank">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@marvisur.oficial" target="_blank">
-                <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a class="final" href="https://www.linkedin.com/company/expreso-marvisur-e-i-r-l" target="_blank">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
         <button class="btn-menu" (click)="toggleMenu()">
             <i class="fa-solid {{ isMenuOpen ? 'fa-xmark' : 'fa-bars' }}"></i>
         </button>

@@ -146,19 +146,9 @@
 
   <section id="relevant" class="relevant">
     <div class="ctn-img-link" id="ctn-relevant" [class.visible]="showRelevant" [class.hidden]="!showRelevant">
-      <a class="a-img" routerLink="/cotizacion">
-        <img src="assets/images/cotizanuevo.png" loading="lazy" />
-      </a>
-      <a class="a-img" routerLink="/sucursales">
-        <img src="assets/images/sucursalnuevo.png" />
-      </a>
       <div class="a-img" mat-button (click)="openTermsAndConditions()">
-        <img
-          src="assets/images/terminosnuevo.png"
-          data-toggle="modal"
-          data-target="#modalReclamaciones"
-          loading="lazy"
-        />
+        <i class="fa-solid fa-building-shield"></i>
+        <span>Términos y condiciones</span>
       </div>
       <a class="a-img" routerLink="/seccion/soluciones-en-linea">
         <img src="assets/images/solucionesnuevo.png" loading="lazy" />

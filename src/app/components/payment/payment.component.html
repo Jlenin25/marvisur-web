@@ -1,5 +1,30 @@
 <main class="payment">
   <div class="ctn-payment">
+    <div class="search-guia">
+      <form>
+        <input
+          placeholder="Serie"
+          type="text"
+          required=""
+          minlength="4"
+          maxlength="4"
+          class="serie"
+          (keypress)="singleNumber($event)"
+        />
+        <input
+          placeholder="Número"
+          type="text"
+          required=""
+          minlength="7"
+          maxlength="7"
+          class="number"
+          (keypress)="singleNumber($event)"
+        />
+        <button>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
     <nav>
       <div
         class="ctn-nav-pay"

@@ -335,11 +335,15 @@ $elementos: 5;
           margin-bottom: 10px;
         }
         span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           font-size: 1.5em;
           font-weight: bold;
-          text-align: center;
           font-style: italic;
           text-transform: uppercase;
+          margin-left: -20px;
+          text-align: center;
         }
       }
     }
