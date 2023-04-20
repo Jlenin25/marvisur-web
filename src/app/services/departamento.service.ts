@@ -14,7 +14,10 @@ export class DepartamentoService{
 	constructor(private http:HttpClient) {
 		this.url=global.url;
 	}
-	
+	getSucrusalesAll():Observable<any> {
+		//let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+		return this.http.get(this.url+'sucursalesTodas',);
+	}
 	getDepartamento():Observable<any> {
 		//let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 		return this.http.get(this.url+'obtenerdepartamentos',);

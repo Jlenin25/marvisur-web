@@ -35,6 +35,7 @@ import { NotFindYetComponent, SendMessageModalNFY } from './components/oportunid
 import { LoadCVComponent, SendMessageModalLCV } from './components/oportunidad/LoadCVModal/loadcv.component';
 import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { SucursalInfoModal } from './components/sucursales/modal/sucursalModal.component';
 
 import { SwiperModule } from 'swiper/angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -93,7 +94,8 @@ const route: Routes =[
     SendMessageModalNFY,
     SendMessageModalLCV,
     ReclamacionesComponent,
-    PaymentComponent
+    PaymentComponent,
+    SucursalInfoModal
   ],
   imports: [
     ReactiveFormsModule,

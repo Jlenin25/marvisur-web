@@ -14,4 +14,5 @@ export interface Body {
   DEPORIGEN:    null | string;
   DEPDESTINO:   null | string;
   PAGO:         string;
+  PRECIO:         string;
 }

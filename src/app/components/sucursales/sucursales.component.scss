@@ -1,7 +1,49 @@
 @import "../../app.component.scss";
 
 .branch-office {
-    section {
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .ctn-nav-search {
+            margin: auto;
+            margin-top: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            b {
+                font-size: 1.2em;
+            }
+            .radio {
+                flex: 1 1 auto;
+                text-align: center;
+                input {
+                    display: none;
+                    color: $gris-intenso;
+                }
+                input:checked + span {
+                    color: rgba(51, 65, 85, 1);
+                    transition: color 0.4s ease-in-out;
+                }
+                span {
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 0.5rem;
+                    border: none;
+                    padding: 0.5rem 0;
+                    font-weight: 600;
+                    color: $gris-intenso;
+                    font-size: 1.2em;
+                    transition: all 0.15s ease-in-out;
+                }
+            }
+        }
+    }
+    section.active {
         margin: 70px 15px 50px 15px;
         display: flex;
         justify-content: center;
@@ -36,6 +78,10 @@
                 }
             }
         }
+    }
+    .general-search,
+    .single-search {
+        display: none;
     }
     .ctn-info-map {
         max-width: 1300px;
@@ -77,11 +123,12 @@
                             font-weight: bold;
                         }
                         button {
+                            margin-right: 50px;
                             background-color: $color-global-claro;
                             color: $blanco;
-                            width: 150px;
-                            padding: 2px 5px;
-                            border-radius: 15px;
+                            width: auto;
+                            padding: 5px 15px;
+                            border-radius: 12px;
                             span {
                                 color: $blanco;
                             }

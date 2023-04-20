@@ -20,7 +20,30 @@
     </div>
 
     <div class="title-peque ">SUCURSALES</div>
-    <section>
+    <nav>
+        <div class="ctn-nav-search">
+            <label class="radio">
+                <input
+                    type="radio"
+                    name="searchRadio"
+                    checked=""
+                    (click)="selectItemSearchS(0)"
+                />
+                <span>Búsqueda general</span>
+            </label>
+            <b>/</b>
+            <label class="radio">
+                <input
+                    type="radio"
+                    name="searchRadio"
+                    checked=""
+                    (click)="selectItemSearchS(1)"
+                />
+                <span>Búsqueda rápida</span>
+            </label>
+        </div>
+    </nav>
+    <section class="general-search">
         <!-- Departamentos -->
         <div class="place department">
             <input
@@ -32,7 +55,7 @@
                 matInput
             >
             <mat-autocomplete #auto1="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnDepartments">
-                <mat-option *ngFor="let departamento of optionsDepartments | async" [value]="departamento" (click)="onOptionsSelected(departamento)" class="ctn-ac">
+                <mat-option *ngFor="let departamento of optionsDepartments | async" [value]="departamento" (click)="onOptionsSelected(departamento)"class="ctn-ac">
                     {{departamento.nombre}}
                 </mat-option>
             </mat-autocomplete>
@@ -55,12 +78,32 @@
         <div class="place branch">
             <input
                 type="text"
-                placeholder="Sucursales..."
+                placeholder="Sucursal..."
                 [matAutocomplete]="auto3"
                 class="i-s"
             >
             <mat-autocomplete #auto3="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnSucursal">
-                <mat-option id="seleccionesucursal" *ngFor="let sucursal of sucursales" [value]="sucursal" (click)="suscursalSelect(sucursal)" class="ctn-ac">
+                <mat-option id="seleccionesucursal" *ngFor="let sucursal of sucursales" [value]="sucursal" (click)="sucursalSelect(sucursal)" class="ctn-ac">
+                    {{sucursal.titulo}}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+    </section>
+    <section class="single-search active">
+        <!-- Solo Sucursal -->
+        <div class="place department">
+            <input
+                type="text"
+                placeholder="Sucursales..."
+                [matAutocomplete]="auto4"
+                [formControl]="myControl"
+                class="i-d"
+                matInput
+                #myInput
+                (input)="onInputChange($event)"
+            >
+            <mat-autocomplete #auto4="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnSucursal">
+                <mat-option id="seleccionesucursal" *ngFor="let sucursal of optionsSucursalesTodos | async" [value]="sucursal" (click)="sucursalSelect(sucursal)" class="ctn-ac">
                     {{sucursal.titulo}}
                 </mat-option>
             </mat-autocomplete>
@@ -104,9 +147,13 @@
                     </li>
                     <li *ngIf="sucursales[0].direccion">
                         <button (click)="howToGet(sucursalesSelecionada[0])" class="howToGet">
-                            <span><i class="fa-solid fa-bus"></i></span>
+                            <span><i class="fa-solid fa-truck-fast"></i></span>
                             &nbsp; Cómo llegar
                         </button>
+                        <!-- <button class="howToStart" (click)="openModalSucursal()">
+                            <span><i class="fa-solid fa-rocket"></i></span>
+                            &nbsp; Punto de partida
+                        </button> -->
                     </li>
                 </ul>
             </div>

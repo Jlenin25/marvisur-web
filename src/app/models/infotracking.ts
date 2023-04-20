@@ -5,7 +5,7 @@ export class Infotracking {
     let date = new Date(obj['FECEVENTO']).toISOString().slice(0, 19).replace('T', ' ');
     // new Date().toISOString().slice(0, 19).replace('T', ' ');
     // @ts-ignore
-    return new Infotracking(obj['ID'], obj['GUIA'],date ,obj['EVENTO'],obj['COMENTARIO'],obj['REMITENTE'],obj['DESTINATARIO'],obj['DEPORIGEN'],obj['DEPDESTINO'],obj['PAGO']);
+    return new Infotracking(obj['ID'], obj['GUIA'],date ,obj['EVENTO'],obj['COMENTARIO'],obj['REMITENTE'],obj['DESTINATARIO'],obj['DEPORIGEN'],obj['DEPDESTINO'],obj['PAGO'], obj['PRECIO']);
   }
   constructor(
     public ID:          number,
@@ -17,7 +17,8 @@ export class Infotracking {
     public DESTINATARIO:          string,
     public DEPORIGEN:         string,
     public DEPDESTINO:        string,
-    public PAGO:      string
+    public PAGO:      string,
+    public PRECIO:      string
   ) {}
 
 }

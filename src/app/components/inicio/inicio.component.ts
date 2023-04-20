@@ -94,6 +94,7 @@ export class InicioComponent implements OnInit {
       '',
       '',
       '',
+      '',
       ''
     );
     
@@ -120,6 +121,7 @@ export class InicioComponent implements OnInit {
       -1,
       '-',
       new Date(),
+      '',
       '',
       '',
       '',
