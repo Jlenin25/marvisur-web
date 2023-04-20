@@ -95,27 +95,6 @@ header {
               }
             }
           }
-          a {
-            .fa-user {
-              animation: zoom-infinite 1.8s infinite;
-              &::after,
-              &::before {
-                background-color: transparent;
-              }
-            }
-            @keyframes zoom-infinite {
-              0% {
-                transform: scale(1);
-              }
-              50% {
-                transform: scale(1.2);
-                color: $color-global-claro;
-              }
-              100% {
-                transform: scale(1);
-              }
-            }
-          }
           .submenu {
             overflow: hidden;
             position: absolute;
@@ -160,6 +139,23 @@ header {
           }
           .home {
             display: none;
+          }
+        }
+        .icon-user {
+          &:hover::after {
+            visibility: hidden;
+            background-color: $blanco;
+            transform: scaleX(0);
+          }
+          a {
+            i {
+              font-size: 1.3em;
+              color: $color-global-claro;
+              &::after,
+              &::before {
+                background-color: transparent;
+              }
+            }
           }
         }
         .pay {

@@ -1,276 +1,281 @@
 <main class="payment">
   <div class="ctn-payment">
-    <div class="search-guia">
-      <form>
-        <input
-          placeholder="Serie"
-          type="text"
-          required=""
-          minlength="4"
-          maxlength="4"
-          class="serie"
-          (keypress)="singleNumber($event)"
-        />
-        <input
-          placeholder="Número"
-          type="text"
-          required=""
-          minlength="7"
-          maxlength="7"
-          class="number"
-          (keypress)="singleNumber($event)"
-        />
-        <button>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </form>
-    </div>
-    <nav>
-      <div
-        class="ctn-nav-pay"
-        *ngFor="let item of itemsPayMethod; let i = index"
-      >
-        <label class="radio">
-          <input
-            type="radio"
-            name="payRadio"
-            checked=""
-            (click)="selectitemPayMethod(i)"
-          />
-          <span>{{ item.method }}</span>
-        </label>
-      </div>
-    </nav>
-    <div class="content-info">
-      <div class="container-cards">
-        <ul>
-          <li
-            *ngFor="let item of itemsCard; let i = index"
-            (click)="selectItemCard(i)"
-          >
-            <label>
-              <i class="fa-solid fa-check"></i>
-              <input
-                checked="1"
-                type="radio"
-                class="radio-input"
-                name="radioCard"
-              />
-              <span class="radio-tile">
-                <span class="box-img">
-                  <img src="assets/payments/cards/{{ item.img }}.png" alt="" />
-                </span>
-              </span>
-            </label>
-          </li>
-        </ul>
+    <article>
+      <div class="search-guia">
         <form>
-          <div class="datas-input">
-            <div class="ctn">
-              <div class="dni-ce">
-                <label class="switch">
-                  <input type="checkbox" (click)="changeInputDC()" />
-                  <span class="slider"></span>
-                </label>
-                <div class="inputDC">
-                  <input
-                    type="text"
-                    placeholder="N° de {{ inputDC }}"
-                    maxlength="12"
-                    name="documento"
-                    class="idc"
-                    autocomplete="off"
-                    (keypress)="singleNumber($event)"
-                  />
-                </div>
-                <div class="inputDC">
-                  <input
-                    type="text"
-                    placeholder="N° de celular"
-                    minlength="9"
-                    maxlength="9"
-                    class="celular"
-                    class="icel"
-                    autocomplete="off"
-                    (keypress)="singleNumber($event)"
-                  />
-                </div>
-              </div>
-              <div class="email">
-                <div class="inputDC">
-                  <input
-                    type="email"
-                    placeholder="Correo electrónico"
-                    autocomplete="off"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card {{ nameCard }}">
-            <div class="card__info">
-              <div class="ctn-top">
-                <h5>{{ nameCard }}</h5>
-                <div class="ccv">
-                  <input
-                    type="text"
-                    placeholder="CCV"
-                    (keypress)="singleNumber($event)"
-                    minlength="3"
-                    maxlength="3"
-                  />
-                </div>
-              </div>
-              <div class="card__chip">
-                <svg
-                  class="card__chip-lines"
-                  role="img"
-                  width="20px"
-                  height="20px"
-                  viewBox="0 0 100 100"
-                  aria-label="Chip"
-                >
-                  <g opacity="0.8">
-                    <polyline
-                      points="0,50 35,50"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="0,20 20,20 35,35"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="50,0 50,35"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="65,35 80,20 100,20"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="100,50 65,50"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="35,35 65,35 65,65 35,65 35,35"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="0,80 20,80 35,65"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="50,100 50,65"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                    <polyline
-                      points="65,65 80,80 100,80"
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                    ></polyline>
-                  </g>
-                </svg>
-                <div class="card__chip-texture"></div>
-              </div>
-              <div class="card__type">Débito</div>
-              <div class="card__number">
-                <span class="card__digit-group">
-                  <input
-                    type="text"
-                    name=""
-                    placeholder="Número de tarjeta..."
-                    (keypress)="singleNumber($event)"
-                  />
-                </span>
-              </div>
-              <div class="card__valid-thru" aria-label="Valid thru">
-                Vence<br />fin de
-              </div>
-              <div class="card__exp-date">
-                <time>
-                  <input
-                    type="text"
-                    placeholder="MM"
-                    (keypress)="singleNumber($event)"
-                    minlength="2"
-                    maxlength="2"
-                  />
-                  /
-                  <input
-                    type="text"
-                    placeholder="AA"
-                    (keypress)="singleNumber($event)"
-                    minlength="2"
-                    maxlength="2"
-                  />
-                </time>
-              </div>
-              <div class="card__name" aria-label="Dee Stroyer">
-                <input type="text" placeholder="Nombre del titular..." />
-              </div>
-              <!-- <div
-                class="card__vendor"
-                role="img"
-                aria-labelledby="card-vendor"
-              >
-                <span id="card-vendor" class="card__vendor-sr">Mastercard</span>
-              </div> -->
-              <div class="card__texture"></div>
-            </div>
-          </div>
-          <button type="submit">
-            <div class="default-btn">
-              <span>Pagar ahora</span>
-            </div>
-            <div class="hover-btn">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
+          <input
+            placeholder="Serie"
+            type="text"
+            required=""
+            minlength="4"
+            maxlength="4"
+            class="serie"
+            (keypress)="singleNumber($event)"
+          />
+          <input
+            placeholder="Número"
+            type="text"
+            required=""
+            minlength="7"
+            maxlength="7"
+            class="number"
+            (keypress)="singleNumber($event)"
+          />
+          <button>
+            <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </form>
       </div>
-      <div class="container-wallets active">
-        <ul>
-          <li
-            *ngFor="let item of itemsWallet; let i = index"
-            (click)="selectItemWallet(i)"
-          >
-            <label>
-              <i class="fa-solid fa-check"></i>
-              <input
-                checked="1"
-                type="radio"
-                class="radio-input"
-                name="radioWallet"
-              />
-              <span class="radio-tile">
-                <span class="box-img">
-                  <img
-                    src="assets/payments/wallets/{{ item.img }}.png"
-                    alt=""
-                  />
+      <nav>
+        <div
+          class="ctn-nav-pay"
+          *ngFor="let item of itemsPayMethod; let i = index"
+        >
+          <label class="radio">
+            <input
+              type="radio"
+              name="payRadio"
+              checked=""
+              (click)="selectitemPayMethod(i)"
+            />
+            <span>{{ item.method }}</span>
+          </label>
+        </div>
+      </nav>
+      <div class="content-info">
+        <div class="container-cards">
+          <ul>
+            <li
+              *ngFor="let item of itemsCard; let i = index"
+              (click)="selectItemCard(i)"
+            >
+              <label>
+                <i class="fa-solid fa-check"></i>
+                <input
+                  checked="1"
+                  type="radio"
+                  class="radio-input"
+                  name="radioCard"
+                />
+                <span class="radio-tile">
+                  <span class="box-img">
+                    <img src="assets/payments/cards/{{ item.img }}.png" alt="" />
+                  </span>
                 </span>
-              </span>
-            </label>
-          </li>
-        </ul>
+              </label>
+            </li>
+          </ul>
+          <form>
+            <div class="datas-input">
+              <div class="ctn">
+                <div class="dni-ce">
+                  <label class="switch">
+                    <input type="checkbox" (click)="changeInputDC()" />
+                    <span class="slider"></span>
+                  </label>
+                  <div class="inputDC">
+                    <input
+                      type="text"
+                      placeholder="N° de {{ inputDC }}"
+                      maxlength="12"
+                      name="documento"
+                      class="idc"
+                      autocomplete="off"
+                      (keypress)="singleNumber($event)"
+                    />
+                  </div>
+                  <div class="inputDC">
+                    <input
+                      type="text"
+                      placeholder="N° de celular"
+                      minlength="9"
+                      maxlength="9"
+                      class="celular"
+                      class="icel"
+                      autocomplete="off"
+                      (keypress)="singleNumber($event)"
+                    />
+                  </div>
+                </div>
+                <div class="email">
+                  <div class="inputDC">
+                    <input
+                      type="email"
+                      placeholder="Correo electrónico"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card {{ nameCard }}">
+              <div class="card__info">
+                <div class="ctn-top">
+                  <h5>{{ nameCard }}</h5>
+                  <div class="ccv">
+                    <input
+                      type="text"
+                      placeholder="CCV"
+                      (keypress)="singleNumber($event)"
+                      minlength="3"
+                      maxlength="3"
+                    />
+                  </div>
+                </div>
+                <div class="card__chip">
+                  <svg
+                    class="card__chip-lines"
+                    role="img"
+                    width="20px"
+                    height="20px"
+                    viewBox="0 0 100 100"
+                    aria-label="Chip"
+                  >
+                    <g opacity="0.8">
+                      <polyline
+                        points="0,50 35,50"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="0,20 20,20 35,35"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="50,0 50,35"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="65,35 80,20 100,20"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="100,50 65,50"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="35,35 65,35 65,65 35,65 35,35"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="0,80 20,80 35,65"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="50,100 50,65"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                      <polyline
+                        points="65,65 80,80 100,80"
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                      ></polyline>
+                    </g>
+                  </svg>
+                  <div class="card__chip-texture"></div>
+                </div>
+                <div class="card__type">Débito</div>
+                <div class="card__number">
+                  <span class="card__digit-group">
+                    <input
+                      type="text"
+                      name=""
+                      placeholder="Número de tarjeta..."
+                      (keypress)="singleNumber($event)"
+                    />
+                  </span>
+                </div>
+                <div class="card__valid-thru" aria-label="Valid thru">
+                  Vence<br />fin de
+                </div>
+                <div class="card__exp-date">
+                  <time>
+                    <input
+                      type="text"
+                      placeholder="MM"
+                      (keypress)="singleNumber($event)"
+                      minlength="2"
+                      maxlength="2"
+                    />
+                    /
+                    <input
+                      type="text"
+                      placeholder="AA"
+                      (keypress)="singleNumber($event)"
+                      minlength="2"
+                      maxlength="2"
+                    />
+                  </time>
+                </div>
+                <div class="card__name" aria-label="Dee Stroyer">
+                  <input type="text" placeholder="Nombre del titular..." />
+                </div>
+                <!-- <div
+                  class="card__vendor"
+                  role="img"
+                  aria-labelledby="card-vendor"
+                >
+                  <span id="card-vendor" class="card__vendor-sr">Mastercard</span>
+                </div> -->
+                <div class="card__texture"></div>
+              </div>
+            </div>
+            <button type="submit">
+              <div class="default-btn">
+                <span>Pagar ahora</span>
+              </div>
+              <div class="hover-btn">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+            </button>
+          </form>
+        </div>
+        <div class="container-wallets active">
+          <ul>
+            <li
+              *ngFor="let item of itemsWallet; let i = index"
+              (click)="selectItemWallet(i)"
+            >
+              <label>
+                <i class="fa-solid fa-check"></i>
+                <input
+                  checked="1"
+                  type="radio"
+                  class="radio-input"
+                  name="radioWallet"
+                />
+                <span class="radio-tile">
+                  <span class="box-img">
+                    <img
+                      src="assets/payments/wallets/{{ item.img }}.png"
+                      alt=""
+                    />
+                  </span>
+                </span>
+              </label>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </article>
+    <aside>
+      <img src="assets/gif/CELULAR MUESTRA PARA GIF.gif" loading="lazy">
+    </aside>
   </div>
 </main>

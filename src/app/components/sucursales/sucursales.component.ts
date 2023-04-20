@@ -16,7 +16,10 @@ import { SucursalInfoModal } from './modal/sucursalModal.component';
   providers: [DepartamentoService],
 })
 export class SucursalesComponent implements OnInit {
-  @ViewChild('myInput') myInputRef!: ElementRef;
+  @ViewChild('myInput1') myInputRef1!: ElementRef;
+  @ViewChild('myInput2') myInputRef2!: ElementRef;
+  @ViewChild('myInput3') myInputRef3!: ElementRef;
+  @ViewChild('myInput4') myInputRef4!: ElementRef;
 
   public status: string;
   public lat: number;
@@ -37,8 +40,6 @@ export class SucursalesComponent implements OnInit {
   public ico = 'assets/images/cursormarvisur.png';
   public select: any;
   public JsonRetornado: any;
-
-  textoInput: any
 
   constructor(
     private _departamentoService: DepartamentoService,
@@ -64,25 +65,31 @@ export class SucursalesComponent implements OnInit {
     this.cargarDepartamentos();
     this.cargarTodas();
   }
-  onInputChange(event: Event) {
-    return this.textoInput = (event.target as HTMLInputElement).value;
-  }
 
   selectItemSearchS(e:any) {
-    const myInputElement: HTMLInputElement = this.myInputRef.nativeElement;
+    const myInputElement1: HTMLInputElement = this.myInputRef1.nativeElement;
+    const myInputElement2: HTMLInputElement = this.myInputRef2.nativeElement;
+    const myInputElement3: HTMLInputElement = this.myInputRef3.nativeElement;
+    const myInputElement4: HTMLInputElement = this.myInputRef4.nativeElement;
     let queryG = this.el.nativeElement.querySelector('.general-search')
     let queryS = this.el.nativeElement.querySelector('.single-search')
     if(e===0) {
       if(!queryG.classList.contains('active')) {
         queryG.classList.add('active')
         queryS.classList.remove('active')
-        // myInputElement.value = '';
+        myInputElement1.value = '';
+        myInputElement2.value = '';
+        myInputElement3.value = '';
+        myInputElement4.value = '';
       }
     } else {
       if(!queryS.classList.contains('active')) {
         queryS.classList.add('active')
         queryG.classList.remove('active')
-        // myInputElement.value = '';
+        myInputElement1.value = '';
+        myInputElement2.value = '';
+        myInputElement3.value = '';
+        myInputElement4.value = '';
       }
     }
     // this.myInputRef.nativeElement.value = '';

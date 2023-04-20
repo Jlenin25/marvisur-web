@@ -9,14 +9,72 @@ $elementos: 5;
       height: 90vh;
       .carousel-item {
         position: relative;
-        z-index: index;
         height: 90vh;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .traking {
+          display: flex;
+          justify-content: center;
+          .ctn-tracking {
+            position: absolute;
+            z-index: 2;
+            top: 30%;
+            h2 {
+              font-size: 4em;
+              font-family: montserrat;
+              color: $blanco;
+              // text-shadow: 0 0 6px $blanco;
+              text-align: center;
+              margin-bottom: 30px;
+            }
+            .ctn-form {
+              form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                flex-wrap: wrap;
+                .box-input-group {
+                  background-color: $blanco;
+                  border-radius: 10px;
+                  height: 50px;
+                  width: 280px;
+                  display: flex;
+                  align-items: center;
+                  z-index: 5 !important;
+                  b {
+                    font-size: 1.7em;
+                    margin-top: -5px;
+                    color: $color-global-claro-2;
+                  }
+                  input {
+                    margin: auto;
+                    width: 70px;
+                    color: $color-global-claro
+                  }
+                }
+                button {
+                  font-weight: bold;
+                  font-size: 1.3em;
+                  color: $blanco;
+                  border-radius: 50%;
+                  background-color: $color-global-claro;
+                  width: 50px;
+                  height: 50px;
+                }
+              }
+            }
+          }
         }
-        .ctn-box {
+        .back-portada {
+          img {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+            position: absolute;
+            filter: brightness(0.5) blur(4px);
+            z-index: 1;
+          }
+        }
+        /*.ctn-box {
           position: absolute;
           bottom: 0 !important;
           right: 0;
@@ -160,7 +218,7 @@ $elementos: 5;
           position: absolute;
           opacity: 0.85;
           z-index: -2;
-        }
+        }*/
       }
     }
     .carousel-control {
@@ -184,7 +242,7 @@ $elementos: 5;
       }
     }
   }
-  .box-card-red {
+  /*.box-card-red {
     position: relative;
     background-color: $color-global-claro;
     margin-top: 0;
@@ -285,8 +343,50 @@ $elementos: 5;
         }
       }
     }
+  }*/
+  .relevant {
+    margin-top: -250px;
+    .ctn-img-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px 80px;
+      .a-img {
+        transform: scale(.95);
+        transition: transform 1s ease;
+        background-color: $blanco;
+        box-shadow: 0 0 10px $gris;
+        width: 300px;
+        height: 350px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        z-index: 5;
+        i {
+          font-size: 7em;
+          color: $color-global-claro-3;
+        }
+        span {
+          font-size: 2.2em;
+          font-weight: bold;
+          text-align: center;
+          margin-top: 20px;
+        }
+        &:hover {
+          transform: scale(1);
+          background-color: $color-global-claro;
+          i, span {
+            color: $blanco;
+          }
+        }
+      }
+    }
   }
-  .relevant,
+  // .relevant,
   .why-choose-us {
     .ctn-img-link {
       display: flex;

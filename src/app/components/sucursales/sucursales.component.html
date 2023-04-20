@@ -14,11 +14,9 @@
     <meta property="og:image" content="https://www.expresomarvisur.com/assets/images/LOGO_MARVISUR.png" />
 </head>
 <main class="open-close-container branch-office">
-
     <div class="portadaAll ">
         <img class="img" src="assets/images/portadasucursalesnuevo.png" height="100%" width="100%">
     </div>
-
     <div class="title-peque ">SUCURSALES</div>
     <nav>
         <div class="ctn-nav-search">
@@ -53,6 +51,7 @@
                 [formControl]="myControl"
                 class="i-d"
                 matInput
+                #myInput1
             >
             <mat-autocomplete #auto1="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnDepartments">
                 <mat-option *ngFor="let departamento of optionsDepartments | async" [value]="departamento" (click)="onOptionsSelected(departamento)"class="ctn-ac">
@@ -67,6 +66,7 @@
                 placeholder="Provincia..."
                 [matAutocomplete]="auto2"
                 class="i-p"
+                #myInput2
             >
             <mat-autocomplete #auto2="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnProvinces">
                 <mat-option id="seleccioneprovincia" *ngFor="let provincia of provincias" [value]="provincia" (click)="provinciaSelect(provincia)" class="ctn-ac">
@@ -81,6 +81,7 @@
                 placeholder="Sucursal..."
                 [matAutocomplete]="auto3"
                 class="i-s"
+                #myInput3
             >
             <mat-autocomplete #auto3="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnSucursal">
                 <mat-option id="seleccionesucursal" *ngFor="let sucursal of sucursales" [value]="sucursal" (click)="sucursalSelect(sucursal)" class="ctn-ac">
@@ -99,10 +100,9 @@
                 [formControl]="myControl"
                 class="i-d"
                 matInput
-                #myInput
-                (input)="onInputChange($event)"
+                #myInput4
             >
-            <mat-autocomplete #auto4="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnSucursal">
+            <mat-autocomplete #autoComplete #auto4="matAutocomplete" class="ctn-automcomplete" [displayWith]="displayFnSucursal">
                 <mat-option id="seleccionesucursal" *ngFor="let sucursal of optionsSucursalesTodos | async" [value]="sucursal" (click)="sucursalSelect(sucursal)" class="ctn-ac">
                     {{sucursal.titulo}}
                 </mat-option>

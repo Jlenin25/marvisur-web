@@ -36,7 +36,50 @@
   <section id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <div class="ctn-box">
+        <div class="traking">
+          <div class="ctn-tracking" id="rastreadoenvio">
+            <h2>RASTREA TU ENVÍO</h2>
+            <div class="ctn-form">
+              <form (ngSubmit)="onSubmitInfoTraking(cotizaUserForm)" #cotizaUserForm="ngForm">
+                <div class="box-input-group">
+                  <input
+                    type="text"
+                    [(ngModel)]="rastreo.serie"
+                    name="serie"
+                    #serie="ngModel"
+                    class="left"
+                    placeholder="Serie"
+                    autocomplete="off"
+                    maxlength="4"
+                    minlength="4"
+                    (keypress)="singleNumber($event)"
+                  />
+                  <b>/</b>
+                  <input
+                    type="text"
+                    [(ngModel)]="rastreo.numero"
+                    name="numero"
+                    #serie="ngModel"
+                    class="right"
+                    placeholder="Número"
+                    autocomplete="off"
+                    maxlength="7"
+                    minlength="7"
+                    (keypress)="singleNumber($event)"
+                  />
+                </div>
+                <button type="submit" class="btn btn-search">
+                  <i class="fa-solid fa-magnifying-glass fa-fade"></i>
+                </button>
+                <!-- <div class="btn btn-info" [tooltip]="tolTemplate"></div>
+                <ng-template #tolTemplate triggers="hover">
+                  <img src="assets/images/info-rastrea.png" loading="lazy" />
+                </ng-template> -->
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="ctn-box">
           <div class="front">
             <div class="left">
               <div class="h1-font">
@@ -57,35 +100,14 @@
               <img src="assets/slide/IMAGEN DEL PERSONAL.png" class="persons" />
             </div>
           </div>
+        </div> -->
+        <div class="back-portada">
+          <img src="assets/newimg/home_portada.jpg" alt="">
         </div>
-        <img src="assets/slide/FONDO CAMION ROJO.png" class="trailer" />
-      </div>
-      <div class="carousel-item">
-            <img src="assets/images/carousel/sucursalChosica.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/carousel/sucursalLince.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/carousel/sucursalLurin.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/carousel/sucursalSMP.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/carousel/sucursalVMT.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/carousel/nuevaSucursalMagdalena.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/carousel/nuevaSucursalRimac.jpg" class="d-block w-100">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/carousel/sucursalOlivosIII.jpg" class="d-block w-100">
+        <!-- <img src="assets/slide/FONDO CAMION ROJO.png" class="trailer" /> -->
       </div>
     </div>
-    <div class="carousel-control">
+    <!-- <div class="carousel-control">
       <button
         class="carousel-control-prev"
         type="button"
@@ -104,10 +126,10 @@
         <i class="fa-solid fa-chevron-right"></i>
         <span class="visually-hidden">Next</span>
       </button>
-    </div>
+    </div> -->
   </section>
 
-  <section class="box-card-red">
+  <!-- <section class="box-card-red">
     <div class="ctn-tracking" id="rastreadoenvio">
       <h2>RASTREA TU ENVÍO</h2>
       <div class="ctn-form">
@@ -142,19 +164,20 @@
         </form>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section id="relevant" class="relevant">
     <div class="ctn-img-link" id="ctn-relevant" [class.visible]="showRelevant" [class.hidden]="!showRelevant">
       <div class="a-img" mat-button (click)="openTermsAndConditions()">
-        <i class="fa-solid fa-building-shield"></i>
+        <i class="fa-solid fa-building-shield fa-bounce"></i>
         <span>Términos y condiciones</span>
       </div>
       <a class="a-img" routerLink="/seccion/soluciones-en-linea">
-        <img src="assets/images/solucionesnuevo.png" loading="lazy" />
+        <i class="fa-solid fa-comments fa-bounce"></i>
+        <span>Soluciones en línea</span>
       </a>
       <a class="a-img directorio" href="https://online.fliphtml5.com/ekxyo/jrqp/#p=1" target="_blank">
-        <i class="fa-solid fa-book"></i>
+        <i class="fa-solid fa-book fa-bounce"></i>
         <span>Directorio</span>
       </a>
     </div>
