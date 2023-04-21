@@ -10,11 +10,11 @@ export class PaymentComponent {
 
   nameCard = 'Scotiabank'
   inputDC = 'DNI'
-  payMethod = 'Tarjeta'
+  payMethod = 'Billetera digital'
 
   itemsCard:any [] = [ { 'img': 'bcp' }, { 'img': 'scotiabank' } ]
   itemsWallet:any [] = [ { 'img': 'yape' }, { 'img': 'plin' } ]
-  itemsPayMethod:any [] = [ { 'method': 'Tarjeta' }, { 'method': 'Billetera digital' } ]
+  itemsPayMethod:any [] = [ { 'method': 'Billetera digital' }, { 'method': 'Tarjeta' } ]
 
   constructor(private el: ElementRef) {
     this.nameCard
@@ -38,14 +38,14 @@ export class PaymentComponent {
     let queryCard = this.el.nativeElement.querySelector('.container-cards')
     let queryWallet = this.el.nativeElement.querySelector('.container-wallets')
     if(e===0) {
-      if(!queryCard.classList.contains('active')) {
-        queryCard.classList.add('active')
-        queryWallet.classList.remove('active')
-      }
-    } else {
       if(!queryWallet.classList.contains('active')) {
         queryWallet.classList.add('active')
         queryCard.classList.remove('active')
+      }
+    } else {
+      if(!queryCard.classList.contains('active')) {
+        queryCard.classList.add('active')
+        queryWallet.classList.remove('active')
       }
     }
   }

@@ -3,8 +3,8 @@
 footer {
     position: relative;
     height: auto;
-    background-image: linear-gradient(to bottom, $blanco, $color-global-claro-2, $color-global-oscuro);
-    margin-top: 250px;
+    background-image: linear-gradient(to bottom, transparent, $color-global-claro-2, $color-global-oscuro);
+    // margin-top: 250px;
     .ctn-footer {
         padding: 80px 0;
         .top {

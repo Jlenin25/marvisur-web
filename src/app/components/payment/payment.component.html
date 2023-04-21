@@ -26,6 +26,7 @@
           </button>
         </form>
       </div>
+      <h2>Método de pago<span></span></h2>
       <nav>
         <div
           class="ctn-nav-pay"
@@ -43,7 +44,33 @@
         </div>
       </nav>
       <div class="content-info">
-        <div class="container-cards">
+        <div class="container-wallets">
+          <ul>
+            <li
+              *ngFor="let item of itemsWallet; let i = index"
+              (click)="selectItemWallet(i)"
+            >
+              <label>
+                <i class="fa-solid fa-check"></i>
+                <input
+                  checked="1"
+                  type="radio"
+                  class="radio-input"
+                  name="radioWallet"
+                />
+                <span class="radio-tile">
+                  <span class="box-img">
+                    <img
+                      src="assets/payments/wallets/{{ item.img }}.png"
+                      alt=""
+                    />
+                  </span>
+                </span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="container-cards active">
           <ul>
             <li
               *ngFor="let item of itemsCard; let i = index"
@@ -245,32 +272,6 @@
               </div>
             </button>
           </form>
-        </div>
-        <div class="container-wallets active">
-          <ul>
-            <li
-              *ngFor="let item of itemsWallet; let i = index"
-              (click)="selectItemWallet(i)"
-            >
-              <label>
-                <i class="fa-solid fa-check"></i>
-                <input
-                  checked="1"
-                  type="radio"
-                  class="radio-input"
-                  name="radioWallet"
-                />
-                <span class="radio-tile">
-                  <span class="box-img">
-                    <img
-                      src="assets/payments/wallets/{{ item.img }}.png"
-                      alt=""
-                    />
-                  </span>
-                </span>
-              </label>
-            </li>
-          </ul>
         </div>
       </div>
     </article>

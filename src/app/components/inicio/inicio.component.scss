@@ -6,10 +6,10 @@ $elementos: 5;
   .slide {
     .carousel-inner {
       width: 100%;
-      height: 90vh;
+      height: 80vh;
       .carousel-item {
         position: relative;
-        height: 90vh;
+        height: 80vh;
         .traking {
           display: flex;
           justify-content: center;
@@ -67,7 +67,7 @@ $elementos: 5;
         .back-portada {
           img {
             width: 100%;
-            height: 90vh;
+            height: 80vh;
             object-fit: cover;
             position: absolute;
             filter: brightness(0.5) blur(4px);
@@ -345,7 +345,7 @@ $elementos: 5;
     }
   }*/
   .relevant {
-    margin-top: -250px;
+    margin-top: -200px;
     .ctn-img-link {
       display: flex;
       justify-content: center;
@@ -353,12 +353,12 @@ $elementos: 5;
       flex-wrap: wrap;
       gap: 30px 80px;
       .a-img {
-        transform: scale(.95);
-        transition: transform 1s ease;
+        transform: scale(.95) $blanco;
         background-color: $blanco;
         box-shadow: 0 0 10px $gris;
-        width: 300px;
-        height: 350px;
+        transition:  .7s all ease-in-out;
+        width: 270px;
+        height: 320px;
         border-radius: 15px;
         display: flex;
         justify-content: center;
@@ -367,13 +367,14 @@ $elementos: 5;
         cursor: pointer;
         z-index: 5;
         i {
-          font-size: 7em;
+          font-size: 5em;
           color: $color-global-claro-3;
         }
         span {
-          font-size: 2.2em;
+          font-size: 1.8em;
           font-weight: bold;
           text-align: center;
+          margin: 10px;
           margin-top: 20px;
         }
         &:hover {

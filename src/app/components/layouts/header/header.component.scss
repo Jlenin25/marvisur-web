@@ -12,19 +12,29 @@ header {
   justify-content: center;
   box-shadow: 0 2px 5px $gris;
   .ctn-header {
-    max-width: 1600px;
+    max-width: 1700px;
     width: 100%;
     margin: auto 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .ctn-logo {
-      width: 160px;
+      position: absolute;
+      border-right: 80px solid transparent;
+      border-left: 0;
+      border-top: 8.1vh solid $color-global-claro;
+      width: 400px;
+      left: 0;
       img {
-        width: 100%;
+        position: absolute;
+        left: 30px;
+        width: 200px;
+        top: -7.5vh;
       }
     }
     nav {
+      position: absolute;
+      right: 30px;
       ul {
         display: flex;
         justify-content: center;
@@ -183,6 +193,8 @@ header {
 @media only screen and (max-width: 1300px) {
   header .ctn-header {
     .btn-menu {
+      position: absolute;
+      right: 30px;
       height: 40px;
       width: 40px;
       display: block;

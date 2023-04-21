@@ -6,6 +6,7 @@
 /* Images */
 $url-img: "../../../assets/images/";
 $url-img-news: "../../../assets/images/news/";
+$url-newimg: "../../../assets/newimg/";
 $url-img-slide: "../../../assets/slide/";
 $url-au: '../../../assets/newimg/';
 
@@ -111,7 +112,7 @@ button {
 main {
   position: relative;
   top: 8vh;
-  // .relevant,
+  padding-bottom: 150px;
   .why-choose-us,
   .fondonegroinicio,
   .services,
