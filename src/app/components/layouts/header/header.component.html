@@ -54,7 +54,9 @@
                 <li><a [routerLink]="['/sucursales']" routerLinkActive="active">Sucursales</a></li>
                 <li><a [routerLink]="['/cotizacion']" routerLinkActive="active">Cotización</a></li>
                 <li class="pay"><a [routerLink]="['/paga-aqui']">Paga aquí</a></li>
-                <li class="icon-user"><a [routerLink]="['/login']"><i class="fa-solid fa-user fa-beat"></i></a></li>
+                <li class="icon-user">
+                    <a [routerLink]="['/iniciar-sesion']"><i class="fa-solid fa-user fa-beat"></i></a>
+                </li>
             </ul>
         </nav>
         <button class="btn-menu" (click)="toggleMenu()">

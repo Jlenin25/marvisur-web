@@ -128,46 +128,9 @@
       </button>
     </div> -->
   </section>
-
-  <!-- <section class="box-card-red">
-    <div class="ctn-tracking" id="rastreadoenvio">
-      <h2>RASTREA TU ENVÍO</h2>
-      <div class="ctn-form">
-        <form (ngSubmit)="onSubmitInfoTraking(cotizaUserForm)" #cotizaUserForm="ngForm">
-          <input
-            type="text"
-            [(ngModel)]="rastreo.serie"
-            name="serie"
-            #serie="ngModel"
-            class="left"
-            placeholder="Serie"
-            autocomplete="off"
-            (keypress)="singleNumber($event)"
-          />
-          <input
-            type="text"
-            [(ngModel)]="rastreo.numero"
-            name="numero"
-            #serie="ngModel"
-            class="right"
-            placeholder="Número"
-            autocomplete="off"
-            (keypress)="singleNumber($event)"
-          />
-            <div class="ctn-buttons">
-              <button type="submit" class="btn btn-search"></button>
-            <div class="btn btn-info" [tooltip]="tolTemplate"></div>
-            <ng-template #tolTemplate triggers="hover">
-              <img src="assets/images/info-rastrea.png" loading="lazy" />
-            </ng-template>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section> -->
-
+  
   <section id="relevant" class="relevant">
-    <div class="ctn-img-link" id="ctn-relevant" [class.visible]="showRelevant" [class.hidden]="!showRelevant">
+    <div class="ctn-img-link" id="ctn-relevant">
       <div class="a-img" mat-button (click)="openTermsAndConditions()">
         <i class="fa-solid fa-building-shield"></i>
         <span>Términos y condiciones</span>

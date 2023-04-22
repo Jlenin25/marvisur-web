@@ -36,6 +36,7 @@ import { LoadCVComponent, SendMessageModalLCV } from './components/oportunidad/L
 import { ReclamacionesComponent } from './components/reclamaciones/reclamaciones.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SucursalInfoModal } from './components/sucursales/modal/sucursalModal.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 import { SwiperModule } from 'swiper/angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -64,6 +65,7 @@ const route: Routes =[
     { path: 'trabaja-con-nosotros', component: OportunidadComponent },
     { path: 'reclamaciones',component: ReclamacionesComponent },
     { path: 'paga-aqui',component: PaymentComponent },
+    { path: 'iniciar-sesion',component: AuthComponent },
     { path: '**', component: ErrorComponent }
 ];
 
@@ -95,7 +97,8 @@ const route: Routes =[
     SendMessageModalLCV,
     ReclamacionesComponent,
     PaymentComponent,
-    SucursalInfoModal
+    SucursalInfoModal,
+    AuthComponent,
   ],
   imports: [
     ReactiveFormsModule,

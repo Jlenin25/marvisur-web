@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, Input } from '@angular/core';
 import { CotizaUser } from '../../models/cotizauser';
-import {CotizacionService} from '../../services/cotizacion.service';
+import { CotizacionService } from '../../services/cotizacion.service';
 import { DepartamentoService } from 'src/app/services/departamento.service';
 import {global} from '../../services/global';
 import { HeaderComponent } from '../layouts/header/header.component';
@@ -13,17 +13,16 @@ import { Tarifa } from 'src/app/models/tarifa';
   templateUrl: './cotizacion.component.html',
   styleUrls: ['./cotizacion.component.css'],
   providers:[CotizacionService, DepartamentoService,TarifarioService]
-
 })
 
-export class CotizacionComponent implements OnInit{
+export class CotizacionComponent implements OnInit {
 
   public status:String;
   public flag:boolean;
   public flagPaquete:number;
  
   public template:boolean;
-  public templateUnchecked:boolean;
+  templateUnchecked:boolean;
   public templateChecked:boolean;
   public radioValue:Number;
   public cotizaUserModel:CotizaUser;
@@ -128,22 +127,20 @@ export class CotizacionComponent implements OnInit{
 
   }
 
-  async onSubmit(form:any){ 
+  async onSubmit(form:any) {
     for(var i=1;i<3;i++) {
       await this.delay(1000);
-
     }
-    
-    if(this.cotizaUserModel.imagen=='no hay imagen'){
-      this._cotizacionService.create(this.cotizaUserModel).subscribe(
-        response=>{
+    if(this.cotizaUserModel.imagen=='no hay imagen') {
+      this._cotizacionService.create(this.cotizaUserModel).subscribe (
+        response => {
           console.log("sin imagen")
           if(response.status=='success'){
-           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","no hay imagen","Seleccione2")
+           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","hay imagen","Seleccione2")
   
             this.flagPaquete=1;
             //this.cotizaUserModel.origen="ini";
-           
+
           }else{
             this.status='error';
             console.log(this.cotizaUserModel)
@@ -160,19 +157,18 @@ export class CotizacionComponent implements OnInit{
         }
       );
     }else{
-      while(this.flag){
-        await this.delay(1000);
-        
-      } 
+      while(this.flag) {
+        await this.delay(1000)
+      }
       this._cotizacionService.create(this.cotizaUserModel).subscribe(
-        response=>{
+        response => {
           console.log("con imagen")
           if(response.status=='success'){
-           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","no hay imagen","Seleccione2")
+           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","hay imagen","Seleccione2")
   
             this.flagPaquete=1;
             //this.cotizaUserModel.origen="ini";
-           
+
           }else{
             this.status='error';
             console.log(this.cotizaUserModel)
@@ -189,30 +185,23 @@ export class CotizacionComponent implements OnInit{
         }
       );
     }
-   
+  }
 
-
-
-		
-
-	}
-  async onSubmitcorpo(form:any){ 
+  async onSubmitcorpo(form:any) {
     this.cotizaUserModel.flag='1'
     for( var i=1;i<3;i++){
       await this.delay(1000);
-
     }
-    
     if(this.cotizaUserModel.imagen=='no hay imagen'){
       this._cotizacionService.create(this.cotizaUserModel).subscribe(
-        response=>{
+        response => {
           console.log("sin imagen")
           if(response.status=='success'){
-           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","no hay imagen","Seleccione2")
+           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","hay imagen","Seleccione2")
   
             this.flagPaquete=1;
             //this.cotizaUserModel.origen="ini";
-           
+
           }else{
             this.status='error';
             console.log(this.cotizaUserModel)
@@ -230,18 +219,18 @@ export class CotizacionComponent implements OnInit{
       );
     }else{
       while(this.flag){
-        await this.delay(1000);
+        await this.delay(1000)
         
       } 
       this._cotizacionService.create(this.cotizaUserModel).subscribe(
-        response=>{
+        response => {
           console.log("con imagen")
           if(response.status=='success'){
-           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","no hay imagen","Seleccione2")
+           // this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","hay imagen","Seleccione2")
   
             this.flagPaquete=1;
             //this.cotizaUserModel.origen="ini";
-           
+
           }else{
             this.status='error';
             console.log(this.cotizaUserModel)
@@ -263,22 +252,17 @@ export class CotizacionComponent implements OnInit{
 
 
 		
-
 	}
-   onSubmitNoImg(form:any){ 
+  onSubmitNoImg(form:any) { 
    		this._cotizacionService.create(this.cotizaUserModel).subscribe(
-			response=>{
-       
+			response => {
 				if(response.status=='success'){
-          //this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-","no hay imagen","Seleccione2")
-
+          //this.cotizaUserModel= new CotizaUser(0,"","","","Seleccione","Seleccione1","0","","","","","","-"," hay imagen","Seleccione2")
           this.flagPaquete=1;
           //this.cotizaUserModel.origen="ini";
-         
 				}else{
 					this.status='error';
           console.log(this.cotizaUserModel)
-        
           this.flagPaquete=2;
 				}
 			},
@@ -289,81 +273,72 @@ export class CotizacionComponent implements OnInit{
 				console.log(<any>error)
 			}
 		);
-
-	}
+  
+  }
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
-}
+  }
 
   ngOnInit(): void {
     this._TarifarioService.getDestinos().subscribe(
-      response =>{
-
+      response => {
         if(response.status='success'){
           this.sucursalesDes=response.tarifario;
           //console.log(this.sucursalesDes);  
         }
-        
         },
         error=>{
-        this.status='error';
-        console.log(<any>error); 
+          this.status='error';
+          console.log(<any>error); 
         }
       );
-  
-  	this._SucursalesTodasService.getSucursalesTodas().subscribe(
-        response =>{
-
+      this._SucursalesTodasService.getSucursalesTodas().subscribe(
+        response => {
           if(response.status='success'){
             this.sucursales=response.sucursales;
               // console.log(this.sucursales);  
           }
-          
           },
-          error=>{
-          this.status='error';
-          console.log(<any>error); 
-          }
-        );
-           
-	}
+        error => {
+        this.status='error';
+        console.log(<any>error); 
+        }
+      );
+  }
+	
  
-  adjuntoUpload(e:any){
-    this.cotizaUserModel.imagen='-'
+  adjuntoUpload(e:any) {
+    this.cotizaUserModel.imagen = '-'
   	let res=JSON.parse(e.response);
   	//console.log(res.file);
   	this.cotizaUserModel.imagen=res.file;	
     this.flag=false;
   }
-  close(){
+
+  close() {
     this.flag=true;
     this.flagPaquete=0;
     window.location.reload();
   }
+  
   cambioSelect(){
-    
-    if((this.cotizaUserModel.origen  != 'Seleccione')&&  (this.cotizaUserModel.destino != 'Seleccione1')){
+    if((this.cotizaUserModel.destino  != 'Seleccione')&&  (this.cotizaUserModel.destino != 'Seleccione1')){
       this.flagCotiza=true
       this.tarifario.ori_tar=this.cotizaUserModel.origen
       this.tarifario.des_tar=this.cotizaUserModel.destino
      
       this._TarifarioService.getPrecioBuscado(this.tarifario).subscribe(
-        response =>{
-
+        response => {
           if(response.status='success'){
             this.tarifarioBuscado=response.tarifario;
             this.flagBusquedaTarifario=true 
           } 
-          
           },
           error=>{
           this.status='error';
           console.log(<any>error); 
           }
-        );
-     
-
-
+        )
     }else{
       this.flagCotiza=false
     }

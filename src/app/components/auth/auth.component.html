@@ -1,0 +1,147 @@
+<main class="login">
+  <div class="forms-container">
+    <div class="signin-signup">
+      <form
+        class="sign-in-form"
+        (ngSubmit)="formLogin(loginForm)"
+        #loginForm="ngForm"
+      >
+        <h2 class="title">Iniciar sesión</h2>
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          <input
+            [(ngModel)]="email"
+            name="email"
+            type="email"
+            placeholder="Correo electrónico"
+          />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            placeholder="Contraseña"
+          />
+        </div>
+        <button type="submit">
+          <span class="text">Ingresar</span>
+        </button>
+        <p class="social-text">Or Sign in with social platforms</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
+      <form
+        class="sign-up-form"
+        (ngSubmit)="formRegister(registerForm)"
+        #registerForm="ngForm"
+      >
+        <div class="typePerson" (click)="changeTypePerson()">
+          <h4>Soy una {{ typePerson }}</h4>
+        </div>
+        <h2 class="title">Registrarse</h2>
+        <div class="input-field" *ngIf="typePerson === 'persona natural'">
+          <i class="fas fa-user"></i>
+          <input
+            [(ngModel)]="razonsocial"
+            name="razonsocial"
+            type="text"
+            placeholder="Razón social"
+          />
+        </div>
+        <div class="input-field" *ngIf="typePerson === 'empresa'">
+          <i class="fas fa-user"></i>
+          <input
+            [(ngModel)]="nombres"
+            name="nombres"
+            type="text"
+            placeholder="Nombres"
+          />
+        </div>
+        <div class="input-field" *ngIf="typePerson === 'empresa'">
+          <i class="fas fa-user"></i>
+          <input
+            [(ngModel)]="apellidos"
+            name="apellidos"
+            type="text"
+            placeholder="Apellidos"
+          />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          <input
+            [(ngModel)]="email"
+            name="email"
+            type="email"
+            placeholder="Correo electrónico"
+          />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            placeholder="Contraseña"
+          />
+        </div>
+        <button type="submit">
+          <span class="text">Registrarse</span>
+        </button>
+        <p class="social-text">Regístrese con las plataformas sociales</p>
+        <div class="social-media">
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+        <h3>Nuevo(a) aquí?</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, ex
+          ratione. Aliquid!
+        </p>
+        <button (click)="changeLoginRegister()">Registrarse</button>
+      </div>
+      <img src="assets/svg/login.svg" class="image" alt="" />
+    </div>
+    <div class="panel right-panel">
+      <div class="content">
+        <h3>Ya tienes una cuenta?</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+          laboriosam ad deleniti.
+        </p>
+        <button (click)="changeLoginRegister()">Iniciar sesión</button>
+      </div>
+      <img src="assets/svg/register.svg" class="image" alt="" />
+    </div>
+  </div>
+</main>

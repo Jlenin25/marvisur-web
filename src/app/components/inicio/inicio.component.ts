@@ -33,7 +33,6 @@ export class InicioComponent implements OnInit {
 
   @ViewChild('myBody') bodyRef!: ElementRef<any>;
 
-  showRelevant: boolean = false;
   showWhyChooseUs: boolean = false;
   showNews: boolean = false;
   showServices: boolean = false;
@@ -236,18 +235,12 @@ export class InicioComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event']) // Añadimos el evento scroll
   onWindowScroll(event: any) {
-    this.showRelevant = window.scrollY > this.getDivPositionRelevant();
     this.showWhyChooseUs = window.scrollY > this.getDivPosition();
     this.showServices = window.scrollY > this.getDivPositionServices();
     this.showFondoNegroInicio = window.scrollY > this.getDivPositionFondoNegroInicio();
     this.showNews = window.scrollY > this.getDivPositionNews();
   }
 
-  getDivPositionRelevant() {
-    const element:any = document.getElementById('ctn-relevant');
-    const position = element.getBoundingClientRect().top - 799;
-    return position;
-  }
   getDivPosition() {
     const element:any = document.getElementById('ctn-wcu');
     const position = element.getBoundingClientRect().top + 250;
