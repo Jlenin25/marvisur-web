@@ -17,10 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/marvisur-web/",
+            "outputPath": "dist/public_html",
             "index": "src/index.html",
             "optimization": true,
             "main": "src/main.ts",
+            "aot": true,
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -39,8 +40,6 @@
           },
           "configurations": {
             "production": {
-              "outputPath": "docs",
-              "index": "src/index.html",
               "budgets": [
                 {
                   "type": "initial",

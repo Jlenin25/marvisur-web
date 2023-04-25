@@ -1,37 +1,64 @@
-.titulo {
-    background-color: #e61a23;
-    color: white;
-    padding-left: 20px;
-    border-top-left-radius: 25px;
-}
-.cuerpo {
-    background-color: white;
-    border-color: #e61a23 !important;
-    border-width: 4px !important;
-    padding-left: 10px;
-    margin-right: 20px;
-    width: 100%;
-    
-    border-bottom-right-radius: 25px;
-}
-.info-sucu {
-    text-align: left;
-    margin-bottom: 10   px;
-}
-.fa-check-circle{
-    color: #e61a23;
-    margin-right: 10px;
-}
-.pf-subtitulos{
-    font-weight: bold;
-}
-.letratitupregufre{
-    color: #e61a23;
-     text-align: start;
-     font-family: 'Montserrat', sans-serif;
+@import "../../../app.component.scss";
 
-     position: relative;
-     font-weight: bolder;
-     font-size: 28px;
-     margin-bottom: 15px;
+.frequent-questions {
+  background-image: url('../'+$url-au+'LINEAS M.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  padding: 100px 20px;
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    h2 {
+      color: $color-global-claro;
+      text-align: start;
+      font-family: montserrat;
+      position: relative;
+      font-size: 3em;
+      text-align: center;
+    }
+    .body {
+      padding: 50px 0;
+      ul {
+        li {
+          margin: 50px 0;
+          .subtitle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .item {
+              width: 30px;
+              height: 30px;
+              text-align: center;
+              background-color: $color-global-claro;
+              color: $blanco;
+              font-size: 1.2em;
+              font-weight: bold;
+              text-align: center;
+              border-radius: 50%;
+            }
+            h3 {
+              color: $color-global-claro;
+              font-weight: bold;
+              font-size: 1.1em;
+            }
+          }
+          .info {
+              padding-left: 50px;
+              ul li {
+                margin: 10px 0;
+                p {
+                  i {
+                    color: $color-global-claro;
+                    margin-right: 5px;
+                  }
+                }
+              }
+          }
+        }
+      }
+    }
+  }
 }

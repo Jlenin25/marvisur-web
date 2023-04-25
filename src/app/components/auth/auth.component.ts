@@ -52,7 +52,7 @@ export class AuthComponent {
     var changePerson = this.el.nativeElement.querySelector('.typePerson')
     if(!changePerson.classList.contains('enterprise')) {
       changePerson.classList.add('enterprise')
-      return this.typePerson = 'persona natural'
+      return this.typePerson = 'persona'
     } else {
       changePerson.classList.remove('enterprise')
       return this.typePerson = 'empresa'

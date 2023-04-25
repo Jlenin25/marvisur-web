@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-terminosycondiciones',
   templateUrl: './terminosycondiciones.component.html',
-  styleUrls: ['./tycmain.component.scss']
+  styleUrls: ['./terminosycondiciones.component.scss']
 })
 export class TerminosycondicionesComponent implements OnInit {
   constructor() {}
@@ -20,6 +20,6 @@ export class TyCModalComponent {}
 @Component({
   selector: 'tyctext',
   templateUrl: './t&ctext.component.html',
-  styleUrls: ['./terminosycondiciones.component.css']
+  styleUrls: ['./t&ctext.component.scss']
 })
 export class TyCModalComponentText {}

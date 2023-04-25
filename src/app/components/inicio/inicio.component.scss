@@ -560,9 +560,6 @@ $elementos: 5;
           position: absolute;
           right: 0;
           text-align: center;
-          &.CAMIONREPARTO_2 {
-            transform: scaleX(-1);
-          }
         }
       }
       &.visible {
