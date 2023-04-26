@@ -22,7 +22,7 @@ import { CotizacionComponent } from './components/cotizacion/cotizacion.componen
 import { OportunidadComponent } from './components/oportunidad/oportunidad.component';
 import { SugerenciasComponent, modalSuggestionsComponent } from './components/secciones/sugerencias/sugerencias.component';
 import { PreguntasfrecuentesComponent } from './components/secciones/preguntasfrecuentes/preguntasfrecuentes.component';
-import { SolucionesenlineaComponent } from './components/secciones/solucionesenlinea/solucionesenlinea.component';
+import { SolucionesenlineaComponent, SolutionsModalComponent } from './components/secciones/solucionesenlinea/solucionesenlinea.component';
 import { TerminosycondicionesComponent, TyCModalComponent, TyCModalComponentText } from './components/secciones/terminosycondiciones/terminosycondiciones.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
@@ -86,6 +86,7 @@ const route: Routes =[
     modalSuggestionsComponent,
     PreguntasfrecuentesComponent,
     SolucionesenlineaComponent,
+    SolutionsModalComponent,
     TerminosycondicionesComponent,
     TyCModalComponent,
     TyCModalComponentText,

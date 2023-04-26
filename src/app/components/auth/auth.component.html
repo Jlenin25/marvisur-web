@@ -3,7 +3,7 @@
     <div class="signin-signup">
       <form
         class="sign-in-form"
-        (ngSubmit)="formLogin(loginForm)"
+        (ngSubmit)="formLogin()"
         #loginForm="ngForm"
       >
         <h2 class="title">Iniciar sesión</h2>
@@ -30,7 +30,7 @@
         <button type="submit">
           <span class="text">Ingresar</span>
         </button>
-        <p class="social-text">Or Sign in with social platforms</p>
+        <p class="social-text">O inicia sesión con las plataformas de sociales</p>
         <div class="social-media">
           <a href="#" class="social-icon">
             <i class="fab fa-facebook-f"></i>
@@ -55,47 +55,60 @@
           <h4>Soy una {{ typePerson }}</h4>
         </div>
         <h2 class="title">Registrarse</h2>
-        <div class="input-field" *ngIf="typePerson === 'persona natural'">
+        <div class="input-field" *ngIf="typePerson === 'persona'">
           <i class="fas fa-user"></i>
           <input
             [(ngModel)]="razonsocial"
             name="razonsocial"
             type="text"
             placeholder="Razón social"
+            autocomplete="off"
           />
         </div>
         <div class="input-field" *ngIf="typePerson === 'empresa'">
           <i class="fas fa-user"></i>
           <input
-            [(ngModel)]="nombres"
+            [(ngModel)]="registerPerson.nombres"
             name="nombres"
             type="text"
             placeholder="Nombres"
+            autocomplete="off"
           />
         </div>
         <div class="input-field" *ngIf="typePerson === 'empresa'">
           <i class="fas fa-user"></i>
           <input
-            [(ngModel)]="apellidos"
+            [(ngModel)]="registerPerson.apellidos"
             name="apellidos"
             type="text"
             placeholder="Apellidos"
+            autocomplete="off"
           />
         </div>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
           <input
-            [(ngModel)]="email"
+            [(ngModel)]="registerPerson.email"
             name="email"
             type="email"
             placeholder="Correo electrónico"
+            autocomplete="off"
           />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
           <input
-            [(ngModel)]="password"
+            [(ngModel)]="registerPerson.password"
             name="password"
+            type="password"
+            placeholder="Contraseña"
+          />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
             type="password"
             placeholder="Contraseña"
           />
@@ -103,20 +116,22 @@
         <button type="submit">
           <span class="text">Registrarse</span>
         </button>
-        <p class="social-text">Regístrese con las plataformas sociales</p>
-        <div class="social-media">
-          <a href="#" class="social-icon">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
+        <div class="another-platform" *ngIf="typePerson === 'empresa'">
+          <p class="social-text">Regístrate con las plataformas de sociales</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
         </div>
       </form>
     </div>
@@ -127,23 +142,21 @@
       <div class="content">
         <h3>Nuevo(a) aquí?</h3>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, ex
-          ratione. Aliquid!
+          Créate una cuenta para poder tener acceso extra a nuestros contenidos y realizar más rápido tus acciones.
         </p>
         <button (click)="changeLoginRegister()">Registrarse</button>
       </div>
-      <img src="assets/svg/login.svg" class="image" alt="" />
+      <img [src]="['assets/svg/login.svg']" class="image" alt="" />
     </div>
     <div class="panel right-panel">
       <div class="content">
         <h3>Ya tienes una cuenta?</h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          laboriosam ad deleniti.
+          Inicia sesión dándole click en el botón de "Iniciar sesión", está aquí abajo.
         </p>
         <button (click)="changeLoginRegister()">Iniciar sesión</button>
       </div>
-      <img src="assets/svg/register.svg" class="image" alt="" />
+      <img [src]="['assets/svg/register.svg']" class="image" alt="" />
     </div>
   </div>
 </main>

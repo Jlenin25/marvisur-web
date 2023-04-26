@@ -1,118 +1,143 @@
 <main class="online-solutions">
-  <div class="container">    
-    <div class="tituSoluLinea">SOLUCIONES EN LÍNEA</div>
-    <div class="letra-soluc">POR ESTE MEDIO NO SE HACEN CAMBIOS DE DATOS CONSIGNADOS EN GUÍA (cambio de destino, ni cambio de destinatario</div>
+  <div class="container">
+    <h2>SOLUCIONES EN LÍNEA</h2>
+    <span
+      >POR ESTE MEDIO NO SE HACEN CAMBIOS DE DATOS CONSIGNADOS EN GUÍA (cambio
+      de destino, ni cambio de destinatario).</span
+    >
     <form (ngSubmit)="onSubmitSolucionesenlinea()" #CurriculumForm="ngForm">
-
-        <div class="form-group was-validated">
-            <label for="nombresyape">Apellidos y Nombres</label>
-            <input type="text" id="nombres" name="nombresyape" #nombresyape="ngModel" [(ngModel)]="solucionModel.nombres_sol" class="form-control" required>
-            <div class="invalid-feedback">*Campo Obligatorio</div>                              
-
-        </div>
-        <div class="row r1">
-          <div class="form-group col-lg-5 was-validated">
-              <label for="edad">Serie Guía:</label>
-              <input type="text" class="form-control " id="edad" required [(ngModel)]="solucionModel.serie_sol" name="edad" #edad="ngModel" placeholder="0022">
-              <div class="invalid-feedback">*Campo Obligatorio</div>  
+      <div class="ctn-form">
+        <div class="box g-1">
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="nombresyape"
+              #nombresyape="ngModel"
+              [(ngModel)]="solucionModel.nombres_sol"
+              autocomplete="off"
+            />
+            <label>Apellidos y nombres</label>
           </div>
-          <div class="col-1"></div>
-          <div class="form-group col-lg-6 was-validated">
-              <label for="numero">Número Guía:</label>
-              <input type="tel" class="form-control " required [(ngModel)]="solucionModel.numero_sol" name="numero" #numero="ngModel" placeholder="2578">
-              <div class="invalid-feedback">*Campo Obligatorio</div>
+          <div class="input-group">
+            <input
+              required=""
+              type="email"
+              name="email"
+              #email="ngModel"
+              [(ngModel)]="solucionModel.correo_sol"
+              autocomplete="off"
+            />
+            <label>Correo electrónico</label>
           </div>
-      </div>
-
-      <div class="row r1">
-        <div class="form-group col-lg-5 was-validated">
-            <label for="origen">Origen:</label>
-            <input type="text" class="form-control " id="origen" required [(ngModel)]="solucionModel.origen_sol" name="origen" #origen="ngModel" placeholder="Arequipa">
-            <div class="invalid-feedback">*Campo Obligatorio</div>
         </div>
-        <div class="col-1"></div>
-        <div class="form-group col-lg-6 was-validated">
-            <label for="destino">Destino:</label>
-            <input type="tel" class="form-control " required [(ngModel)]="solucionModel.destino_sol" name="destino" #destino="ngModel" placeholder="Lima">
-            <div class="invalid-feedback">*Campo Obligatorio</div>
-        </div>
-    </div>
-        <div class="form-group was-validated">
-            <label for="email">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" required [(ngModel)]="solucionModel.correo_sol" name="email" #email="ngModel" placeholder="example@gmail.com">
-            <div class="invalid-feedback">*Campo Obligatorio</div>
-
-        </div>
-        <div class="row r1">
-          <div class="form-group col-lg-5 was-validated">
-              <label for="telefono">Celular:</label>
-              <input type="text" class="form-control " id="telefono" required [(ngModel)]="solucionModel.celular_sol" name="telefono" #telefono="ngModel" placeholder="Arequipa">
-              <div class="invalid-feedback">*Campo Obligatorio</div>
-
+        <div class="box g-2">
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="serie"
+              #serie="ngModel"
+              [(ngModel)]="solucionModel.serie_sol"
+              autocomplete="off"
+              minlength="4"
+              maxlength="4"
+              (keypress)="singleNumber($event)"
+            />
+            <label>Serie Guía</label>
           </div>
-          
-          <div class="form-group col-lg-6 was-validated">
-            <label for="telefono">Seleccione inconveniente:</label>
-            <select class="col-12 browser-default custom-select" name="tipo4" #tipo4="ngModel" [(ngModel)]="solucionModel.inconveniente_sol" required>
-              <option  value="" disabled="true">Seleccione..</option>
-              <option value="DEMORA EN LA ENTREGA">DEMORA EN LA ENTREGA</option>
-              <option value="MERCADERIA DAÑADA">MERCADERIA DAÑADA</option>
-              <option value="OTROS">OTROS</option>
-          </select> 
-          <div class="invalid-feedback">Seleccione una opción</div>                              
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="numero"
+              #numero="ngModel"
+              [(ngModel)]="solucionModel.numero_sol"
+              autocomplete="off"
+              minlength="7"
+              maxlength="7"
+              (keypress)="singleNumber($event)"
+            />
+            <label>Número Guía</label>
+          </div>
         </div>
+        <div class="box g-3">
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="origen"
+              #origen="ngModel"
+              [(ngModel)]="solucionModel.origen_sol"
+              autocomplete="off"
+            />
+            <label>Origen</label>
+          </div>
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="destino"
+              #destino="ngModel"
+              [(ngModel)]="solucionModel.destino_sol"
+              autocomplete="off"
+            />
+            <label>Destino</label>
+          </div>
         </div>
-        <div class="form-group was-validated">
-          <label for="exampleFormControlTextarea1 ">Detalle:</label>
-          <textarea class="form-control" id="detalle" required [(ngModel)]="solucionModel.detalle_sol" name="detalle" #detalle="ngModel" placeholder="Detalle..." rows="4"></textarea>
-          <div class="invalid-feedback">*Campo Obligatorio</div>
-
+        <div class="box g-4">
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="telefono"
+              #telefono="ngModel"
+              [(ngModel)]="solucionModel.celular_sol"
+              autocomplete="off"
+              minlength="9"
+              maxlength="9"
+              (keypress)="singleNumber($event)"
+            />
+            <label>Celular</label>
+          </div>
+          <div class="input-group">
+            <select
+              required=""
+              name="select"
+              #select="ngModel"
+              [(ngModel)]="solucionModel.inconveniente_sol"
+            >
+              <option value="" disabled="true">Seleccione el inconveniente</option>
+              <option value="DEMORA EN LA ENTREGA">Demora en la entrega</option>
+              <option value="MERCADERIA DAÑADA">Mercadería dañada</option>
+              <option value="OTROS">Otros</option>
+            </select>
+          </div>
+        </div>
+        <div class="box">
+          <div class="textarea-group">
+            <textarea
+              required=""
+              name="detalle"
+              #detalle="ngModel"
+              [(ngModel)]="solucionModel.detalle_sol"
+              rows="4"
+            ></textarea>
+            <label>Detalles</label>
+          </div>
         </div>
         <div class="form-group">
-              
-          <label class="form-label" for="file">Adjuntar Archivo (Máximo 2 MB):</label>
-      
-          <angular-file-uploader 
-            [config]="afuConfig" 
-              (ApiResponse)="adjuntoUpload($event)"> 
+          <label class="form-label" for="file"
+            >Adjuntar Archivo (Máximo 2 MB):</label
+          >
+          <angular-file-uploader
+            [config]="afuConfig"
+            (ApiResponse)="adjuntoUpload($event)"
+          >
           </angular-file-uploader>
         </div>
-
-
-        <button type="submit"  data-toggle="modal" data-dismiss="modal" data-target="#modalRespuesta3" class="btn btn-envio-solicitud btn-success col-lg-6" >Enviar Solicitud</button>
-        <!-- <button type="button" class="btn btn-default" (click)="newCurriculum(); CurriculumForm.reset()">New Curriculum</button>-->
-   
-   </form> 
-</div>     
-<br>
-<br>
-
-
-<div class="modal fade" id="modalRespuesta3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-sm modal-cotiza" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
-          <button type="button" (click)="close()" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div *ngIf="check==1">
-                Se ingresó correctamente, El código de la solución se envió a su correo.
-            </div>
-            <div *ngIf="check==2">
-                No se ingresó, verifique los datos.
-            </div>
-            <div *ngIf="check==0">
-              Ingresando Datos...
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" (click)="close()"  class="btn btn-danger"   data-dismiss="modal">Close</button>
-        </div>
+        <button>Enviar</button>
       </div>
-    </div>
+    </form>
   </div>
-  
 </main>
